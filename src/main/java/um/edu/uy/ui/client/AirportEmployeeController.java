@@ -1,6 +1,5 @@
 package um.edu.uy.ui.client;
 
-import javafx.application.Platform;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.scene.Node;
@@ -9,17 +8,19 @@ import javafx.scene.control.Button;
 import javafx.scene.control.TextField;
 import javafx.stage.Stage;
 import org.springframework.beans.factory.annotation.Autowired;
-import um.edu.uy.business.ClientMgr;
-import um.edu.uy.business.entities.Client;
-import um.edu.uy.business.exceptions.ClientAlreadyExists;
-import um.edu.uy.business.exceptions.InvalidClientInformation;
+import um.edu.uy.business.AeroportEmployeeMgr;
+import um.edu.uy.business.entities.AeroportEmployee;
+import um.edu.uy.business.exceptions.AirportEmployeeAlreadyExists;
+import um.edu.uy.business.exceptions.InvalidAirportEmployeeInformation;
 import org.springframework.stereotype.Component;
 
+import java.sql.Date;
+
 @Component
-public class ClientController {
+public class AirportEmployeeController {
 
     @Autowired
-    private ClientMgr clientMgr;
+    private AeroportEmployeeMgr aeroportEmployeeMgr;
 
     @FXML
     private Button btnClose;
@@ -60,21 +61,26 @@ public class ClientController {
                 Long document = Long.valueOf(txtDocument.getText());
                 String name = txtName.getText();
                 String address = txtAddress.getText();
+                String passport= txtAddress.getText();
+                String nationality=txtAddress.getText();
+                Date birthDate= Date.valueOf(txtAddress.getText());
+                String lastname=txtAddress.getText();
+                String role= txtAddress.getText();
 
                 try {
 
-                    Client client = new Client(document, name, address);
+                    AeroportEmployee aeroportEmployee = new AeroportEmployee(document, passport,nationality, birthDate, name, lastname, address,role);
 
-                    clientMgr.addClient(client);
+                    aeroportEmployeeMgr.addClient(aeroportEmployee);
 
                     showAlert("Cliente agregado", "Se agrego con exito el cliente!");
 
                     close(event);
-                } catch (InvalidClientInformation invalidClientInformation) {
+                } catch (InvalidAirportEmployeeInformation invalidAirportEmployeeInformation) {
                     showAlert(
                             "Informacion invalida !",
                             "Se encontro un error en los datos ingresados.");
-                } catch (ClientAlreadyExists clientAlreadyExists) {
+                } catch (AirportEmployeeAlreadyExists airportEmployeeAlreadyExists) {
                     showAlert(
                             "Documento ya registrado !",
                             "El documento indicado ya ha sido registrado en el sistema).");

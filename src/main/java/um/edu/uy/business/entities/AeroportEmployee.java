@@ -6,30 +6,44 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
 import javax.persistence.Table;
+import java.sql.Date;
 
 
 @Entity
 @Table(name = "clients")
-public class Client {
+public class AeroportEmployee {
 
     @Id
     @GeneratedValue(generator="clients_ids")
     @GenericGenerator(name="clients_ids", strategy = "increment")
     public long id;
 
-    public long document;
+    public String passport;
+    public String nationality;
+    public Date birthDate;
+    public String mail;
 
+    public String role;
     public String name;
+    public String lastName;
 
     public String address;
+    public String password;
 
-    public Client() {
+    public AeroportEmployee() {
     }
 
-    public Client(long document, String name, String address) {
-        this.document = document;
+    public AeroportEmployee(long id, String passport, String nationality, Date birthDate, String name, String lastName, String address,String role) {
+        this.id = id;
+        this.passport = passport;
+        this.nationality = nationality;
+        this.birthDate = birthDate;
         this.name = name;
+        this.lastName = lastName;
         this.address = address;
+        //this.mail= funcion para generar el mail
+        this.role=role;
+        this.password=passport;
     }
 
     public long getId() {
@@ -56,11 +70,11 @@ public class Client {
         this.address = address;
     }
 
-    public long getDocument() {
-        return document;
+    public String getPassport() {
+        return passport;
     }
 
-    public void setDocument(long document) {
-        this.document = document;
+    public void setPassport(String passport) {
+        this.passport = passport;
     }
 }
