@@ -7,7 +7,7 @@
 <?import javafx.scene.layout.*?>
 
 
-<BorderPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="274.0" prefWidth="450.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="um.edu.uy.ui.client.ClientController">
+<BorderPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="474.0" prefWidth="750.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="um.edu.uy.ui.client.ClientController">
    <center>
       <AnchorPane prefHeight="550.0" prefWidth="600.0" BorderPane.alignment="CENTER">
          <children>
@@ -15,7 +15,7 @@
             <Label layoutX="23.0" layoutY="75.0" text="Nombre Completo" />
             <Label layoutX="23.0" layoutY="151.0" text="Pasaporte" />
             <Label layoutX="23.0" layoutY="184.0" text="Nacionalidad" />
-            <Label layoutX="23.0" layoutY="215.0" text="Fecha" />
+            <Label layoutX="23.0" layoutY="215.0" text="Fecha yyyy-mm-dd" />
             <Label layoutX="23.0" layoutY="250.0" text="Apellido" />
             <Label layoutX="23.0" layoutY="285.0" text="Rol" />
             <TextField fx:id="txtDocument" layoutX="158.0" layoutY="31.0" />
@@ -31,7 +31,7 @@
       </AnchorPane>
    </center>
    <top>
-      <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Crear un Cliente" BorderPane.alignment="CENTER">
+      <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Crear un empeleado del aeropuerto" BorderPane.alignment="CENTER">
          <font>
             <Font size="28.0" />
          </font>
