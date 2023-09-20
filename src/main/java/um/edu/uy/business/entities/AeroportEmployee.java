@@ -41,11 +41,13 @@ public class AeroportEmployee {
         this.name = name;
         this.lastName = lastName;
         this.address = address;
-        //this.mail= funcion para generar el mail
+        this.mail= generateEmail(name,lastName);
         this.role=role;
         this.password=passport;
     }
-
+    public String generateEmail(String name,String lastName){
+        //hay que ver que chequee que no exista el email y generarle uno nuevo con un numero en ese caso ej nsere1@airportemail.com
+        return Character.toLowerCase(name.charAt(0))+lastName.toLowerCase()+"@airportemail.com";}
     public long getId() {
         return id;
     }
