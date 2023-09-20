@@ -17,7 +17,7 @@ import org.springframework.stereotype.Component;
 import java.sql.Date;
 
 @Component
-public class AirportEmployeeController {
+public class ClientController {
 
     @Autowired
     private AeroportEmployeeMgr aeroportEmployeeMgr;
@@ -33,6 +33,16 @@ public class AirportEmployeeController {
 
     @FXML
     private TextField txtAddress;
+    @FXML
+    private TextField txtlastname;
+    @FXML
+    private TextField txtPassport;
+    @FXML
+    private TextField txtDate;
+    @FXML
+    private TextField txtNationality;
+    @FXML
+    private TextField txtRole;
 
     @FXML
     private TextField txtDocument;
@@ -61,11 +71,11 @@ public class AirportEmployeeController {
                 Long document = Long.valueOf(txtDocument.getText());
                 String name = txtName.getText();
                 String address = txtAddress.getText();
-                String passport= txtAddress.getText();
-                String nationality=txtAddress.getText();
-                Date birthDate= Date.valueOf(txtAddress.getText());
-                String lastname=txtAddress.getText();
-                String role= txtAddress.getText();
+                String passport= txtPassport.getText();
+                String nationality=txtNationality.getText();
+                Date birthDate= Date.valueOf(txtDate.getText());
+                String lastname=txtlastname.getText();
+                String role= txtRole.getText();
 
                 try {
 

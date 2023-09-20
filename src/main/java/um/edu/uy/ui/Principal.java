@@ -9,7 +9,7 @@ import javafx.scene.control.MenuItem;
 import javafx.stage.Stage;
 import org.springframework.stereotype.Component;
 import um.edu.uy.Main;
-import um.edu.uy.ui.client.AirportEmployeeController;
+import um.edu.uy.ui.client.ClientController;
 
 @Component
 public class Principal {
@@ -22,7 +22,7 @@ public class Principal {
         FXMLLoader fxmlLoader = new FXMLLoader();
         fxmlLoader.setControllerFactory(Main.getContext()::getBean);
 
-        Parent root = fxmlLoader.load(AirportEmployeeController.class.getResourceAsStream("AddClient.fxml"));
+        Parent root = fxmlLoader.load(ClientController.class.getResourceAsStream("AddClient.fxml"));
         Stage stage = new Stage();
         stage.setScene(new Scene(root));
         stage.show();

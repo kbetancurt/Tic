@@ -7,14 +7,24 @@
 <?import javafx.scene.layout.*?>
 
 
-<BorderPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="274.0" prefWidth="450.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="um.edu.uy.ui.aeroportEmployee.ClientController">
+<BorderPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="274.0" prefWidth="450.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="um.edu.uy.ui.client.ClientController">
    <center>
-      <AnchorPane prefHeight="317.0" prefWidth="459.0" BorderPane.alignment="CENTER">
+      <AnchorPane prefHeight="550.0" prefWidth="600.0" BorderPane.alignment="CENTER">
          <children>
             <Label layoutX="23.0" layoutY="37.0" text="Documento" />
             <Label layoutX="23.0" layoutY="75.0" text="Nombre Completo" />
+            <Label layoutX="23.0" layoutY="151.0" text="Pasaporte" />
+            <Label layoutX="23.0" layoutY="184.0" text="Nacionalidad" />
+            <Label layoutX="23.0" layoutY="215.0" text="Fecha" />
+            <Label layoutX="23.0" layoutY="250.0" text="Apellido" />
+            <Label layoutX="23.0" layoutY="285.0" text="Rol" />
             <TextField fx:id="txtDocument" layoutX="158.0" layoutY="31.0" />
             <TextField fx:id="txtName" layoutX="158.0" layoutY="69.0" />
+            <TextField fx:id="txtPassport" layoutX="158.0" layoutY="151.0" />
+            <TextField fx:id="txtNationality" layoutX="158.0" layoutY="184.0" />
+            <TextField fx:id="txtDate" layoutX="158.0" layoutY="215.0" />
+            <TextField fx:id="txtlastname" layoutX="158.0" layoutY="250.0" />
+            <TextField fx:id="txtRole" layoutX="158.0" layoutY="285.0" />
             <TextField fx:id="txtAddress" layoutX="158.0" layoutY="110.0" prefHeight="27.0" prefWidth="253.0" />
             <Label layoutX="23.0" layoutY="116.0" text="Direccion" />
          </children>
