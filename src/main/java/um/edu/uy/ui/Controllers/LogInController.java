@@ -4,32 +4,20 @@ import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
-import javafx.scene.input.KeyEvent;
 
 
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
-import javafx.scene.Node;
 import javafx.scene.control.Alert;
 import javafx.scene.control.Button;
 import javafx.scene.control.TextField;
 import javafx.stage.Stage;
-import javafx.scene.Scene;
 import org.springframework.beans.factory.annotation.Autowired;
 import um.edu.uy.Main;
-import um.edu.uy.business.AeroportEmployeeMgr;
-import um.edu.uy.business.entities.AeroportEmployee;
-import um.edu.uy.business.exceptions.AirportEmployeeAlreadyExists;
-import um.edu.uy.business.exceptions.InvalidAirportEmployeeInformation;
-import org.springframework.stereotype.Component;
 import um.edu.uy.persistence.AeroportEmployeeRepository;
-import um.edu.uy.ui.Principal;
 
 import java.io.IOException;
 import java.net.URL;
-import java.sql.Date;
-import java.util.Objects;
-import java.util.Optional;
 import java.util.ResourceBundle;
 
 public class LogInController implements Initializable {
@@ -66,7 +54,7 @@ public class LogInController implements Initializable {
             FXMLLoader fxmlLoader = new FXMLLoader();
             fxmlLoader.setControllerFactory(Main.getContext()::getBean);
 
-            Parent root = fxmlLoader.load(ClientController.class.getResourceAsStream("AddClient.fxml"));
+            Parent root = fxmlLoader.load(ClientController.class.getResourceAsStream("Principal.fxml"));
             Stage stage = new Stage();
             stage.setScene(new Scene(root));
             stage.show();

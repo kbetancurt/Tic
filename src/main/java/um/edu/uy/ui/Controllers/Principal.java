@@ -1,4 +1,4 @@
-package um.edu.uy.ui;
+package um.edu.uy.ui.Controllers;
 
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
