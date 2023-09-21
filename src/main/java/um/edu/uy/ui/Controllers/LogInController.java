@@ -14,7 +14,9 @@ import javafx.scene.control.Alert;
 import javafx.scene.control.Button;
 import javafx.scene.control.TextField;
 import javafx.stage.Stage;
+import javafx.scene.Scene;
 import org.springframework.beans.factory.annotation.Autowired;
+import um.edu.uy.Main;
 import um.edu.uy.business.AeroportEmployeeMgr;
 import um.edu.uy.business.entities.AeroportEmployee;
 import um.edu.uy.business.exceptions.AirportEmployeeAlreadyExists;
@@ -60,23 +62,25 @@ public class LogInController implements Initializable {
                         "Mail o contraseña incorrectos");
             }
                 else{
+                */
+            FXMLLoader fxmlLoader = new FXMLLoader();
+            fxmlLoader.setControllerFactory(Main.getContext()::getBean);
 
-                FXMLLoader loader = new FXMLLoader(getClass().getResource("AddClient.fxml"));
-                Parent root = loader.load();
-                ClientController clientController = loader.getController();
-                Stage stage = new Stage();
-                stage.setScene(new Scene(root));
-                stage.show();*/
-            FXMLLoader loader = new FXMLLoader(getClass().getResource("LogInMenu.fxml"));
+            Parent root = fxmlLoader.load(ClientController.class.getResourceAsStream("AddClient.fxml"));
+            Stage stage = new Stage();
+            stage.setScene(new Scene(root));
+            stage.show();
+            /*FXMLLoader loader = new FXMLLoader(getClass().getResource("AddClient.fxml"));
             Parent root = loader.load();
             Scene scene = new Scene(root);
+            Stage primaryStage= new Stage();
             primaryStage.setScene(scene);
-            primaryStage.show();
+            primaryStage.show();*/
 
 
             }
         }
-    }
+
 
     private void clean() {
         txtPasswordUser.setText(null);
