@@ -21,6 +21,7 @@ import um.edu.uy.business.exceptions.AirportEmployeeAlreadyExists;
 import um.edu.uy.business.exceptions.InvalidAirportEmployeeInformation;
 import org.springframework.stereotype.Component;
 import um.edu.uy.persistence.AeroportEmployeeRepository;
+import um.edu.uy.ui.Principal;
 
 import java.io.IOException;
 import java.net.URL;
@@ -52,7 +53,7 @@ public class LogInController implements Initializable {
                     "No se ingresaron los datos necesarios para completar el ingreso.");
 
         } else {
-            if (aeroportEmployeeRepository.findOneByMail(txtMailUser.getText()) == null || !Objects.equals(aeroportEmployeeRepository.findOneByMail(txtMailUser.getText()).password, txtPasswordUser.getText()))
+            /*if (aeroportEmployeeRepository.findOneByMail(txtMailUser.getText()) ==null ||  !Objects.equals(aeroportEmployeeRepository.findOneByMail(txtMailUser.getText()).password, txtPasswordUser.getText()))
             {
                 showAlert(
                         "Datos Incorrectos!",
@@ -65,7 +66,13 @@ public class LogInController implements Initializable {
                 ClientController clientController = loader.getController();
                 Stage stage = new Stage();
                 stage.setScene(new Scene(root));
-                stage.show();
+                stage.show();*/
+            FXMLLoader loader = new FXMLLoader(getClass().getResource("LogInMenu.fxml"));
+            Parent root = loader.load();
+            Scene scene = new Scene(root);
+            primaryStage.setScene(scene);
+            primaryStage.show();
+
 
             }
         }

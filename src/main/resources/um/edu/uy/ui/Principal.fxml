@@ -10,7 +10,7 @@
    <top>
       <MenuBar BorderPane.alignment="CENTER">
         <menus>
-          <Menu mnemonicParsing="false" text="Cliente">
+          <Menu mnemonicParsing="false" text="Empleado Aeropuerto">
             <items>
               <MenuItem fx:id="mItemAgregarCliente" mnemonicParsing="false" onAction="#agregarClientAction" text="Agregar" />
             </items>

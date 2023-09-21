@@ -18,7 +18,7 @@ public class Principal {
     private MenuItem mItemAgregarCliente;
 
     @FXML
-    void agregarClientAction(ActionEvent event) throws Exception {
+    public void agregarClientAction(ActionEvent event) throws Exception {
         FXMLLoader fxmlLoader = new FXMLLoader();
         fxmlLoader.setControllerFactory(Main.getContext()::getBean);
 
