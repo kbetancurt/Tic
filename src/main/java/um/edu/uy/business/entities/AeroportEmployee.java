@@ -41,7 +41,7 @@ public class AeroportEmployee {
         this.name = name;
         this.lastName = lastName;
         this.address = address;
-        //this.mail= funcion para generar el mail
+        this.mail= this.name + "." + this.lastName + "@airport.com";
         this.role=role;
         this.password=passport;
     }

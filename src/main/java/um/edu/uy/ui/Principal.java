@@ -9,7 +9,7 @@ import javafx.scene.control.MenuItem;
 import javafx.stage.Stage;
 import org.springframework.stereotype.Component;
 import um.edu.uy.Main;
-import um.edu.uy.ui.client.ClientController;
+import um.edu.uy.ui.Controllers.ClientController;
 
 @Component
 public class Principal {

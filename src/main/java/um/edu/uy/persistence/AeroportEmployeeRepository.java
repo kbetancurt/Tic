@@ -10,6 +10,9 @@ public interface AeroportEmployeeRepository extends CrudRepository<AeroportEmplo
      * @param passport
      * @return
      */
-    AeroportEmployee findOneByPassport(String passport);
+    public AeroportEmployee findOneByPassport(String passport);
+    public AeroportEmployee findOneByMail(String mail);
+
+
 
 }
