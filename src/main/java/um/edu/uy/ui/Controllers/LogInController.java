@@ -13,16 +13,20 @@ import javafx.scene.control.Button;
 import javafx.scene.control.TextField;
 import javafx.stage.Stage;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Controller;
 import um.edu.uy.Main;
+import um.edu.uy.business.AeroportEmployeeMgr;
 import um.edu.uy.persistence.AeroportEmployeeRepository;
 
 import java.io.IOException;
 import java.net.URL;
+import java.util.Objects;
 import java.util.ResourceBundle;
 
+@Controller
 public class LogInController implements Initializable {
     @Autowired
-    private AeroportEmployeeRepository aeroportEmployeeRepository;
+    private AeroportEmployeeRepository aeroportEmployeeMgr;
 
     @FXML
     private TextField txtMailUser;
@@ -43,48 +47,36 @@ public class LogInController implements Initializable {
                     "No se ingresaron los datos necesarios para completar el ingreso.");
 
         } else {
-            /*if (aeroportEmployeeRepository.findOneByMail(txtMailUser.getText()) ==null ||  !Objects.equals(aeroportEmployeeRepository.findOneByMail(txtMailUser.getText()).password, txtPasswordUser.getText()))
-            {
-                showAlert(
-                        "Datos Incorrectos!",
-                        "Mail o contraseña incorrectos");
-            }
-                else{
-                */
-            FXMLLoader fxmlLoader = new FXMLLoader();
-            fxmlLoader.setControllerFactory(Main.getContext()::getBean);
+            if (aeroportEmployeeMgr.findOneByMail(txtMailUser.getText()) == null || !Objects.equals(aeroportEmployeeMgr.findOneByMail(txtMailUser.getText()).password, txtPasswordUser.getText())) {
+                showAlert("Datos Incorrectos!", "Mail o contraseña incorrectos");
 
-            Parent root = fxmlLoader.load(ClientController.class.getResourceAsStream("Principal.fxml"));
-            Stage stage = new Stage();
-            stage.setScene(new Scene(root));
-            stage.show();
-            /*FXMLLoader loader = new FXMLLoader(getClass().getResource("AddClient.fxml"));
-            Parent root = loader.load();
-            Scene scene = new Scene(root);
-            Stage primaryStage= new Stage();
-            primaryStage.setScene(scene);
-            primaryStage.show();*/
+            } else {
 
+                FXMLLoader fxmlLoader = new FXMLLoader();
+                fxmlLoader.setControllerFactory(Main.getContext()::getBean);
 
+                Parent root = fxmlLoader.load(ClientController.class.getResourceAsStream("Principal.fxml"));
+                Stage stage = new Stage();
+                stage.setScene(new Scene(root));
+                stage.show();
             }
         }
-
-
+    }
     private void clean() {
-        txtPasswordUser.setText(null);
-        txtMailUser.setText(null);
-    }
+            txtPasswordUser.setText(null);
+            txtMailUser.setText(null);
+        }
 
-    private void showAlert(String title, String contextText) {
-        Alert alert = new Alert(Alert.AlertType.INFORMATION);
-        alert.setTitle(title);
-        alert.setHeaderText(null);
-        alert.setContentText(contextText);
-        alert.showAndWait();
-    }
+    private void showAlert (String title, String contextText){
+            Alert alert = new Alert(Alert.AlertType.INFORMATION);
+            alert.setTitle(title);
+            alert.setHeaderText(null);
+            alert.setContentText(contextText);
+            alert.showAndWait();
+        }
 
     @Override
-    public void initialize(URL location, ResourceBundle resources) {
+    public void initialize (URL location, ResourceBundle resources){
+        }
 
-    }
 }

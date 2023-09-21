@@ -1,6 +1,7 @@
 package um.edu.uy.business;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Repository;
 import org.springframework.stereotype.Service;
 import um.edu.uy.business.entities.AeroportEmployee;
 import um.edu.uy.business.exceptions.AirportEmployeeAlreadyExists;
@@ -9,6 +10,14 @@ import um.edu.uy.persistence.AeroportEmployeeRepository;
 
 @Service
 public class AeroportEmployeeMgr {
+
+    public AeroportEmployeeRepository getAeroportEmployeeRepository() {
+        return aeroportEmployeeRepository;
+    }
+
+    public void setAeroportEmployeeRepository(AeroportEmployeeRepository aeroportEmployeeRepository) {
+        this.aeroportEmployeeRepository = aeroportEmployeeRepository;
+    }
 
     @Autowired
     private AeroportEmployeeRepository aeroportEmployeeRepository;
@@ -31,6 +40,9 @@ public class AeroportEmployeeMgr {
 
         aeroportEmployeeRepository.save(aeroportEmployee);
 
+    }
+    public AeroportEmployee getAirportEmployee(String mail){
+        return aeroportEmployeeRepository.findOneByMail( mail);
     }
 
 
