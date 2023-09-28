@@ -1,10 +1,11 @@
 package um.edu.uy.persistence;
 
 import org.springframework.data.repository.CrudRepository;
+import org.springframework.stereotype.Component;
 import org.springframework.stereotype.Repository;
 import um.edu.uy.business.entities.AeroportEmployee;
 
-@Repository
+@Component
 public interface AeroportEmployeeRepository extends CrudRepository<AeroportEmployee, Long> {
 
     /**

@@ -33,7 +33,7 @@ import java.util.Objects;
 import java.util.Optional;
 import java.util.ResourceBundle;
 
-
+@Component
 public class LogInController implements Initializable {
     @Autowired
     private AeroportEmployeeRepository aeroportEmployeeRepository;
@@ -59,14 +59,14 @@ public class LogInController implements Initializable {
                     "Datos faltantes!",
                     "No se ingresaron los datos necesarios para completar el ingreso.");
 
-        } else {
+        } /*else {
 
             if ((aeroportEmployeeMgr.checkLogin(txtMailUser.getText()) == null) || !Objects.equals(aeroportEmployeeMgr.checkLogin(txtMailUser.getText()).password, txtPasswordUser.getText())) {
                 showAlert(
                         "Datos Incorrectos!",
                         "Mail o contraseña incorrectos");
-            } else {
-                FXMLLoader loader = new FXMLLoader(getClass().getResource("AirportAdminMenu.fxml"));
+            } */else {
+                FXMLLoader loader = new FXMLLoader(getClass().getResource("AddClient.fxml"));
                 Parent root = loader.load();
                 Scene scene = new Scene(root);
                 Stage primaryStage = new Stage();
@@ -76,7 +76,7 @@ public class LogInController implements Initializable {
 
             }
         }
-    }
+
 
 
 

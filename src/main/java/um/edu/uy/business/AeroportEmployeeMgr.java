@@ -16,6 +16,7 @@ public class AeroportEmployeeMgr {
     @Autowired
     private AeroportEmployeeRepository aeroportEmployeeRepository;
 
+
     public void addClient(AeroportEmployee aeroportEmployee)
             throws InvalidAirportEmployeeInformation, AirportEmployeeAlreadyExists {
 
@@ -36,7 +37,7 @@ public class AeroportEmployeeMgr {
 
     }
 
-    @PostConstruct
+
     public AeroportEmployee checkLogin (String mail){
         return aeroportEmployeeRepository.findOneByMail(mail);
     }
