@@ -1,11 +1,14 @@
 package um.edu.uy.business;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Component;
 import org.springframework.stereotype.Service;
 import um.edu.uy.business.entities.AeroportEmployee;
 import um.edu.uy.business.exceptions.AirportEmployeeAlreadyExists;
 import um.edu.uy.business.exceptions.InvalidAirportEmployeeInformation;
 import um.edu.uy.persistence.AeroportEmployeeRepository;
+
+import javax.annotation.PostConstruct;
 
 @Service
 public class AeroportEmployeeMgr {
@@ -33,7 +36,9 @@ public class AeroportEmployeeMgr {
 
     }
 
-
-
+    @PostConstruct
+    public AeroportEmployee checkLogin (String mail){
+        return aeroportEmployeeRepository.findOneByMail(mail);
+    }
 
 }

@@ -16,6 +16,7 @@ import javafx.scene.control.TextField;
 import javafx.stage.Stage;
 import javafx.scene.Scene;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Repository;
 import um.edu.uy.Main;
 import um.edu.uy.business.AeroportEmployeeMgr;
 import um.edu.uy.business.entities.AeroportEmployee;
@@ -32,9 +33,13 @@ import java.util.Objects;
 import java.util.Optional;
 import java.util.ResourceBundle;
 
+
 public class LogInController implements Initializable {
     @Autowired
     private AeroportEmployeeRepository aeroportEmployeeRepository;
+
+    @Autowired
+    private AeroportEmployeeMgr aeroportEmployeeMgr;
 
     @FXML
     private TextField txtMailUser;
@@ -55,31 +60,25 @@ public class LogInController implements Initializable {
                     "No se ingresaron los datos necesarios para completar el ingreso.");
 
         } else {
-            /*if (aeroportEmployeeRepository.findOneByMail(txtMailUser.getText()) ==null ||  !Objects.equals(aeroportEmployeeRepository.findOneByMail(txtMailUser.getText()).password, txtPasswordUser.getText()))
-            {
+
+            if ((aeroportEmployeeMgr.checkLogin(txtMailUser.getText()) == null) || !Objects.equals(aeroportEmployeeMgr.checkLogin(txtMailUser.getText()).password, txtPasswordUser.getText())) {
                 showAlert(
                         "Datos Incorrectos!",
                         "Mail o contraseña incorrectos");
-            }
-                else{
-                */
-            FXMLLoader fxmlLoader = new FXMLLoader();
-            fxmlLoader.setControllerFactory(Main.getContext()::getBean);
-
-            Parent root = fxmlLoader.load(ClientController.class.getResourceAsStream("AddClient.fxml"));
-            Stage stage = new Stage();
-            stage.setScene(new Scene(root));
-            stage.show();
-            /*FXMLLoader loader = new FXMLLoader(getClass().getResource("AddClient.fxml"));
-            Parent root = loader.load();
-            Scene scene = new Scene(root);
-            Stage primaryStage= new Stage();
-            primaryStage.setScene(scene);
-            primaryStage.show();*/
+            } else {
+                FXMLLoader loader = new FXMLLoader(getClass().getResource("AirportAdminMenu.fxml"));
+                Parent root = loader.load();
+                Scene scene = new Scene(root);
+                Stage primaryStage = new Stage();
+                primaryStage.setScene(scene);
+                primaryStage.show();
 
 
             }
         }
+    }
+
+
 
 
     private void clean() {

@@ -1,6 +1,7 @@
 package um.edu.uy.business.entities;
 
 import org.hibernate.annotations.GenericGenerator;
+import org.springframework.stereotype.Repository;
 
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
@@ -10,6 +11,7 @@ import java.sql.Date;
 
 
 @Entity
+
 @Table(name = "clients")
 public class AeroportEmployee {
 
