@@ -13,6 +13,8 @@ import javafx.scene.control.Button;
 import javafx.scene.control.TextField;
 import javafx.stage.Stage;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.boot.autoconfigure.SpringBootApplication;
+import org.springframework.stereotype.Component;
 import org.springframework.stereotype.Controller;
 import um.edu.uy.Main;
 import um.edu.uy.business.AeroportEmployeeMgr;
@@ -23,7 +25,7 @@ import java.net.URL;
 import java.util.Objects;
 import java.util.ResourceBundle;
 
-@Controller
+@Component
 public class LogInController implements Initializable {
     @Autowired
     private AeroportEmployeeRepository aeroportEmployeeMgr;
@@ -39,6 +41,10 @@ public class LogInController implements Initializable {
 
     @FXML
     private void logIn(ActionEvent event) throws IOException {
+        /*if (aeroportEmployeeMgr.equals(null)){
+            System.out.println("ERORR");
+            return;
+        }
         if (txtMailUser.getText() == null || txtMailUser.getText().equals("") ||
                 txtPasswordUser.getText() == null || txtPasswordUser.getText().equals("")) {
 
@@ -50,7 +56,7 @@ public class LogInController implements Initializable {
             if (aeroportEmployeeMgr.findOneByMail(txtMailUser.getText()) == null || !Objects.equals(aeroportEmployeeMgr.findOneByMail(txtMailUser.getText()).password, txtPasswordUser.getText())) {
                 showAlert("Datos Incorrectos!", "Mail o contraseña incorrectos");
 
-            } else {
+            } else */{
 
                 FXMLLoader fxmlLoader = new FXMLLoader();
                 fxmlLoader.setControllerFactory(Main.getContext()::getBean);
@@ -61,7 +67,7 @@ public class LogInController implements Initializable {
                 stage.show();
             }
         }
-    }
+
     private void clean() {
             txtPasswordUser.setText(null);
             txtMailUser.setText(null);

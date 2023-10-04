@@ -23,7 +23,6 @@ public class JavaFXApplication extends Application  {
 
     @Override
     public void start(Stage primaryStage) throws Exception{
-        AeroportEmployee aeroportEmployee = new AeroportEmployee(123434, "123123","nationality", new Date(2000,11,27), "juan", "perez", "address1","admin");
         FXMLLoader loader = new FXMLLoader(getClass().getResource("LogInMenu.fxml"));
         Parent root = loader.load();
         Scene scene = new Scene(root);

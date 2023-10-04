@@ -16,6 +16,8 @@ public class Principal {
 
     @FXML
     private MenuItem mItemAgregarCliente;
+    @FXML
+    private MenuItem mItemAddAirlane;
 
     @FXML
     public void agregarClientAction(ActionEvent event) throws Exception {
@@ -23,6 +25,16 @@ public class Principal {
         fxmlLoader.setControllerFactory(Main.getContext()::getBean);
 
         Parent root = fxmlLoader.load(ClientController.class.getResourceAsStream("AddClient.fxml"));
+        Stage stage = new Stage();
+        stage.setScene(new Scene(root));
+        stage.show();
+    }
+    @FXML
+    public void addAirlane(ActionEvent event) throws Exception {
+        FXMLLoader fxmlLoader = new FXMLLoader();
+        fxmlLoader.setControllerFactory(Main.getContext()::getBean);
+
+        Parent root = fxmlLoader.load(AirlaneController.class.getResourceAsStream("AddAirlane.fxml"));
         Stage stage = new Stage();
         stage.setScene(new Scene(root));
         stage.show();
