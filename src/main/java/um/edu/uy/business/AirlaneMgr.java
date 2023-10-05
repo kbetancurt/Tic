@@ -9,7 +9,10 @@ public class AirlaneMgr {
     @Autowired
     private AirlaneRepository airlaneRepository;
     public void addAirlane(Airlane airlane){
-        if (airlaneRepository.findOneByName(airlane.name)!=null) {
+        if (airlaneRepository.findOneByName(airlane.getName())!=null || airlaneRepository.findOneByIATA(airlane.getIATA())!=null || airlaneRepository.findOneByICAO(airlane.getICA0())!=null) {
+            return;
+        }
+        if (airlane.ICAO.length()!=3 || airlane.IATA.length()!=2){
             return;
         }
         airlaneRepository.save(airlane);

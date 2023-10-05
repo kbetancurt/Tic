@@ -8,6 +8,8 @@ import javafx.stage.Stage;
 import org.springframework.stereotype.Controller;
 import um.edu.uy.Main;
 import um.edu.uy.business.entities.AeroportEmployee;
+import um.edu.uy.ui.Controllers.ClientController;
+import um.edu.uy.ui.Controllers.LogInController;
 
 import java.sql.Date;
 import java.util.Objects;
@@ -23,11 +25,12 @@ public class JavaFXApplication extends Application  {
 
     @Override
     public void start(Stage primaryStage) throws Exception{
-        FXMLLoader loader = new FXMLLoader(getClass().getResource("LogInMenu.fxml"));
-        Parent root = loader.load();
-        Scene scene = new Scene(root);
-        primaryStage.setScene(scene);
-        primaryStage.show();
+        FXMLLoader fxmlLoader = new FXMLLoader();
+        fxmlLoader.setControllerFactory(Main.getContext()::getBean);
+        Parent root = fxmlLoader.load(LogInController.class.getResourceAsStream("LogInMenu.fxml"));
+        Stage stage = new Stage();
+        stage.setScene(new Scene(root));
+        stage.show();
 
     }
 

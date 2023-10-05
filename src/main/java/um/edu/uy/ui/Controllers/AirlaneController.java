@@ -26,6 +26,12 @@ public class AirlaneController {
 
     @FXML
     private TextField txtName;
+    @FXML
+    private TextField txtIATA;
+    @FXML
+    private TextField txtICAO;
+    @FXML
+    private TextField txtPais;
 
     @FXML
     private Button btnAdd;
@@ -48,9 +54,13 @@ public class AirlaneController {
 
 
                 String name = txtName.getText();
+                String IATA= txtIATA.getText();
+                String ICAO=txtICAO.getText();
+                String pais=txtPais.getText();
+
                  {
 
-                    Airlane airlane = new Airlane(name);
+                    Airlane airlane = new Airlane(name,IATA,ICAO,pais);
 
                     airlaneMgr.addAirlane(airlane);
 

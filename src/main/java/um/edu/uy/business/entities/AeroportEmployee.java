@@ -10,12 +10,12 @@ import java.sql.Date;
 
 
 @Entity
-@Table(name = "clients")
+@Table(name = "aeroport_employees")
 public class AeroportEmployee {
 
     @Id
-    @GeneratedValue(generator="clients_ids")
-    @GenericGenerator(name="clients_ids", strategy = "increment")
+    @GeneratedValue(generator="aeroport_employees_ids")
+    @GenericGenerator(name="aeroport_employees_ids", strategy = "increment")
     public long id;
 
     public String passport;
@@ -79,4 +79,5 @@ public class AeroportEmployee {
     public void setPassport(String passport) {
         this.passport = passport;
     }
+    public void setPassword(String password){this.password=password;}
 }

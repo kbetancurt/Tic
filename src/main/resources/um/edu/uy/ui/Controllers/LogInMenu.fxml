@@ -73,13 +73,6 @@
          </HBox.margin>
       </VBox>
       <VBox alignment="CENTER" prefHeight="400.0" prefWidth="345.0" style="-fx-background-color: #FDF47E;" HBox.hgrow="ALWAYS">
-         <children>
-            <ImageView fitHeight="251.0" fitWidth="428.0" pickOnBounds="true" preserveRatio="true" VBox.vgrow="ALWAYS">
-               <image>
-                  <Image url="@../../../../../../Images/LogInImage.png" />
-               </image>
-            </ImageView>
-         </children>
       </VBox>
    </children>
 </HBox>
