@@ -79,4 +79,5 @@ public class AeroportEmployee {
     public void setPassport(String passport) {
         this.passport = passport;
     }
+    public void setPassword(String password){this.password=password;}
 }

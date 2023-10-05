@@ -57,15 +57,23 @@ public class LogInController implements Initializable {
                 showAlert("Datos Incorrectos!", "Mail o contraseña incorrectos");
 
             } else {
+                if (aeroportEmployeeMgr.getAirportEmployee(txtMailUser.getText()).password.equals(aeroportEmployeeMgr.getAirportEmployee(txtMailUser.getText()).passport)){
+                    FXMLLoader fxmlLoader = new FXMLLoader();
+                    fxmlLoader.setControllerFactory(Main.getContext()::getBean);
+                    Parent root = fxmlLoader.load(PasswordChangeController.class.getResourceAsStream("PasswordChange.fxml"));
+                    Stage stage = new Stage();
+                    stage.setScene(new Scene(root));
+                    stage.show();
+                }
+                else{
 
                 FXMLLoader fxmlLoader = new FXMLLoader();
                 fxmlLoader.setControllerFactory(Main.getContext()::getBean);
-
                 Parent root = fxmlLoader.load(ClientController.class.getResourceAsStream("Principal.fxml"));
                 Stage stage = new Stage();
                 stage.setScene(new Scene(root));
                 stage.show();
-            }
+            }}
         }
     }
 
