@@ -1,15 +1,19 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
-<?import javafx.geometry.*?>
-<?import javafx.scene.text.*?>
-<?import javafx.scene.control.*?>
-<?import java.lang.*?>
-<?import javafx.scene.layout.*?>
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.ChoiceBox?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.BorderPane?>
+<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.text.Font?>
+<?import javafx.scene.text.Text?>
 
-
-<BorderPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="474.0" prefWidth="750.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="um.edu.uy.ui.Controllers.ClientController">
+<BorderPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="474.0" prefWidth="750.0" xmlns="http://javafx.com/javafx/20.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="um.edu.uy.ui.Controllers.ClientController">
    <center>
-      <AnchorPane prefHeight="550.0" prefWidth="600.0" BorderPane.alignment="CENTER">
+      <AnchorPane onMouseClicked="#getRoles" prefHeight="550.0" prefWidth="600.0" BorderPane.alignment="CENTER">
          <children>
             <Label layoutX="23.0" layoutY="37.0" text="Documento" />
             <Label layoutX="23.0" layoutY="75.0" text="Nombre Completo" />
@@ -24,9 +28,9 @@
             <TextField fx:id="txtNationality" layoutX="158.0" layoutY="184.0" />
             <TextField fx:id="txtDate" layoutX="158.0" layoutY="215.0" />
             <TextField fx:id="txtlastname" layoutX="158.0" layoutY="250.0" />
-            <TextField fx:id="txtRole" layoutX="158.0" layoutY="285.0" />
             <TextField fx:id="txtAddress" layoutX="158.0" layoutY="110.0" prefHeight="27.0" prefWidth="253.0" />
             <Label layoutX="23.0" layoutY="116.0" text="Direccion" />
+            <ChoiceBox id="RolChoiceBox" fx:id="RolChoiceBox" layoutX="158.0" layoutY="289.0" prefWidth="150.0" />
          </children>
       </AnchorPane>
    </center>

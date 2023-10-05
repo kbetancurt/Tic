@@ -61,13 +61,15 @@ public class PasswordChangeController {
 
 
             } else {
-                    aeroportEmployeeMgr.getAirportEmployee(txtMail.getText()).setPassword(txtNewPassword.getText());
+                    System.out.println(txtNewPassword.getText());
+                    aeroportEmployeeMgr.updatePassword(aeroportEmployeeMgr.getAirportEmployee(txtMail.getText()),txtNewPassword.getText());
+                    showAlert("Contraseña actualizada","Se actualizo con exito la contraseña");
 
                     close(event);
                     FXMLLoader fxmlLoader = new FXMLLoader();
                     fxmlLoader.setControllerFactory(Main.getContext()::getBean);
 
-                    Parent root = fxmlLoader.load(ClientController.class.getResourceAsStream("Principal.fxml"));
+                    Parent root = fxmlLoader.load(Principal.class.getResourceAsStream("Principal.fxml"));
                     Stage stage = new Stage();
                     stage.setScene(new Scene(root));
                     stage.show();

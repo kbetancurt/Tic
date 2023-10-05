@@ -2,6 +2,7 @@ package um.edu.uy.ui.Controllers;
 
 import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
+import javafx.scene.Node;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 
@@ -18,6 +19,7 @@ import org.springframework.stereotype.Component;
 import org.springframework.stereotype.Controller;
 import um.edu.uy.Main;
 import um.edu.uy.business.AeroportEmployeeMgr;
+import um.edu.uy.business.entities.AeroportEmployee;
 
 
 import java.io.IOException;
@@ -57,7 +59,9 @@ public class LogInController implements Initializable {
                 showAlert("Datos Incorrectos!", "Mail o contraseña incorrectos");
 
             } else {
-                if (aeroportEmployeeMgr.getAirportEmployee(txtMailUser.getText()).password.equals(aeroportEmployeeMgr.getAirportEmployee(txtMailUser.getText()).passport)){
+                AeroportEmployee employee =aeroportEmployeeMgr.getAirportEmployee(txtMailUser.getText());
+                if (employee.password.equals(employee.passport)){
+                    close(event);
                     FXMLLoader fxmlLoader = new FXMLLoader();
                     fxmlLoader.setControllerFactory(Main.getContext()::getBean);
                     Parent root = fxmlLoader.load(PasswordChangeController.class.getResourceAsStream("PasswordChange.fxml"));
@@ -66,21 +70,40 @@ public class LogInController implements Initializable {
                     stage.show();
                 }
                 else{
+                    close(event);
+                    if(employee.role.equals("Administrador Aeropuerto")){
 
-                FXMLLoader fxmlLoader = new FXMLLoader();
-                fxmlLoader.setControllerFactory(Main.getContext()::getBean);
-                Parent root = fxmlLoader.load(ClientController.class.getResourceAsStream("Principal.fxml"));
-                Stage stage = new Stage();
-                stage.setScene(new Scene(root));
-                stage.show();
+                        FXMLLoader fxmlLoader = new FXMLLoader();
+                        fxmlLoader.setControllerFactory(Main.getContext()::getBean);
+                        Parent root = fxmlLoader.load(Principal.class.getResourceAsStream("Principal.fxml"));
+                        Stage stage = new Stage();
+                        stage.setScene(new Scene(root));
+                        stage.show();}
+                    if(employee.role.equals("Maletero")){
+
+                    }
+                    if (employee.role.equals("Administrador Aerolinea")){
+                        FXMLLoader fxmlLoader = new FXMLLoader();
+                        fxmlLoader.setControllerFactory(Main.getContext()::getBean);
+                        Parent root = fxmlLoader.load(PrincipalAerolinea.class.getResourceAsStream("PrincipalAerolinea.fxml"));
+                        Stage stage = new Stage();
+                        stage.setScene(new Scene(root));
+                        stage.show();}
+                    }
             }}
         }
-    }
+
 
     private void clean() {
             txtPasswordUser.setText(null);
             txtMailUser.setText(null);
         }
+    @FXML
+    void close(ActionEvent actionEvent) {
+        Node source = (Node)  actionEvent.getSource();
+        Stage stage  = (Stage) source.getScene().getWindow();
+        stage.close();
+    }
 
     private void showAlert (String title, String contextText){
             Alert alert = new Alert(Alert.AlertType.INFORMATION);

@@ -32,7 +32,6 @@ public class Principal {
     public void addAirlane(ActionEvent event) throws Exception {
         FXMLLoader fxmlLoader = new FXMLLoader();
         fxmlLoader.setControllerFactory(Main.getContext()::getBean);
-
         Parent root = fxmlLoader.load(AirlaneController.class.getResourceAsStream("AddAirlane.fxml"));
         Stage stage = new Stage();
         stage.setScene(new Scene(root));

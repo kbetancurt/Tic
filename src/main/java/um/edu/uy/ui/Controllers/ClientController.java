@@ -5,6 +5,7 @@ import javafx.fxml.FXML;
 import javafx.scene.Node;
 import javafx.scene.control.Alert;
 import javafx.scene.control.Button;
+import javafx.scene.control.ChoiceBox;
 import javafx.scene.control.TextField;
 import javafx.stage.Stage;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -14,7 +15,9 @@ import um.edu.uy.business.exceptions.AirportEmployeeAlreadyExists;
 import um.edu.uy.business.exceptions.InvalidAirportEmployeeInformation;
 import org.springframework.stereotype.Component;
 
+import java.net.URL;
 import java.sql.Date;
+import java.util.ResourceBundle;
 
 @Component
 public class ClientController {
@@ -46,6 +49,10 @@ public class ClientController {
 
     @FXML
     private TextField txtDocument;
+    @FXML
+    void initialize() {
+        getRoles();
+    }
 
     @FXML
     void close(ActionEvent actionEvent) {
@@ -75,7 +82,7 @@ public class ClientController {
                 String nationality=txtNationality.getText();
                 Date birthDate= Date.valueOf(txtDate.getText());
                 String lastname=txtlastname.getText();
-                String role= txtRole.getText();
+                String role= RolChoiceBox.getValue();
 
                 try {
 
@@ -105,6 +112,11 @@ public class ClientController {
             }
         }
 
+    }
+    @FXML
+    private ChoiceBox<String> RolChoiceBox;
+    public void getRoles() {
+        RolChoiceBox.getItems().addAll("Administrador Aeropuerto", "Maletero", "Administrador Aerolinea");
     }
 
     private void clean() {

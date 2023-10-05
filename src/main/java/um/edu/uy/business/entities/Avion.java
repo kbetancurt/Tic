@@ -11,11 +11,10 @@ import javax.persistence.Table;
 @Table (name = "avion")
 
 public class Avion {
-
     @Id
     @GeneratedValue (generator="avion_ids")
     @GenericGenerator(name="avion_ids", strategy = "increment")
-    public long Id;
+    public long id;
     public int Max_passengers;
     public int Max_weight;
     public String Model;
@@ -23,7 +22,7 @@ public class Avion {
     public long Id_aerolinea;
 
     public Avion(long id, int max_passengers, int max_weight, String model, String icao, long id_aerolinea) {
-        this.Id = id;
+        this.id = id;
         this.Max_passengers = max_passengers;
         this.Max_weight = max_weight;
         this.Model = model;
@@ -44,10 +43,10 @@ public class Avion {
     }
 
     public long getId() {
-        return Id;
+        return id;
     }
     public long setId(long id) {
-        this.Id = id;
+        this.id = id;
         return id;
     }
 
