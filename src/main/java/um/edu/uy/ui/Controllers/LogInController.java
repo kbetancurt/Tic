@@ -18,7 +18,7 @@ import org.springframework.stereotype.Component;
 import org.springframework.stereotype.Controller;
 import um.edu.uy.Main;
 import um.edu.uy.business.AeroportEmployeeMgr;
-import um.edu.uy.persistence.AeroportEmployeeRepository;
+
 
 import java.io.IOException;
 import java.net.URL;
@@ -28,7 +28,7 @@ import java.util.ResourceBundle;
 @Component
 public class LogInController implements Initializable {
     @Autowired
-    private AeroportEmployeeRepository aeroportEmployeeMgr;
+    private AeroportEmployeeMgr aeroportEmployeeMgr;
 
     @FXML
     private TextField txtMailUser;
@@ -41,7 +41,7 @@ public class LogInController implements Initializable {
 
     @FXML
     private void logIn(ActionEvent event) throws IOException {
-        /*if (aeroportEmployeeMgr.equals(null)){
+        if (aeroportEmployeeMgr==(null)) {
             System.out.println("ERORR");
             return;
         }
@@ -53,10 +53,10 @@ public class LogInController implements Initializable {
                     "No se ingresaron los datos necesarios para completar el ingreso.");
 
         } else {
-            if (aeroportEmployeeMgr.findOneByMail(txtMailUser.getText()) == null || !Objects.equals(aeroportEmployeeMgr.findOneByMail(txtMailUser.getText()).password, txtPasswordUser.getText())) {
+            if (aeroportEmployeeMgr.getAirportEmployee(txtMailUser.getText()) == null || !Objects.equals(aeroportEmployeeMgr.getAirportEmployee(txtMailUser.getText()).password, txtPasswordUser.getText())) {
                 showAlert("Datos Incorrectos!", "Mail o contraseña incorrectos");
 
-            } else */{
+            } else {
 
                 FXMLLoader fxmlLoader = new FXMLLoader();
                 fxmlLoader.setControllerFactory(Main.getContext()::getBean);
@@ -67,6 +67,7 @@ public class LogInController implements Initializable {
                 stage.show();
             }
         }
+    }
 
     private void clean() {
             txtPasswordUser.setText(null);
