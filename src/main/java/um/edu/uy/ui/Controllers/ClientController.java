@@ -57,8 +57,9 @@ public class ClientController {
     private TextField txtDocument;
     @FXML
     void initialize() {
-        getRoles();
+        getRolesAndAirline();
     }
+
 
     @FXML
     void close(ActionEvent actionEvent) {
