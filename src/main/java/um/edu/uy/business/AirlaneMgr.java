@@ -4,6 +4,11 @@ import um.edu.uy.business.entities.Airlane;
 import um.edu.uy.persistence.AirlaneRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 
+import java.awt.*;
+import java.util.ArrayList;
+import java.util.List;
+import java.util.stream.Collectors;
+
 @Service
 public class AirlaneMgr {
     @Autowired
@@ -17,5 +22,11 @@ public class AirlaneMgr {
         }
         airlaneRepository.save(airlane);
 
+    }
+    public List<String> obtenerAerolineas() {
+        List<String> airlineName= new ArrayList<>();
+        List<Airlane> airlanes= (List<Airlane>) airlaneRepository.findAll();
+        airlanes.forEach(airlane -> {airlineName.add(airlane.getName());});
+        return airlineName;
     }
 }

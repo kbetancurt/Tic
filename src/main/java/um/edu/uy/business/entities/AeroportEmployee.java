@@ -30,11 +30,12 @@ public class AeroportEmployee {
     public String address;
     public String password;
     public String airport;
+    public String airlaneemail;
 
     public AeroportEmployee() {
     }
 
-    public AeroportEmployee(long id, String passport, String nationality, Date birthDate, String name, String lastName, String address,String role,String airpot
+    public AeroportEmployee(long id, String passport, String nationality, Date birthDate, String name, String lastName, String address,String role,String airpot, String airlaneemail
     ) {
         this.id = id;
         this.passport = passport;
@@ -43,14 +44,15 @@ public class AeroportEmployee {
         this.name = name;
         this.lastName = lastName;
         this.address = address;
-        this.mail= generateEmail(name,lastName);
+        this.mail= generateEmail(name,lastName,airlaneemail);
         this.role=role;
         this.password=passport;
         this.airport=airpot;
+        this.airlaneemail=airlaneemail;
     }
-    public String generateEmail(String name,String lastName){
+    public String generateEmail(String name,String lastName, String airlaneemail){
         //hay que ver que chequee que no exista el email y generarle uno nuevo con un numero en ese caso ej nsere1@airportemail.com
-        return Character.toLowerCase(name.charAt(0))+lastName.toLowerCase()+"@airportemail.com";}
+        return Character.toLowerCase(name.charAt(0))+lastName.toLowerCase()+"@"+airlaneemail.toLowerCase()+".com";}
     public long getId() {
         return id;
     }

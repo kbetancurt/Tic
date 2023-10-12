@@ -26,6 +26,8 @@ public interface AirlaneRepository extends CrudRepository<Airlane, Long> {
      * @return
      */
     public Airlane findOneByICAO(String ICAO);
+    public Airlane findAllByName(String name);
+
 
 
 

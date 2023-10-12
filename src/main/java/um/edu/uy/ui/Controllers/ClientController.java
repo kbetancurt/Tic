@@ -10,7 +10,9 @@ import javafx.scene.control.TextField;
 import javafx.stage.Stage;
 import org.springframework.beans.factory.annotation.Autowired;
 import um.edu.uy.business.AeroportEmployeeMgr;
+import um.edu.uy.business.AirlaneMgr;
 import um.edu.uy.business.entities.AeroportEmployee;
+import um.edu.uy.business.entities.Airlane;
 import um.edu.uy.business.exceptions.AirportEmployeeAlreadyExists;
 import um.edu.uy.business.exceptions.InvalidAirportEmployeeInformation;
 import org.springframework.stereotype.Component;
@@ -24,7 +26,8 @@ public class ClientController {
 
     @Autowired
     private AeroportEmployeeMgr aeroportEmployeeMgr;
-
+    @Autowired
+    private AirlaneMgr airlaneMgr;
     @FXML
     private Button btnClose;
 
@@ -87,10 +90,11 @@ public class ClientController {
                 Date birthDate= Date.valueOf(txtDate.getText());
                 String lastname=txtlastname.getText();
                 String role= RolChoiceBox.getValue();
+                String airlineemail=AirlineChoiceBox.getValue();
 
                 try {
 
-                    AeroportEmployee aeroportEmployee = new AeroportEmployee(document, passport,nationality, birthDate, name, lastname, address,role,airport);
+                    AeroportEmployee aeroportEmployee = new AeroportEmployee(document, passport,nationality, birthDate, name, lastname, address,role,airport,airlineemail);
 
                     aeroportEmployeeMgr.addClient(aeroportEmployee);
 
@@ -121,6 +125,15 @@ public class ClientController {
     private ChoiceBox<String> RolChoiceBox;
     public void getRoles() {
         RolChoiceBox.getItems().addAll("Administrador Aeropuerto", "Maletero", "Administrador Aerolinea");
+    }
+    @FXML
+    private ChoiceBox<String> AirlineChoiceBox;
+    public void getAirline() {
+        AirlineChoiceBox.getItems().addAll(airlaneMgr.obtenerAerolineas());
+    }
+    public void getRolesAndAirline(){
+        getAirline();
+        getRoles();
     }
 
     private void clean() {

@@ -32,7 +32,7 @@
       </HBox>
    </bottom>
    <left>
-      <AnchorPane onMouseClicked="#getRoles" prefHeight="550.0" prefWidth="600.0" BorderPane.alignment="CENTER">
+      <AnchorPane onMouseClicked="#getRolesAndAirline" prefHeight="550.0" prefWidth="600.0" BorderPane.alignment="CENTER">
          <children>
             <Label layoutX="23.0" layoutY="37.0" text="Documento" />
             <Label layoutX="23.0" layoutY="75.0" text="Nombre Completo" />
@@ -52,6 +52,8 @@
             <ChoiceBox id="RolChoiceBox" fx:id="RolChoiceBox" layoutX="158.0" layoutY="289.0" prefWidth="150.0" />
             <TextField fx:id="txtAirport" layoutX="158.0" layoutY="326.0" />
             <Label layoutX="23.0" layoutY="330.0" text="Aeropuerto" />
+            <ChoiceBox id="RolChoiceBox" fx:id="AirlineChoiceBox" layoutX="158.0" layoutY="360.0" prefWidth="150.0" />
+            <Label layoutX="23.0" layoutY="360.0" text="Aerolinea" />
          </children>
       </AnchorPane>
    </left>

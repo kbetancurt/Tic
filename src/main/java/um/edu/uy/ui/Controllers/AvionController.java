@@ -48,13 +48,13 @@ public class AvionController {
 
     @FXML
     void addAvion(ActionEvent event) {
-        if (txmodelo.getText() == null || txmodelo.getText().equals("") || txpeso.getText() == null || txpeso.getText().equals("") || txpas.getText() == null || txpas.getText().equals("") || txicao.getText() == null || txicao.getText().equals("") || txaerolinea.getText() == null || txaerolinea.getText().equals(""))
+        /*if (txmodelo.getText() == null || txmodelo.getText().equals("") || txpeso.getText() == null || txpeso.getText().equals("") || txpas.getText() == null || txpas.getText().equals("") || txicao.getText() == null || txicao.getText().equals("") || txaerolinea.getText() == null || txaerolinea.getText().equals(""))
         {
             showAlert(
                     "Datos faltantes!",
                     "No se ingresaron los datos necesarios para completar el ingreso.")
             ;}
-        else{
+        else*/{
 
             String modelo = txmodelo.getText();
             String pesotx = txpeso.getText();
@@ -71,7 +71,7 @@ public class AvionController {
 
             avionMgr.addAvion(avion);
 
-            showAlert("Aerolinea agregada", "Se agrego con exito a la aerolinea!");
+            showAlert("Avión agregado", "Se agrego con exito el avión!");
 
             close(event);
         }
