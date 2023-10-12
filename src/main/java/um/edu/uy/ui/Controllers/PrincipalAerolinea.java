@@ -7,8 +7,9 @@ import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.MenuItem;
 import javafx.stage.Stage;
+import org.springframework.stereotype.Component;
 import um.edu.uy.Main;
-
+@Component
 public class PrincipalAerolinea {
     @FXML
     private MenuItem mItemAgregarAvion;

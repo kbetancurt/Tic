@@ -12,28 +12,6 @@
 <?import javafx.scene.text.Text?>
 
 <BorderPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="474.0" prefWidth="750.0" xmlns="http://javafx.com/javafx/20.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="um.edu.uy.ui.Controllers.ClientController">
-   <center>
-      <AnchorPane onMouseClicked="#getRoles" prefHeight="550.0" prefWidth="600.0" BorderPane.alignment="CENTER">
-         <children>
-            <Label layoutX="23.0" layoutY="37.0" text="Documento" />
-            <Label layoutX="23.0" layoutY="75.0" text="Nombre Completo" />
-            <Label layoutX="23.0" layoutY="151.0" text="Pasaporte" />
-            <Label layoutX="23.0" layoutY="184.0" text="Nacionalidad" />
-            <Label layoutX="23.0" layoutY="215.0" text="Fecha yyyy-mm-dd" />
-            <Label layoutX="23.0" layoutY="250.0" text="Apellido" />
-            <Label layoutX="23.0" layoutY="285.0" text="Rol" />
-            <TextField fx:id="txtDocument" layoutX="158.0" layoutY="31.0" />
-            <TextField fx:id="txtName" layoutX="158.0" layoutY="69.0" />
-            <TextField fx:id="txtPassport" layoutX="158.0" layoutY="151.0" />
-            <TextField fx:id="txtNationality" layoutX="158.0" layoutY="184.0" />
-            <TextField fx:id="txtDate" layoutX="158.0" layoutY="215.0" />
-            <TextField fx:id="txtlastname" layoutX="158.0" layoutY="250.0" />
-            <TextField fx:id="txtAddress" layoutX="158.0" layoutY="110.0" prefHeight="27.0" prefWidth="253.0" />
-            <Label layoutX="23.0" layoutY="116.0" text="Direccion" />
-            <ChoiceBox id="RolChoiceBox" fx:id="RolChoiceBox" layoutX="158.0" layoutY="289.0" prefWidth="150.0" />
-         </children>
-      </AnchorPane>
-   </center>
    <top>
       <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Crear un empeleado del aeropuerto" BorderPane.alignment="CENTER">
          <font>
@@ -53,4 +31,28 @@
          </children>
       </HBox>
    </bottom>
+   <left>
+      <AnchorPane onMouseClicked="#getRoles" prefHeight="550.0" prefWidth="600.0" BorderPane.alignment="CENTER">
+         <children>
+            <Label layoutX="23.0" layoutY="37.0" text="Documento" />
+            <Label layoutX="23.0" layoutY="75.0" text="Nombre Completo" />
+            <Label layoutX="23.0" layoutY="151.0" text="Pasaporte" />
+            <Label layoutX="23.0" layoutY="184.0" text="Nacionalidad" />
+            <Label layoutX="23.0" layoutY="215.0" text="Fecha yyyy-mm-dd" />
+            <Label layoutX="32.0" layoutY="124.0" text="Apellido" />
+            <Label layoutX="23.0" layoutY="285.0" text="Rol" />
+            <TextField fx:id="txtDocument" layoutX="158.0" layoutY="31.0" />
+            <TextField fx:id="txtName" layoutX="158.0" layoutY="69.0" />
+            <TextField fx:id="txtPassport" layoutX="158.0" layoutY="151.0" />
+            <TextField fx:id="txtNationality" layoutX="158.0" layoutY="184.0" />
+            <TextField fx:id="txtDate" layoutX="158.0" layoutY="215.0" />
+            <TextField fx:id="txtlastname" layoutX="158.0" layoutY="120.0" />
+            <TextField fx:id="txtAddress" layoutX="158.0" layoutY="253.0" prefHeight="27.0" prefWidth="253.0" />
+            <Label layoutX="24.0" layoutY="258.0" text="Direccion" />
+            <ChoiceBox id="RolChoiceBox" fx:id="RolChoiceBox" layoutX="158.0" layoutY="289.0" prefWidth="150.0" />
+            <TextField fx:id="txtAirport" layoutX="158.0" layoutY="326.0" />
+            <Label layoutX="23.0" layoutY="330.0" text="Aeropuerto" />
+         </children>
+      </AnchorPane>
+   </left>
 </BorderPane>

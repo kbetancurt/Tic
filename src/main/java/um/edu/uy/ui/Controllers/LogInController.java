@@ -82,7 +82,7 @@ public class LogInController implements Initializable {
                     if(employee.role.equals("Maletero")){
 
                     }
-                    if (employee.role.equals("Administrador Aerolinea")){
+                   if (employee.role.equals("Administrador Aerolinea")){
                         FXMLLoader fxmlLoader = new FXMLLoader();
                         fxmlLoader.setControllerFactory(Main.getContext()::getBean);
                         Parent root = fxmlLoader.load(PrincipalAerolinea.class.getResourceAsStream("PrincipalAerolinea.fxml"));

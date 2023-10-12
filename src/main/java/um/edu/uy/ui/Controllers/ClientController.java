@@ -46,6 +46,9 @@ public class ClientController {
     private TextField txtNationality;
     @FXML
     private TextField txtRole;
+    @FXML
+    private TextField txtAirport;
+
 
     @FXML
     private TextField txtDocument;
@@ -80,13 +83,14 @@ public class ClientController {
                 String address = txtAddress.getText();
                 String passport= txtPassport.getText();
                 String nationality=txtNationality.getText();
+                String airport=txtAirport.getText();
                 Date birthDate= Date.valueOf(txtDate.getText());
                 String lastname=txtlastname.getText();
                 String role= RolChoiceBox.getValue();
 
                 try {
 
-                    AeroportEmployee aeroportEmployee = new AeroportEmployee(document, passport,nationality, birthDate, name, lastname, address,role);
+                    AeroportEmployee aeroportEmployee = new AeroportEmployee(document, passport,nationality, birthDate, name, lastname, address,role,airport);
 
                     aeroportEmployeeMgr.addClient(aeroportEmployee);
 

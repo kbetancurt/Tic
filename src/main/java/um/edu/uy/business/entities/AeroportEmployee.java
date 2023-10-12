@@ -29,11 +29,13 @@ public class AeroportEmployee {
 
     public String address;
     public String password;
+    public String airport;
 
     public AeroportEmployee() {
     }
 
-    public AeroportEmployee(long id, String passport, String nationality, Date birthDate, String name, String lastName, String address,String role) {
+    public AeroportEmployee(long id, String passport, String nationality, Date birthDate, String name, String lastName, String address,String role,String airpot
+    ) {
         this.id = id;
         this.passport = passport;
         this.nationality = nationality;
@@ -44,6 +46,7 @@ public class AeroportEmployee {
         this.mail= generateEmail(name,lastName);
         this.role=role;
         this.password=passport;
+        this.airport=airpot;
     }
     public String generateEmail(String name,String lastName){
         //hay que ver que chequee que no exista el email y generarle uno nuevo con un numero en ese caso ej nsere1@airportemail.com
