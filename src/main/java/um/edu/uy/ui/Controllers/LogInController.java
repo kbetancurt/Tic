@@ -70,9 +70,9 @@ public class LogInController implements Initializable {
                     stage.show();
                 }
                 else{
-                    close(event);
-                    if(employee.role.equals("Administrador Aeropuerto")){
 
+                    if(employee.role.equals("Administrador Aeropuerto")){
+                        close(event);
                         FXMLLoader fxmlLoader = new FXMLLoader();
                         fxmlLoader.setControllerFactory(Main.getContext()::getBean);
                         Parent root = fxmlLoader.load(AirportAdminMenuController.class.getResourceAsStream("AirportAdminMenu.fxml"));

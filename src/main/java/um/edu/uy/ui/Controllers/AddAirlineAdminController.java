@@ -78,10 +78,11 @@ public class AddAirlineAdminController {
                 Date birthDate = Date.valueOf(datePickerBirthDate.getValue());
                 String role = "Admin";
                 String airline= "prueba";
+                String mail = aeroportEmployeeMgr.GenerateMail(name,lastname,airline);
 
                 try {
 
-                    AeroportEmployee aeroportEmployee = new AeroportEmployee(passport,nationality,birthDate,name,lastname,address,role,airline);
+                    AeroportEmployee aeroportEmployee = new AeroportEmployee(passport,nationality,birthDate,name,lastname,address,role,airline,mail);
 
                     aeroportEmployeeMgr.addClient(aeroportEmployee);
 

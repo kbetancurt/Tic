@@ -18,15 +18,7 @@ public class Principal {
     @FXML
     private MenuItem mItemAddAirlane;
 
-    @FXML
-    public void agregarClientAction(ActionEvent event) throws Exception {
-        FXMLLoader fxmlLoader = new FXMLLoader();
-        fxmlLoader.setControllerFactory(Main.getContext()::getBean);
-        Parent root = fxmlLoader.load(ClientController.class.getResourceAsStream("AddAirportEmployee.fxml"));
-        Stage stage = new Stage();
-        stage.setScene(new Scene(root));
-        stage.show();
-    }
+
     @FXML
     public void addAirlane(ActionEvent event) throws Exception {
         FXMLLoader fxmlLoader = new FXMLLoader();

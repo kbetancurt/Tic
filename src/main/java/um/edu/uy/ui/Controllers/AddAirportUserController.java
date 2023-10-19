@@ -92,10 +92,11 @@ public class AddAirportUserController {
                 Date birthDate = Date.valueOf(datePickerBirthDate.getValue());
                 String role = roleChoiceBox.getValue();
                 String airport= airportChoiceBox.getValue();
+                String mail= aeroportEmployeeMgr.GenerateMail(name,lastname,airport);
 
                 try {
 
-                    AeroportEmployee aeroportEmployee = new AeroportEmployee(passport,nationality,birthDate,name,lastname,address,role,airport);
+                    AeroportEmployee aeroportEmployee = new AeroportEmployee(passport,nationality,birthDate,name,lastname,address,role,airport, mail);
 
                     aeroportEmployeeMgr.addClient(aeroportEmployee);
 

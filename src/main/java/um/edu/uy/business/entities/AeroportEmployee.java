@@ -2,15 +2,12 @@ package um.edu.uy.business.entities;
 
 import org.hibernate.annotations.GenericGenerator;
 
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.Id;
-import javax.persistence.Table;
+import javax.persistence.*;
 import java.sql.Date;
 
 
 @Entity
-@Table(name = "aeroport_employees")
+@Table(name = "aeroport_employees", uniqueConstraints = {@UniqueConstraint(columnNames = {"mail"})})
 public class AeroportEmployee {
 
     @Id
@@ -35,21 +32,19 @@ public class AeroportEmployee {
     public AeroportEmployee() {
     }
 
-    public AeroportEmployee(String passport, String nationality, Date birthDate, String name, String lastName, String address,String role,String airport) {
+    public AeroportEmployee(String passport, String nationality, Date birthDate, String name, String lastName, String address,String role,String airport,String mail) {
         this.passport = passport;
         this.nationality = nationality;
         this.birthDate = birthDate;
         this.name = name;
         this.lastName = lastName;
         this.address = address;
-        this.mail= generateEmail(name,lastName,airport);
         this.role=role;
         this.password=passport;
         this.airport=airport;
+        this.mail=mail;
     }
-    public String generateEmail(String name,String lastName, String airport){
-        //hay que ver que chequee que no exista el email y generarle uno nuevo con un numero en ese caso ej nsere1@airportemail.com
-        return Character.toLowerCase(name.charAt(0))+lastName.toLowerCase()+"@"+airport.toLowerCase()+".com";}
+
     public long getId() {
         return id;
     }
@@ -82,4 +77,8 @@ public class AeroportEmployee {
         this.passport = passport;
     }
     public void setPassword(String password){this.password=password;}
+
+    public void setMail(String mail){this.mail=mail;}
+
+    public String getMail(){return mail;}
 }

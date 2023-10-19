@@ -5,14 +5,8 @@ import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.stage.Stage;
-import org.springframework.stereotype.Controller;
 import um.edu.uy.Main;
-import um.edu.uy.business.entities.AeroportEmployee;
-import um.edu.uy.ui.Controllers.ClientController;
 import um.edu.uy.ui.Controllers.LogInController;
-
-import java.sql.Date;
-import java.util.Objects;
 
 public class JavaFXApplication extends Application  {
 

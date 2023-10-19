@@ -50,6 +50,20 @@ public class AeroportEmployeeMgr {
         aeroportEmployeeRepository.save(employee);
     }
 
+    public String GenerateMail(String name,String lastName, String airport) {
+        //hay que ver que chequee que no exista el email y generarle uno nuevo con un numero en ese caso ej
+        String newmail = Character.toLowerCase(name.charAt(0)) + lastName.toLowerCase() + "@" + airport.toLowerCase() + ".com";
+        if (aeroportEmployeeRepository.findOneByMail(newmail) != null) {
+            int i = 1;
+            while (aeroportEmployeeRepository.findOneByMail(newmail) != null) {
+                newmail = Character.toLowerCase(name.charAt(0)) + lastName.toLowerCase() + i + "@" + airport.toLowerCase() + ".com";
+                i++;
+
+            }
+        }
+        return newmail;
+    }
+
 
 
 }
