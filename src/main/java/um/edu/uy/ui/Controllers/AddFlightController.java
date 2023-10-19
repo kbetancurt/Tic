@@ -8,6 +8,7 @@ import javafx.stage.Stage;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 import um.edu.uy.business.VueloMgr;
+import um.edu.uy.business.entities.Vuelo;
 import um.edu.uy.persistence.VueloRepository;
 import java.awt.*;
 import java.io.IOException;
@@ -64,13 +65,16 @@ public class AddFlightController {
         long numero= Long.parseLong(txtnumero.getText());
         String ICAO=txtICAO.getText();
         String IATAAerolinea=txtIATAAerolinea.getText();
-        String aeropuertoOrigen;
+        String aeropuertoOrigen=txtaeropuertoOrigen.getText();
         String aeropuertoDestino=txtaeropuertoDestino.getText();
         String matricula=txtmatricula.getText();
         String asientos=txtasientos.getText();
         String bultos=txtbultos.getText();
         Time horarioSalidaEst= Time.valueOf(txthorarioSalidaEst.getText());
         Time horarioLLegadEst= Time.valueOf(txthorarioLLegadaEst.getText());
+        Vuelo vuelo= new Vuelo(numero,IATAAerolinea,ICAO,aeropuertoOrigen,aeropuertoDestino,matricula,asientos,bultos,horarioSalidaEst,horarioLLegadEst);
+
+            vueloMgr.addVuelo(vuelo);
         }
         catch (NumberFormatException e) {
             throw new RuntimeException(e);

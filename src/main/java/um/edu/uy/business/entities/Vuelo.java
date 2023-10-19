@@ -33,8 +33,7 @@ public class Vuelo {
     public boolean aprobadoLLegada;
     public String estado;
 
-    public Vuelo(long id, long numero, String IATAAerolinea, String ICAO, String aeropuertoOrigen, String aeropuertoDestino, String matricula, String asientos, String bultos, Time horarioSalidaEst, Time horarioLLegadaEst) {
-        this.id = id;
+    public Vuelo( long numero, String IATAAerolinea, String ICAO, String aeropuertoOrigen, String aeropuertoDestino, String matricula, String asientos, String bultos, Time horarioSalidaEst, Time horarioLLegadaEst) {
         this.numero = numero;
         this.IATAAerolinea = IATAAerolinea;
         this.ICAO = ICAO;
