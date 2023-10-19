@@ -6,15 +6,14 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
 import javax.persistence.Table;
-import java.sql.Date;
 
 
 @Entity
-@Table(name = "airlane")
-public class Airlane {
+@Table(name = "airline")
+public class Airline {
     @Id
-    @GeneratedValue(generator="airlane_ids")
-    @GenericGenerator(name="airlane_ids", strategy = "increment")
+    @GeneratedValue(generator="airline_ids")
+    @GenericGenerator(name="airline_ids", strategy = "increment")
     public long id;
     public String name;
     public String IATA;
@@ -61,7 +60,7 @@ public class Airlane {
         this.pais = pais;
     }
 
-    public Airlane(long id, String name, String IATA, String ICAO, String pais) {
+    public Airline(long id, String name, String IATA, String ICAO, String pais) {
         this.id = id;
         this.name = name;
         this.IATA=IATA;
@@ -69,14 +68,14 @@ public class Airlane {
         this.pais=pais;
 
     }
-    public Airlane(String name,String IATA, String ICAO, String pais){
+    public Airline(String name, String IATA, String ICAO, String pais){
         this.name=name;
         this.IATA=IATA;
         this.ICAO=ICAO;
         this.pais=pais;
     }
 
-    public Airlane() {
+    public Airline() {
 
     }
 }

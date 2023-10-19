@@ -2,31 +2,30 @@ package um.edu.uy.persistence;
 
 import org.springframework.data.repository.CrudRepository;
 import org.springframework.stereotype.Repository;
-import um.edu.uy.business.entities.Airlane;
-import org.springframework.data.repository.RepositoryDefinition;
+import um.edu.uy.business.entities.Airline;
 
 @Repository
-public interface AirlaneRepository extends CrudRepository<Airlane, Long> {
+public interface AirlaneRepository extends CrudRepository<Airline, Long> {
 
     /**
      * Retorna un cliente por documento si encuentra mas de una lanza una excepcion
      * @param name
      * @return
      */
-    public Airlane findOneByName(String name);
+    public Airline findOneByName(String name);
     /**
      * Retorna un cliente por documento si encuentra mas de una lanza una excepcion
      * @param IATA
      * @return
      */
-    public Airlane findOneByIATA(String IATA);
+    public Airline findOneByIATA(String IATA);
     /**
      * Retorna un cliente por documento si encuentra mas de una lanza una excepcion
      * @param ICAO
      * @return
      */
-    public Airlane findOneByICAO(String ICAO);
-    public Airlane findAllByName(String name);
+    public Airline findOneByICAO(String ICAO);
+    public Airline findAllByName(String name);
 
 
 

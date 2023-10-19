@@ -20,14 +20,16 @@ public class Avion {
     public String Model;
     public String ICAO;
     public long Id_aerolinea;
+    public String categoria;
 
-    public Avion(long id, int max_passengers, int max_weight, String model, String icao, long id_aerolinea) {
+    public Avion(long id, int max_passengers, int max_weight, String model, String icao, long id_aerolinea, String categoria) {
         this.id = id;
         this.Max_passengers = max_passengers;
         this.Max_weight = max_weight;
         this.Model = model;
         this.ICAO = icao;
         this.Id_aerolinea = id_aerolinea;
+        this.categoria=categoria;
     }
 
     public Avion( int max_passengers, int max_weight, String model, String icao, long id_aerolinea) {

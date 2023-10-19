@@ -1,8 +1,6 @@
 package um.edu.uy.business;
 import org.springframework.stereotype.Service;
-import um.edu.uy.business.entities.Airlane;
 import um.edu.uy.business.entities.Airport;
-import um.edu.uy.persistence.AirlaneRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import um.edu.uy.persistence.AirportRepository;
 

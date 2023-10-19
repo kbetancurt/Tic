@@ -49,7 +49,7 @@
             <TextField fx:id="txtlastname" layoutX="158.0" layoutY="120.0" />
             <TextField fx:id="txtAddress" layoutX="158.0" layoutY="253.0" prefHeight="27.0" prefWidth="253.0" />
             <Label layoutX="24.0" layoutY="258.0" text="Direccion" />
-            <ChoiceBox id="RolChoiceBox" fx:id="RolChoiceBox" layoutX="158.0" layoutY="289.0" prefWidth="150.0" />
+            <ChoiceBox id="RolChoiceBox" fx:id="choiceBoxRole" layoutX="158.0" layoutY="289.0" prefWidth="150.0" />
             <TextField fx:id="txtAirport" layoutX="158.0" layoutY="326.0" />
             <Label layoutX="23.0" layoutY="330.0" text="Aeropuerto" />
             <ChoiceBox id="RolChoiceBox" fx:id="AirlineChoiceBox" layoutX="158.0" layoutY="360.0" prefWidth="150.0" />

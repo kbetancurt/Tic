@@ -1,23 +1,24 @@
 package um.edu.uy.ui.Controllers;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
+import javafx.fxml.FXMLLoader;
 import javafx.scene.Node;
+import javafx.scene.Parent;
+import javafx.scene.Scene;
 import javafx.scene.control.Alert;
 import javafx.scene.control.Button;
 import javafx.scene.control.TextField;
 import javafx.stage.Stage;
 import org.springframework.beans.factory.annotation.Autowired;
-import um.edu.uy.business.AeroportEmployeeMgr;
+import um.edu.uy.Main;
 import um.edu.uy.business.AirlaneMgr;
-import um.edu.uy.business.entities.AeroportEmployee;
-import um.edu.uy.business.entities.Airlane;
-import um.edu.uy.business.exceptions.AirportEmployeeAlreadyExists;
-import um.edu.uy.business.exceptions.InvalidAirportEmployeeInformation;
+import um.edu.uy.business.entities.Airline;
 import org.springframework.stereotype.Component;
 
-import java.sql.Date;
+import java.io.IOException;
+
 @Component
-public class AirlaneController {
+public class AddAirlineController {
     @Autowired
     private AirlaneMgr airlaneMgr;
 
@@ -27,11 +28,11 @@ public class AirlaneController {
     @FXML
     private TextField txtName;
     @FXML
-    private TextField txtIATA;
+    private TextField txtIata;
     @FXML
-    private TextField txtICAO;
+    private TextField txtIcao;
     @FXML
-    private TextField txtPais;
+    private TextField txtCountry;
 
     @FXML
     private Button btnAdd;
@@ -43,8 +44,12 @@ public class AirlaneController {
     }
 
     @FXML
-    void addAirline(ActionEvent event) {
-        if (txtName.getText() == null || txtName.getText().equals(""))
+    void addAirline(ActionEvent event) throws IOException {
+        if (txtName.getText() == null || txtName.getText().isEmpty() ||
+                txtCountry.getText() == null || txtCountry.getText().isEmpty() ||
+                txtIata.getText() == null || txtIata.getText().isEmpty() ||
+                txtIcao.getText() == null || txtIcao.getText().isEmpty()
+        )
  {
             showAlert(
                     "Datos faltantes!",
@@ -54,19 +59,24 @@ public class AirlaneController {
 
 
                 String name = txtName.getText();
-                String IATA= txtIATA.getText();
-                String ICAO=txtICAO.getText();
-                String pais=txtPais.getText();
+                String IATA= txtIata.getText();
+                String ICAO=txtIcao.getText();
+                String pais=txtCountry.getText();
 
                  {
 
-                    Airlane airlane = new Airlane(name,IATA,ICAO,pais);
+                    Airline airline = new Airline(name,IATA,ICAO,pais);
 
-                    airlaneMgr.addAirlane(airlane);
+                    airlaneMgr.addAirlane(airline);
 
                     showAlert("Aerolinea agregada", "Se agrego con exito a la aerolinea!");
 
-                    close(event);
+                     FXMLLoader fxmlLoader = new FXMLLoader();
+                     fxmlLoader.setControllerFactory(Main.getContext()::getBean);
+                     Parent root = fxmlLoader.load(AddAirlineAdminController.class.getResourceAsStream("AddAirlineAdmin.fxml"));
+                     Stage stage = new Stage();
+                     stage.setScene(new Scene(root));
+                     stage.show();
                 }
 
     }

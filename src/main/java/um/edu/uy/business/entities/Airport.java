@@ -17,10 +17,10 @@ public class Airport {
     public String IATA;
     public String country;
 
-    @OneToMany(mappedBy = "airport", cascade = CascadeType.ALL, fetch = FetchType.EAGER)
+    @OneToMany(mappedBy = "airport")
     public List<Gates> gates;
 
-    @OneToMany(mappedBy = "airport", cascade = CascadeType.ALL, fetch = FetchType.EAGER)
+    @OneToMany(mappedBy = "airport")
     public List<Track> tracks;
 
     public long getICAO() {

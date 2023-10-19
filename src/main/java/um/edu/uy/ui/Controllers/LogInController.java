@@ -75,7 +75,7 @@ public class LogInController implements Initializable {
 
                         FXMLLoader fxmlLoader = new FXMLLoader();
                         fxmlLoader.setControllerFactory(Main.getContext()::getBean);
-                        Parent root = fxmlLoader.load(Principal.class.getResourceAsStream("Principal.fxml"));
+                        Parent root = fxmlLoader.load(AirportAdminMenuController.class.getResourceAsStream("AirportAdminMenu.fxml"));
                         Stage stage = new Stage();
                         stage.setScene(new Scene(root));
                         stage.show();}

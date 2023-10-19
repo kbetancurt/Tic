@@ -39,6 +39,9 @@ public class PasswordChangeController {
 
 
     @FXML private Button bttnConfirmar;
+
+    @FXML private Button bttnclose;
+
     @FXML
     void close(ActionEvent actionEvent) {
         Node source = (Node)  actionEvent.getSource();
