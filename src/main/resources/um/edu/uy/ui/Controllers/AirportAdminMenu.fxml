@@ -6,7 +6,6 @@
 <?import javafx.scene.layout.Pane?>
 <?import javafx.scene.text.Font?>
 
-
 <HBox maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/20.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="um.edu.uy.ui.Controllers.AirportAdminMenuController">
    <children>
       <Pane prefHeight="400.0" prefWidth="260.0">
@@ -32,6 +31,11 @@
                </font>
             </Button>
             <Button fx:id="bttnChangePersonalInfo" layoutX="48.0" layoutY="265.0" mnemonicParsing="false" prefHeight="29.0" prefWidth="156.0" text="Change Personal Info" wrapText="true">
+               <font>
+                  <Font size="14.0" />
+               </font>
+            </Button>
+            <Button fx:id="bttnManageFlights" layoutX="48.0" layoutY="313.0" mnemonicParsing="false" onAction="#addAirline" prefHeight="29.0" prefWidth="156.0" text="Administrar Vuelos " wrapText="true">
                <font>
                   <Font size="14.0" />
                </font>

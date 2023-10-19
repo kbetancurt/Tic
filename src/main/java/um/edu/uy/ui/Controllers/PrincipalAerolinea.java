@@ -22,4 +22,12 @@ public class PrincipalAerolinea {
         stage.setScene(new Scene(root));
         stage.show();
     }
+    @FXML
+    public void agregarVuelo(ActionEvent event) throws Exception{
+        FXMLLoader fxmlLoader = new FXMLLoader();
+        fxmlLoader.setControllerFactory(Main.getContext()::getBean);
+        Parent root = fxmlLoader.load(AddFlightController.class.getResourceAsStream("AddFlight.fxml"));
+        Stage stage = new Stage();
+        stage.setScene(new Scene(root));
+        stage.show();}
 }

@@ -12,7 +12,6 @@ public class Main {
 
     public static void main(String[] args) {
         Main.context = SpringApplication.run(Main.class);
-
         Application.launch(JavaFXApplication.class, args);
     }
 
