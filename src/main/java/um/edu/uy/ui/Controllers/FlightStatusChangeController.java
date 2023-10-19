@@ -14,6 +14,7 @@ import um.edu.uy.Main;
 import um.edu.uy.business.AeroportEmployeeMgr;
 import um.edu.uy.business.VueloMgr;
 import um.edu.uy.business.entities.Vuelo;
+import um.edu.uy.persistence.VueloRepository;
 
 import java.io.IOException;
 import java.util.List;
@@ -36,6 +37,11 @@ public class FlightStatusChangeController {
     private TableColumn<Vuelo,String> tamaño;
     @FXML private Button bttnConfirmar;
     @FXML private Button bttnclose;
+    @Autowired
+    private VueloRepository vueloRepository;
+
+// ...
+
     @FXML
     void close(ActionEvent actionEvent) {
         Node source = (Node)  actionEvent.getSource();
@@ -44,12 +50,13 @@ public class FlightStatusChangeController {
     }
     @FXML
     private void actualizarVuelolLegada(ActionEvent event) throws IOException {
+        String aeropuerto = "San Pablo";
+        List<Vuelo> listavuelos=vuelomgr.obtenerVuelosLLeganAeropuerto(aeropuerto);
         if (vuelomgr == null) {
             System.out.println("ERROR: VueloMgr is null");
             return;
         }
-        String aeropuerto = "San Pablo";
-        // Assuming you want to get the selected flight from the table
+
         Vuelo selectedFlight = tablaVuelosLLegada.getSelectionModel().getSelectedItem();
 
         if (selectedFlight == null) {
