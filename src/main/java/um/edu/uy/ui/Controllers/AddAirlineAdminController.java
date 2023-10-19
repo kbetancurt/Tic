@@ -77,7 +77,7 @@ public class AddAirlineAdminController {
                 String nationality=txtNationality.getText();
                 Date birthDate = Date.valueOf(datePickerBirthDate.getValue());
                 String role = "Admin";
-                String airline= "";
+                String airline= "prueba";
 
                 try {
 

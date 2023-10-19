@@ -14,6 +14,8 @@ import um.edu.uy.Main;
 import um.edu.uy.business.AirlaneMgr;
 import um.edu.uy.business.entities.Airline;
 import org.springframework.stereotype.Component;
+import um.edu.uy.business.exceptions.AirlineAlreadyExists;
+import um.edu.uy.business.exceptions.InvalidAirlineInformation;
 
 import java.io.IOException;
 
@@ -44,7 +46,7 @@ public class AddAirlineController {
     }
 
     @FXML
-    void addAirline(ActionEvent event) throws IOException {
+    void addAirline(ActionEvent event) throws IOException{
         if (txtName.getText() == null || txtName.getText().isEmpty() ||
                 txtCountry.getText() == null || txtCountry.getText().isEmpty() ||
                 txtIata.getText() == null || txtIata.getText().isEmpty() ||
@@ -67,16 +69,27 @@ public class AddAirlineController {
 
                     Airline airline = new Airline(name,IATA,ICAO,pais);
 
-                    airlaneMgr.addAirlane(airline);
+                     try {
+                         airlaneMgr.addAirlane(airline);
+                         showAlert("Aerolinea agregada", "Se agrego con exito a la aerolinea!");
 
-                    showAlert("Aerolinea agregada", "Se agrego con exito a la aerolinea!");
+                         FXMLLoader fxmlLoader = new FXMLLoader();
+                         fxmlLoader.setControllerFactory(Main.getContext()::getBean);
+                         Parent root = fxmlLoader.load(AddAirlineAdminController.class.getResourceAsStream("AddAirlineAdmin.fxml"));
+                         Stage stage = new Stage();
+                         stage.setScene(new Scene(root));
+                         stage.show();
+                     } catch (AirlineAlreadyExists airlineAlreadyExists) {
+                         showAlert(
+                                 "La aerolinea ya existe !",
+                                 "La aerolinea ya ha sido registrada.");;
+                     } catch (InvalidAirlineInformation invalidAirlineInformation) {
+                         showAlert(
+                                 "Informacion invalida !",
+                                 "Se encontro un error en los datos ingresados.");
+                     }
 
-                     FXMLLoader fxmlLoader = new FXMLLoader();
-                     fxmlLoader.setControllerFactory(Main.getContext()::getBean);
-                     Parent root = fxmlLoader.load(AddAirlineAdminController.class.getResourceAsStream("AddAirlineAdmin.fxml"));
-                     Stage stage = new Stage();
-                     stage.setScene(new Scene(root));
-                     stage.show();
+
                 }
 
     }
