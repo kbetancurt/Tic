@@ -3,9 +3,9 @@ spring:
     name: server
   datasource:
     driver-class-name: org.postgresql.Driver
-    url: jdbc:postgresql://localhost:5432/airsys
+    url: jdbc:postgresql://localhost:5432/postgres
     username: postgres
-    password: 1234
+    password: basededatostic1
   jpa:
     show-sql: true
     database-platform: org.hibernate.dialect.H2Dialect

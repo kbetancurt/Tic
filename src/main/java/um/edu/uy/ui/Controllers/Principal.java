@@ -28,5 +28,9 @@ public class Principal {
         stage.setScene(new Scene(root));
         stage.show();
     }
+    @FXML
+    public void changeFlightStatus(ActionEvent event )throws Exception{
+
+    }
 
 }

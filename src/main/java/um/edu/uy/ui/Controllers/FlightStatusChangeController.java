@@ -16,15 +16,24 @@ import um.edu.uy.business.VueloMgr;
 import um.edu.uy.business.entities.Vuelo;
 
 import java.io.IOException;
+import java.util.List;
 
 @Component
 public class FlightStatusChangeController {
     @Autowired
     private VueloMgr vuelomgr;
     @FXML
-    private TableView<Vuelo> tablaVuelos;
+    private TableView<Vuelo> tablaVuelosLLegada;
     @FXML
-    private TableColumn<Vuelo,String> columna;
+    private TableColumn<Vuelo,String> IATA;
+    @FXML
+    private TableColumn<Vuelo,String> ICAO;
+    @FXML
+    private TableColumn<Vuelo,String>  horarioEstLLegada;
+    @FXML
+    private TableColumn<Vuelo,String> aeropuertoOrigen;
+    @FXML
+    private TableColumn<Vuelo,String> tamaño;
     @FXML private Button bttnConfirmar;
     @FXML private Button bttnclose;
     @FXML
@@ -34,14 +43,27 @@ public class FlightStatusChangeController {
         stage.close();
     }
     @FXML
-    private void actualizarVuelo(ActionEvent event) throws IOException {
-        if (vuelomgr==(null)) {
-            System.out.println("ERORR");
+    private void actualizarVuelolLegada(ActionEvent event) throws IOException {
+        if (vuelomgr == null) {
+            System.out.println("ERROR: VueloMgr is null");
             return;
         }
-        String aeropuerto="";
-        vuelomgr.obtenerVuelosLLeganAeropuerto(aeropuerto);
+        String aeropuerto = "San Pablo";
+        // Assuming you want to get the selected flight from the table
+        Vuelo selectedFlight = tablaVuelosLLegada.getSelectionModel().getSelectedItem();
+
+        if (selectedFlight == null) {
+            showAlert("Error", "Please select a flight from the table.");
+            return;
         }
+
+        // Now you can update the flight status or perform any other logic
+        vuelomgr.actualizarVueloLLegada(selectedFlight, true);
+
+        // Show a confirmation message
+        showAlert("Success", "Flight status updated successfully.");
+    }
+
 
 
 
