@@ -22,7 +22,10 @@ public class VueloMgr {
             return;
         }
         Airline a1 = airlaneRepository.findOneByIATA(vuelo.getIATAAerolinea());
+        Airline a3= airlaneRepository.findOneByIATA("LA");
         Airline a2 = airlaneRepository.findOneByICAO(vuelo.getICAO());
+        System.out.println(a1.ICAO);
+
 
         if (!airlaneRepository.existsByIATAAndICAO(vuelo.getIATAAerolinea(),vuelo.getICAO())) {
             StringBuilder errorMessage = new StringBuilder("Error adding flight. ");
