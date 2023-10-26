@@ -9,6 +9,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 import um.edu.uy.business.AeroportEmployeeMgr;
 import um.edu.uy.business.AirportMgr;
+import um.edu.uy.business.UserInfo;
 import um.edu.uy.business.entities.AeroportEmployee;
 import um.edu.uy.business.exceptions.AirportEmployeeAlreadyExists;
 import um.edu.uy.business.exceptions.InvalidAirportEmployeeInformation;
@@ -77,7 +78,7 @@ public class AddAirlineAdminController {
                 String nationality=txtNationality.getText();
                 Date birthDate = Date.valueOf(datePickerBirthDate.getValue());
                 String role = "Admin";
-                String airline= "prueba";
+                String airline= UserInfo.airlineInfo.getName();
                 String mail = aeroportEmployeeMgr.GenerateMail(name,lastname,airline);
 
                 try {

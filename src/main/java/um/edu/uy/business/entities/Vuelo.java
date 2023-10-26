@@ -23,8 +23,8 @@ public class Vuelo {
     public String aeropuertoOrigen;
     public String aeropuertoDestino;
     public String matricula;
-    public String asientos;
-    public String bultos;
+    public Integer asientos;
+    public Integer bultos;
     public Time horarioSalidaEst;
     public Time horarioLLegadaEst;
     public Time horariosSalidaRea;
@@ -33,7 +33,8 @@ public class Vuelo {
     public boolean aprobadoLLegada;
     public String estado;
 
-    public Vuelo( long numero, String IATAAerolinea, String ICAO, String aeropuertoOrigen, String aeropuertoDestino, String matricula, String asientos, String bultos, Time horarioSalidaEst, Time horarioLLegadaEst) {
+    public Vuelo(long id, long numero, String IATAAerolinea, String ICAO, String aeropuertoOrigen, String aeropuertoDestino, String matricula, Integer asientos, Integer bultos, Time horarioSalidaEst, Time horarioLLegadaEst) {
+        this.id = id;
         this.numero = numero;
         this.IATAAerolinea = IATAAerolinea;
         this.ICAO = ICAO;
@@ -104,19 +105,19 @@ public class Vuelo {
         this.matricula = matricula;
     }
 
-    public String getAsientos() {
+    public Integer getAsientos() {
         return asientos;
     }
 
-    public void setAsientos(String asientos) {
+    public void setAsientos(Integer asientos) {
         this.asientos = asientos;
     }
 
-    public String getBultos() {
+    public Integer getBultos() {
         return bultos;
     }
 
-    public void setBultos(String bultos) {
+    public void setBultos(Integer bultos) {
         this.bultos = bultos;
     }
 

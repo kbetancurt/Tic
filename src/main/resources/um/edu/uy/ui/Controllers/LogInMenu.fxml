@@ -1,76 +1,39 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
-<?import javafx.geometry.Insets?>
-<?import javafx.geometry.Point3D?>
-<?import javafx.scene.Cursor?>
 <?import javafx.scene.control.Button?>
 <?import javafx.scene.control.Label?>
 <?import javafx.scene.control.PasswordField?>
 <?import javafx.scene.control.TextField?>
 <?import javafx.scene.layout.HBox?>
-<?import javafx.scene.layout.VBox?>
+<?import javafx.scene.layout.Pane?>
 <?import javafx.scene.text.Font?>
-<?import javafx.scene.text.Text?>
+
 
 <HBox maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/20.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="um.edu.uy.ui.Controllers.LogInController">
    <children>
-      <VBox prefHeight="400.0" prefWidth="220.0" HBox.hgrow="ALWAYS">
+      <Pane prefHeight="400.0" prefWidth="260.0">
          <children>
-            <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Log In" textAlignment="CENTER" wrappingWidth="222.13674926757812">
+            <Label alignment="CENTER" prefHeight="55.0" prefWidth="266.0" style="-fx-background-color: #FDF47E;" text="LOG IN">
                <font>
-                  <Font name="System Bold" size="36.0" />
+                  <Font name="Bell MT" size="26.0" />
                </font>
-            </Text>
-            <VBox prefHeight="200.0" prefWidth="100.0">
-               <rotationAxis>
-                  <Point3D />
-               </rotationAxis>
-               <VBox.margin>
-                  <Insets top="50.0" />
-               </VBox.margin>
-               <children>
-                  <Label alignment="CENTER" prefHeight="33.0" prefWidth="223.0" text="Mail">
-                     <font>
-                        <Font size="24.0" />
-                     </font>
-                  </Label>
-                  <TextField fx:id="txtMailUser" promptText="Enter mail">
-                     <font>
-                        <Font size="14.0" />
-                     </font>
-                     <cursor>
-                        <Cursor fx:constant="TEXT" />
-                     </cursor>
-                     <VBox.margin>
-                        <Insets top="10.0" />
-                     </VBox.margin>
-                  </TextField>
-                  <Label alignment="CENTER" prefHeight="33.0" prefWidth="223.0" text="Password">
-                     <font>
-                        <Font size="24.0" />
-                     </font>
-                     <VBox.margin>
-                        <Insets top="30.0" />
-                     </VBox.margin>
-                  </Label>
-                  <PasswordField fx:id="txtPasswordUser">
-                     <VBox.margin>
-                        <Insets top="10.0" />
-                     </VBox.margin>
-                  </PasswordField>
-               </children>
-            </VBox>
-            <Button fx:id="bttnLogIn" alignment="CENTER" mnemonicParsing="false" onAction="#logIn" text="Log In">
-               <VBox.margin>
-                  <Insets left="85.0" />
-               </VBox.margin>
-            </Button>
+            </Label>
+            <Label alignment="CENTER" layoutX="-5.0" layoutY="107.0" prefHeight="17.0" prefWidth="266.0" text="Mail">
+               <font>
+                  <Font size="16.0" />
+               </font>
+            </Label>
+            <Label alignment="CENTER" layoutY="207.0" prefHeight="25.0" prefWidth="255.0" text="Password">
+               <font>
+                  <Font size="16.0" />
+               </font>
+            </Label>
+            <TextField fx:id="txtMailUser" layoutX="3.0" layoutY="142.0" prefHeight="25.0" prefWidth="249.0" promptText="Enter Mail" />
+            <PasswordField fx:id="txtPasswordUser" layoutX="3.0" layoutY="248.0" prefHeight="25.0" prefWidth="249.0" />
+            <Button fx:id="bttnLogIn" layoutX="39.0" layoutY="353.0" mnemonicParsing="false" onAction="#logIn" prefHeight="25.0" prefWidth="54.0" text="Enter" />
+            <Button fx:id="bttncancel" layoutX="157.0" layoutY="353.0" mnemonicParsing="false" onAction="#close" prefHeight="25.0" prefWidth="54.0" text="Cancel" />
          </children>
-         <HBox.margin>
-            <Insets bottom="10.0" left="20.0" right="20.0" top="20.0" />
-         </HBox.margin>
-      </VBox>
-      <VBox alignment="CENTER" prefHeight="400.0" prefWidth="345.0" style="-fx-background-color: #FDF47E;" HBox.hgrow="ALWAYS">
-      </VBox>
+      </Pane>
+      <Pane prefHeight="400.0" prefWidth="349.0" style="-fx-background-color: #FDF47E;" />
    </children>
 </HBox>

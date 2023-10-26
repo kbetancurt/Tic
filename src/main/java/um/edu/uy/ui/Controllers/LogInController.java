@@ -19,6 +19,7 @@ import org.springframework.stereotype.Component;
 import org.springframework.stereotype.Controller;
 import um.edu.uy.Main;
 import um.edu.uy.business.AeroportEmployeeMgr;
+import um.edu.uy.business.UserInfo;
 import um.edu.uy.business.entities.AeroportEmployee;
 
 
@@ -60,6 +61,8 @@ public class LogInController implements Initializable {
 
             } else {
                 AeroportEmployee employee =aeroportEmployeeMgr.getAirportEmployee(txtMailUser.getText());
+                UserInfo.userEmail=txtMailUser.getText();
+                UserInfo.employee=employee;
                 if (employee.password.equals(employee.passport)){
                     close(event);
                     FXMLLoader fxmlLoader = new FXMLLoader();

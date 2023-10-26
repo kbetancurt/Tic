@@ -7,6 +7,7 @@ import javafx.scene.control.Alert;
 import javafx.stage.Stage;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
+import um.edu.uy.business.UserInfo;
 import um.edu.uy.business.VueloMgr;
 import um.edu.uy.business.entities.Vuelo;
 import um.edu.uy.persistence.VueloRepository;
@@ -68,11 +69,11 @@ public class AddFlightController {
         String aeropuertoOrigen=txtaeropuertoOrigen.getText();
         String aeropuertoDestino=txtaeropuertoDestino.getText();
         String matricula=txtmatricula.getText();
-        String asientos=txtasientos.getText();
-        String bultos=txtbultos.getText();
+        Integer asientos= Integer.valueOf(txtasientos.getText());
+        Integer bultos= Integer.valueOf(txtbultos.getText());
         Time horarioSalidaEst= Time.valueOf(txthorarioSalidaEst.getText());
         Time horarioLLegadEst= Time.valueOf(txthorarioLLegadaEst.getText());
-        Vuelo vuelo= new Vuelo(numero,IATAAerolinea,ICAO,aeropuertoOrigen,aeropuertoDestino,matricula,asientos,bultos,horarioSalidaEst,horarioLLegadEst);
+        Vuelo vuelo= new Vuelo(numero,numero,IATAAerolinea,ICAO,aeropuertoOrigen,aeropuertoDestino,matricula,asientos,bultos,horarioSalidaEst,horarioLLegadEst);
 
             vueloMgr.addVuelo(vuelo);
         }
@@ -89,5 +90,6 @@ public class AddFlightController {
         alert.setContentText(contextText);
         alert.showAndWait();
     }
+
 
 }

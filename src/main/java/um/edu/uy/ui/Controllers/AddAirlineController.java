@@ -12,6 +12,7 @@ import javafx.stage.Stage;
 import org.springframework.beans.factory.annotation.Autowired;
 import um.edu.uy.Main;
 import um.edu.uy.business.AirlaneMgr;
+import um.edu.uy.business.UserInfo;
 import um.edu.uy.business.entities.Airline;
 import org.springframework.stereotype.Component;
 import um.edu.uy.business.exceptions.AirlineAlreadyExists;
@@ -72,7 +73,7 @@ public class AddAirlineController {
                      try {
                          airlaneMgr.addAirlane(airline);
                          showAlert("Aerolinea agregada", "Se agrego con exito a la aerolinea!");
-
+                         UserInfo.airlineInfo=airline;
                          FXMLLoader fxmlLoader = new FXMLLoader();
                          fxmlLoader.setControllerFactory(Main.getContext()::getBean);
                          Parent root = fxmlLoader.load(AddAirlineAdminController.class.getResourceAsStream("AddAirlineAdmin.fxml"));

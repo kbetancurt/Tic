@@ -9,7 +9,7 @@
 
 <Pane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="281.0" prefWidth="400.0" xmlns="http://javafx.com/javafx/20.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="um.edu.uy.ui.Controllers.AddAirlineController">
    <children>
-      <Label alignment="CENTER" layoutX="-6.0" layoutY="14.0" prefHeight="34.0" prefWidth="407.0" style="-fx-background-color: #FDF47E;" text="Add New Airline">
+      <Label alignment="CENTER" layoutY="-3.0" prefHeight="34.0" prefWidth="400.0" style="-fx-background-color: #FDF47E;" text="Add New Airline">
          <font>
             <Font name="Bell MT" size="28.0" />
          </font>
