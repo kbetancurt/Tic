@@ -14,7 +14,7 @@ public class AirlaneMgr {
     @Autowired
     private AirlaneRepository airlaneRepository;
     public void addAirlane(Airline airline) throws AirlineAlreadyExists, InvalidAirlineInformation {
-        if (airlaneRepository.findOneByName(airline.getName())!=null || airlaneRepository.findOneByIATA(airline.getIATA())!=null || airlaneRepository.findOneByICAO(airline.getICA0())!=null) {
+        if (airlaneRepository.findOneByName(airline.getName())!=null || airlaneRepository.findOneByIATA(airline.getIATA())!=null || airlaneRepository.findOneByICAO(airline.getICAO())!=null) {
             throw new AirlineAlreadyExists();
         }
         if (airline.ICAO.length()!=3 || airline.IATA.length()!=2){

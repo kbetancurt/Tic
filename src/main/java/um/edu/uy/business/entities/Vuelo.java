@@ -7,6 +7,7 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
 import javax.persistence.Table;
 import java.sql.Time;
+import java.time.LocalDateTime;
 
 @Entity
 @Table(name="flight")
@@ -25,15 +26,15 @@ public class Vuelo {
     public String matricula;
     public Integer asientos;
     public Integer bultos;
-    public Time horarioSalidaEst;
-    public Time horarioLLegadaEst;
-    public Time horariosSalidaRea;
-    public Time horarioLLegadaReal;
+    public LocalDateTime horarioSalidaEst;
+    public LocalDateTime horarioLLegadaEst;
+    public LocalDateTime horariosSalidaRea;
+    public LocalDateTime horarioLLegadaReal;
     public boolean aprobadoSalida;
     public boolean aprobadoLLegada;
     public String estado;
 
-    public Vuelo(long id, long numero, String IATAAerolinea, String ICAO, String aeropuertoOrigen, String aeropuertoDestino, String matricula, Integer asientos, Integer bultos, Time horarioSalidaEst, Time horarioLLegadaEst) {
+    public Vuelo(long id, long numero, String IATAAerolinea, String ICAO, String aeropuertoOrigen, String aeropuertoDestino, String matricula, Integer asientos, Integer bultos, LocalDateTime horarioSalidaEst, LocalDateTime horarioLLegadaEst) {
         this.id = id;
         this.numero = numero;
         this.IATAAerolinea = IATAAerolinea;
@@ -80,6 +81,7 @@ public class Vuelo {
     public void setICAO(String ICAO) {
         this.ICAO = ICAO;
     }
+    public Vuelo(){}
 
     public String getAeropuertoOrigen() {
         return aeropuertoOrigen;
@@ -121,35 +123,35 @@ public class Vuelo {
         this.bultos = bultos;
     }
 
-    public Time getHorarioSalidaEst() {
+    public LocalDateTime getHorarioSalidaEst() {
         return horarioSalidaEst;
     }
 
-    public void setHorarioSalidaEst(Time horarioSalidaEst) {
+    public void setHorarioSalidaEst(LocalDateTime horarioSalidaEst) {
         this.horarioSalidaEst = horarioSalidaEst;
     }
 
-    public Time getHorarioLLegadaEst() {
+    public LocalDateTime getHorarioLLegadaEst() {
         return horarioLLegadaEst;
     }
 
-    public void setHorarioLLegadaEst(Time horarioLLegadaEst) {
+    public void setHorarioLLegadaEst(LocalDateTime horarioLLegadaEst) {
         this.horarioLLegadaEst = horarioLLegadaEst;
     }
 
-    public Time getHorariosSalidaRea() {
+    public LocalDateTime getHorariosSalidaRea() {
         return horariosSalidaRea;
     }
 
-    public void setHorariosSalidaRea(Time horariosSalidaRea) {
+    public void setHorariosSalidaRea(LocalDateTime horariosSalidaRea) {
         this.horariosSalidaRea = horariosSalidaRea;
     }
 
-    public Time getHorarioLLegadaReal() {
+    public LocalDateTime getHorarioLLegadaReal() {
         return horarioLLegadaReal;
     }
 
-    public void setHorarioLLegadaReal(Time horarioLLegadaReal) {
+    public void setHorarioLLegadaReal(LocalDateTime horarioLLegadaReal) {
         this.horarioLLegadaReal = horarioLLegadaReal;
     }
 

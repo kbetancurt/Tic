@@ -27,6 +27,7 @@ public interface AirlaneRepository extends CrudRepository<Airline, Long> {
     public Airline findOneByICAO(String ICAO);
     public Airline findAllByName(String name);
 
+    public boolean existsByIATAAndICAO(String IATA, String ICAO);
 
 
 

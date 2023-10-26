@@ -72,7 +72,7 @@ public class LogInController implements Initializable {
                     stage.setScene(new Scene(root));
                     stage.show();
                 }
-                else{
+                {
 
                     if(employee.role.equals("Administrador Aeropuerto")){
                         close(event);

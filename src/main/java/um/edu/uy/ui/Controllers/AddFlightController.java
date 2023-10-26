@@ -3,20 +3,69 @@ package um.edu.uy.ui.Controllers;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.scene.Node;
-import javafx.scene.control.Alert;
+import javafx.scene.control.*;
 import javafx.stage.Stage;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
+import um.edu.uy.business.AeroportEmployeeMgr;
+import um.edu.uy.business.AirportMgr;
 import um.edu.uy.business.UserInfo;
 import um.edu.uy.business.VueloMgr;
 import um.edu.uy.business.entities.Vuelo;
+import um.edu.uy.business.exceptions.InvalidFlightInformation;
 import um.edu.uy.persistence.VueloRepository;
 import java.awt.*;
+import java.awt.Button;
 import java.io.IOException;
+import java.sql.Date;
 import java.sql.Time;
+import java.time.LocalDate;
+import java.time.LocalDateTime;
+import java.time.LocalTime;
+import javafx.scene.control.TextField;
 
 @Component
 public class AddFlightController {
+    @Autowired
+    private AeroportEmployeeMgr aeroportEmployeeMgr;
+
+    @Autowired
+    private AirportMgr airportMgr;
+
+
+    @FXML
+    void initialize()
+    {
+        choiceBoxOAirport.getItems().addAll(airportMgr.airportNameList());
+        choiceBoxDAirport.getItems().addAll(airportMgr.airportNameList());
+        horaSalida.setValueFactory(new SpinnerValueFactory.IntegerSpinnerValueFactory(0, 23, 0));
+        minutoSalida.setValueFactory(new SpinnerValueFactory.IntegerSpinnerValueFactory(0, 59, 0));
+        horaLLegada.setValueFactory(new SpinnerValueFactory.IntegerSpinnerValueFactory(0, 23, 0));
+        minutoLLegada.setValueFactory(new SpinnerValueFactory.IntegerSpinnerValueFactory(0, 59, 0));
+    }
+
+
+    @FXML
+    private ChoiceBox<String> choiceBoxOAirport;
+    @FXML
+    private DatePicker fechaSalidaPicker;
+
+    @FXML
+    private DatePicker fechaLLegadaPicker;
+
+    @FXML
+    private Spinner<Integer> horaSalida;
+
+    @FXML
+    private Spinner<Integer> minutoSalida;
+
+    @FXML
+    private Spinner<Integer> horaLLegada;
+
+    @FXML
+    private Spinner<Integer> minutoLLegada;
+    @FXML
+    private ChoiceBox<String> choiceBoxDAirport;
     @Autowired
     private VueloMgr vueloMgr;
     @FXML
@@ -61,25 +110,28 @@ public class AddFlightController {
         stage.close();
     }
     @FXML
-    void agregarVuelo(ActionEvent event) throws IOException{
-        try{
+    void agregarVuelo(ActionEvent event) throws IOException, InvalidFlightInformation {
+
         long numero= Long.parseLong(txtnumero.getText());
         String ICAO=txtICAO.getText();
         String IATAAerolinea=txtIATAAerolinea.getText();
-        String aeropuertoOrigen=txtaeropuertoOrigen.getText();
-        String aeropuertoDestino=txtaeropuertoDestino.getText();
+        String aeropuertoOrigen=choiceBoxOAirport.getValue();
+        String aeropuertoDestino=choiceBoxDAirport.getValue();
         String matricula=txtmatricula.getText();
         Integer asientos= Integer.valueOf(txtasientos.getText());
         Integer bultos= Integer.valueOf(txtbultos.getText());
-        Time horarioSalidaEst= Time.valueOf(txthorarioSalidaEst.getText());
-        Time horarioLLegadEst= Time.valueOf(txthorarioLLegadaEst.getText());
-        Vuelo vuelo= new Vuelo(numero,numero,IATAAerolinea,ICAO,aeropuertoOrigen,aeropuertoDestino,matricula,asientos,bultos,horarioSalidaEst,horarioLLegadEst);
+        LocalDate salidaDate = fechaSalidaPicker.getValue();
+        LocalDate llegadaDate = fechaLLegadaPicker.getValue();
+        int salidaHour = horaSalida.getValue();
+        int salidaMinute = minutoSalida.getValue();
+        int llegadaHour = horaLLegada.getValue();
+        int llegadaMinute = minutoLLegada.getValue();
+        LocalDateTime salidaDateTime = LocalDateTime.of(salidaDate, LocalTime.of(salidaHour, salidaMinute));
+        LocalDateTime llegadaDateTime = LocalDateTime.of(llegadaDate, LocalTime.of(llegadaHour, llegadaMinute));
+        Vuelo vuelo= new Vuelo(numero,numero,IATAAerolinea,ICAO,aeropuertoOrigen,aeropuertoDestino,matricula,asientos,bultos,salidaDateTime,llegadaDateTime);
+        vueloMgr.addVuelo(vuelo);
+        showAlert("Vuelo agregado","Se agrego con exito el vuelo");
 
-            vueloMgr.addVuelo(vuelo);
-        }
-        catch (NumberFormatException e) {
-            throw new RuntimeException(e);
-        }
 
     }
 
