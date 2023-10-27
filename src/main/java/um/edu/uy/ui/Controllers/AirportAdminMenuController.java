@@ -25,6 +25,9 @@ public class AirportAdminMenuController {
     @FXML
     private Button bttnChangePersonalInfo;
 
+    @FXML
+    private Button approvalBtn;
+
 
     @FXML
     public void addAirportEmployee(ActionEvent event) throws Exception {
@@ -46,10 +49,20 @@ public class AirportAdminMenuController {
     }
 
     @FXML
-    public void changePassword (ActionEvent event) throws Exception{
+    public void changePassword(ActionEvent event) throws Exception{
         FXMLLoader fxmlLoader = new FXMLLoader();
         fxmlLoader.setControllerFactory(Main.getContext()::getBean);
         Parent root = fxmlLoader.load(PasswordChangeController.class.getResourceAsStream("PasswordChange.fxml"));
+        Stage stage = new Stage();
+        stage.setScene(new Scene(root));
+        stage.show();
+    }
+
+    @FXML
+    public void flightApproval(ActionEvent event) throws Exception {
+        FXMLLoader fxmlLoader = new FXMLLoader();
+        fxmlLoader.setControllerFactory(Main.getContext()::getBean);
+        Parent root = fxmlLoader.load(FlightViewerController.class.getResourceAsStream("FlightViewer.fxml"));
         Stage stage = new Stage();
         stage.setScene(new Scene(root));
         stage.show();

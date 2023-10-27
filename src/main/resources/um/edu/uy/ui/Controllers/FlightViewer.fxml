@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.scene.text.*?>
+
+<AnchorPane prefHeight="400.0" prefWidth="600.0" style="-fx-background-color: #FDF47E;" xmlns="http://javafx.com/javafx/17.0.2-ea" xmlns:fx="http://javafx.com/fxml/1" fx:controller="um.edu.uy.ui.Controllers.FlightViewerController">
+   <children>
+      <TableView fx:id="flightTbl" layoutX="25.0" layoutY="77.0" prefHeight="268.0" prefWidth="550.0">
+        <columns>
+            <TableColumn fx:id="airlineCol" prefWidth="75.0" text="Airline" />
+            <TableColumn fx:id="originCol" prefWidth="75.0" text="Origin" />
+            <TableColumn fx:id="destinationCol" prefWidth="75.0" text="Destination" />
+            <TableColumn fx:id="departureCol" prefWidth="75.0" text="Departure" />
+            <TableColumn fx:id="arrivalCol" prefWidth="75.0" text="Arrival" />
+            <TableColumn fx:id="statusCol" prefWidth="75.0" text="Status" />
+        </columns>
+      </TableView>
+      <Button fx:id="ApproveBtn" layoutX="211.0" layoutY="355.0" mnemonicParsing="false" style="-fx-background-color: #00b300;" text="Approve" />
+      <Button fx:id="DeclineBtn" layoutX="339.0" layoutY="355.0" mnemonicParsing="false" style="-fx-background-color: #ff0000;" text="Decline" />
+      <Label layoutX="20.0" layoutY="6.0" prefHeight="70.0" prefWidth="560.0" text="        Incoming flight approval  " textAlignment="CENTER">
+         <font>
+            <Font name="System Bold" size="34.0" />
+         </font>
+      </Label>
+   </children>
+</AnchorPane>
