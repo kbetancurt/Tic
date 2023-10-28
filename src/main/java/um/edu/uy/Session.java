@@ -47,11 +47,6 @@ public final class Session {
         this.airport = airport;
     }
 
-    public void destroy() {
-        this.user = null;
-        this.role = null;
-        this.airport = null;
-    }
 
 
 }

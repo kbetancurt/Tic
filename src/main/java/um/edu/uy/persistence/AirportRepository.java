@@ -7,4 +7,7 @@ import um.edu.uy.business.entities.Airport;
 @Repository
 public interface AirportRepository extends CrudRepository<Airport, Long> {
 
+   public Airport findOneByICAO(String airport);
+
+   public Airport findOneByName(String airportName);
 }

@@ -58,4 +58,12 @@ public class Vuelo {
     public Vuelo() {
 
     }
+
+    public boolean getAprobadoSalida() {
+        return aprobadoSalida;
+    }
+
+    public boolean getAprobadoLLegada() {
+        return aprobadoLLegada;
+    }
 }

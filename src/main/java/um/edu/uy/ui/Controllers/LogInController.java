@@ -22,6 +22,7 @@ import um.edu.uy.Session;
 import um.edu.uy.business.AeroportEmployeeMgr;
 import um.edu.uy.business.UserInfo;
 import um.edu.uy.business.entities.AeroportEmployee;
+import um.edu.uy.business.entities.Airport;
 import um.edu.uy.persistence.AirlaneRepository;
 
 
@@ -70,7 +71,8 @@ public class LogInController implements Initializable {
                 AeroportEmployee employee =aeroportEmployeeMgr.getAirportEmployee(txtMailUser.getText());
                 getInstance().setUser(txtMailUser.getText());
                 getInstance().setRole(employee.role);
-                getInstance().setAirport(employee.airport);
+
+                getInstance().setAirport(employee.getAirport().getICAO());
                 int start = txtMailUser.getText().indexOf("@") + 1;
                 int end = txtMailUser.getText().indexOf(".com");
 

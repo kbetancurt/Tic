@@ -43,7 +43,7 @@ public class AeroportEmployeeMgr {
     }
 
     public AeroportEmployee getAirportEmployee(String mail){
-        return aeroportEmployeeRepository.findOneByMail( mail);
+        return aeroportEmployeeRepository.findOneByMail(mail);
     }
     public void updatePassword(AeroportEmployee employee,String password){
         employee.setPassword(password);

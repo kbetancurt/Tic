@@ -19,7 +19,7 @@ public class AeroportEmployee {
     @Id
     @GeneratedValue(generator="aeroport_employees_ids")
     @GenericGenerator(name="aeroport_employees_ids", strategy = "increment")
-    public long id;
+    public long id_employee;
 
     public String passport;
     public String nationality;
@@ -32,13 +32,16 @@ public class AeroportEmployee {
 
     public String address;
     public String password;
-    public String airport;
+
+    @ManyToOne
+    @JoinColumn(name="airport")
+    public Airport airport;
 
 
     public AeroportEmployee() {
     }
 
-    public AeroportEmployee(String passport, String nationality, Date birthDate, String name, String lastName, String address,String role,String airport,String mail) {
+    public AeroportEmployee(String passport, String nationality, Date birthDate, String name, String lastName, String address,String role,Airport airport,String mail) {
         this.passport = passport;
         this.nationality = nationality;
         this.birthDate = birthDate;
@@ -51,4 +54,8 @@ public class AeroportEmployee {
         this.mail=mail;
     }
 
+    @JoinColumn(name="airport")
+    public Airport getAirport() {
+        return airport;
+    }
 }

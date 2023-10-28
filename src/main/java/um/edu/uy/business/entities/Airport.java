@@ -15,9 +15,13 @@ import java.util.List;
 @Table(name = "airport")
 public class Airport {
     @Id
-    public long ICAO;
+    @GeneratedValue(generator="airport_ids")
+    public long Id;
+
+    public String ICAO;
 
     public String name;
+
     public String IATA;
     public String country;
 

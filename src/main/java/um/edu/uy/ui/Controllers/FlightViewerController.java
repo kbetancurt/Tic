@@ -8,18 +8,24 @@ import javafx.scene.control.TableView;
 import javafx.scene.control.cell.PropertyValueFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
+import um.edu.uy.Session;
 import um.edu.uy.business.VueloMgr;
 import um.edu.uy.business.entities.Vuelo;
+import um.edu.uy.persistence.AirlaneRepository;
 import um.edu.uy.persistence.VueloRepository;
 
 import java.sql.Time;
 import java.util.List;
+import java.util.Objects;
 
 @Component
 public class FlightViewerController {
     @Autowired
     private VueloMgr vueloMgr;
+    @Autowired
     private VueloRepository vueloRepo;
+    @Autowired
+    private AirlaneRepository airlaneRepository;
     @FXML
     private Button ApproveBtn;
     @FXML
@@ -37,28 +43,60 @@ public class FlightViewerController {
     @FXML
     private TableColumn<Vuelo, Time> arrivalCol;
     @FXML
-    private TableColumn<Vuelo, String> statusCol;
+    private TableColumn<Vuelo, String> approvedOriginCol;
+    @FXML
+    private TableColumn<Vuelo, String> approvedDestinationCol;
 
     public void initialize() {
-
-
-        //set the value of each column to the corresponding attribute of the Vuelo class
+        flightTbl.getItems().clear();
         airlineCol.setCellValueFactory(new PropertyValueFactory<>("IATAAerolinea"));
         originCol.setCellValueFactory(new PropertyValueFactory<>("aeropuertoOrigen"));
         destinationCol.setCellValueFactory(new PropertyValueFactory<>("aeropuertoDestino"));
         departureCol.setCellValueFactory(new PropertyValueFactory<>("horarioSalidaEst"));
         arrivalCol.setCellValueFactory(new PropertyValueFactory<>("horarioLLegadaEst"));
-        statusCol.setCellValueFactory(new PropertyValueFactory<>("estado"));
+        approvedOriginCol.setCellValueFactory(new PropertyValueFactory<>("aprobadoSalida"));
+        approvedDestinationCol.setCellValueFactory(new PropertyValueFactory<>("aprobadoLLegada"));
         flightTbl.setPlaceholder(new Label("No rows to display"));
 
 
         for (Vuelo vuelo : vueloMgr.obtenerVuelos()) {
-            System.out.println(vuelo.getIATAAerolinea());
-            flightTbl.getItems().add(vuelo);
+            String Airport = Session.getInstance().getAirport();
+            if (vuelo.getAeropuertoOrigen().equals(Airport) || vuelo.getAeropuertoDestino().equals(Airport)) {
+                flightTbl.getItems().add(vuelo);
+            }
         }
 
+        ApproveBtn.setOnAction(event -> {
+            Vuelo vuelo = flightTbl.getSelectionModel().getSelectedItem();
+            if (Objects.equals(vuelo.getAeropuertoOrigen(), Session.getInstance().getAirport())) {
+                vuelo.setAprobadoSalida(true);
 
+            }
+            if(Objects.equals(vuelo.getAeropuertoDestino(), Session.getInstance().getAirport())){
+                vuelo.setAprobadoLLegada(true);
 
+            }
+
+            if (vuelo.getAprobadoLLegada() && vuelo.getAprobadoSalida()) {
+                vuelo.setEstado("Aprobado");
+
+            }
+            vueloRepo.save(vuelo);
+            initialize();
+        });
+
+        DeclineBtn.setOnAction(event -> {
+            Vuelo vuelo = flightTbl.getSelectionModel().getSelectedItem();
+            if (Objects.equals(vuelo.getAeropuertoOrigen(), Session.getInstance().getAirport())) {
+                vuelo.setAprobadoSalida(false);
+            }
+            if(Objects.equals(vuelo.getAeropuertoDestino(), Session.getInstance().getAirport())){
+                vuelo.setAprobadoLLegada(false);
+            }
+            vuelo.setEstado("Cancelado");
+            vueloRepo.save(vuelo);
+            initialize();
+        });
     }
 
 

@@ -11,9 +11,11 @@ import org.springframework.beans.factory.annotation.Autowired;
 import um.edu.uy.business.AeroportEmployeeMgr;
 import um.edu.uy.business.AirportMgr;
 import um.edu.uy.business.entities.AeroportEmployee;
+import um.edu.uy.business.entities.Airport;
 import um.edu.uy.business.exceptions.AirportEmployeeAlreadyExists;
 import um.edu.uy.business.exceptions.InvalidAirportEmployeeInformation;
 import org.springframework.stereotype.Component;
+import um.edu.uy.persistence.AirportRepository;
 
 import java.net.URL;
 import java.sql.Date;
@@ -51,6 +53,8 @@ public class AddAirportUserController {
     private ChoiceBox<String> roleChoiceBox;
     @FXML
     private ChoiceBox<String> airportChoiceBox;
+    @Autowired
+    private AirportRepository airportRepository;
 
     @FXML
     void initialize()
@@ -91,8 +95,10 @@ public class AddAirportUserController {
                 String nationality=txtNationality.getText();
                 Date birthDate = Date.valueOf(datePickerBirthDate.getValue());
                 String role = roleChoiceBox.getValue();
-                String airport= airportChoiceBox.getValue();
-                String mail= aeroportEmployeeMgr.GenerateMail(name,lastname,airport);
+                String airportName= airportChoiceBox.getValue();
+                Airport airport= airportRepository.findOneByName(airportName);
+                String airportICAO=airport.getICAO();
+                String mail= aeroportEmployeeMgr.GenerateMail(name,lastname,airportICAO);
 
                 try {
 
