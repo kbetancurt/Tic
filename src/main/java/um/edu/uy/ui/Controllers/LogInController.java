@@ -18,15 +18,19 @@ import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.stereotype.Component;
 import org.springframework.stereotype.Controller;
 import um.edu.uy.Main;
+import um.edu.uy.Session;
 import um.edu.uy.business.AeroportEmployeeMgr;
 import um.edu.uy.business.UserInfo;
 import um.edu.uy.business.entities.AeroportEmployee;
+import um.edu.uy.persistence.AirlaneRepository;
 
 
 import java.io.IOException;
 import java.net.URL;
 import java.util.Objects;
 import java.util.ResourceBundle;
+
+import static um.edu.uy.Session.*;
 
 @Component
 public class LogInController implements Initializable {
@@ -41,6 +45,8 @@ public class LogInController implements Initializable {
 
     @FXML
     private Button bttnLogIn;
+    @Autowired
+    private AirlaneRepository airlaneRepository;
 
     @FXML
     private void logIn(ActionEvent event) throws IOException {
@@ -60,11 +66,23 @@ public class LogInController implements Initializable {
                 showAlert("Datos Incorrectos!", "Mail o contraseña incorrectos");
 
             } else {
+                close(event);
                 AeroportEmployee employee =aeroportEmployeeMgr.getAirportEmployee(txtMailUser.getText());
+                getInstance().setUser(txtMailUser.getText());
+                getInstance().setRole(employee.role);
+                getInstance().setAirport(employee.airport);
+                int start = txtMailUser.getText().indexOf("@") + 1;
+                int end = txtMailUser.getText().indexOf(".com");
+
+                String NombreAerolinea = txtMailUser.getText().substring(start, end);
+                if (airlaneRepository.existsByName(NombreAerolinea)) {
+                    getInstance().setAirline(airlaneRepository.findOneByName(NombreAerolinea).getId());
+                }
+                else getInstance().setAirline(-1);
                 UserInfo.userEmail=txtMailUser.getText();
                 UserInfo.employee=employee;
                 if (employee.password.equals(employee.passport)){
-                    close(event);
+
                     FXMLLoader fxmlLoader = new FXMLLoader();
                     fxmlLoader.setControllerFactory(Main.getContext()::getBean);
                     Parent root = fxmlLoader.load(PasswordChangeController.class.getResourceAsStream("PasswordChange.fxml"));
@@ -75,7 +93,7 @@ public class LogInController implements Initializable {
                 {
 
                     if(employee.role.equals("Administrador Aeropuerto")){
-                        close(event);
+
                         FXMLLoader fxmlLoader = new FXMLLoader();
                         fxmlLoader.setControllerFactory(Main.getContext()::getBean);
                         Parent root = fxmlLoader.load(AirportAdminMenuController.class.getResourceAsStream("AirportAdminMenu.fxml"));

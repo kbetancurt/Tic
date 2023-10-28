@@ -7,12 +7,12 @@ import javafx.scene.control.*;
 import javafx.stage.Stage;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
-import um.edu.uy.business.AeroportEmployeeMgr;
-import um.edu.uy.business.AirportMgr;
-import um.edu.uy.business.UserInfo;
-import um.edu.uy.business.VueloMgr;
+import um.edu.uy.Session;
+import um.edu.uy.business.*;
 import um.edu.uy.business.entities.Vuelo;
+import um.edu.uy.business.entities.Airline;
 import um.edu.uy.business.exceptions.InvalidFlightInformation;
+import um.edu.uy.persistence.AirlaneRepository;
 import um.edu.uy.persistence.VueloRepository;
 import java.awt.*;
 import java.awt.Button;
@@ -31,6 +31,8 @@ public class AddFlightController {
 
     @Autowired
     private AirportMgr airportMgr;
+    @Autowired
+    private AvionMgr avionMgr;
 
 
     @FXML
@@ -38,6 +40,7 @@ public class AddFlightController {
     {
         choiceBoxOAirport.getItems().addAll(airportMgr.airportNameList());
         choiceBoxDAirport.getItems().addAll(airportMgr.airportNameList());
+        choiceBoxPlanes.getItems().addAll(avionMgr.planeList());
         horaSalida.setValueFactory(new SpinnerValueFactory.IntegerSpinnerValueFactory(0, 23, 0));
         minutoSalida.setValueFactory(new SpinnerValueFactory.IntegerSpinnerValueFactory(0, 59, 0));
         horaLLegada.setValueFactory(new SpinnerValueFactory.IntegerSpinnerValueFactory(0, 23, 0));
@@ -47,6 +50,8 @@ public class AddFlightController {
 
     @FXML
     private ChoiceBox<String> choiceBoxOAirport;
+    @FXML
+    private ChoiceBox<String> choiceBoxPlanes;
     @FXML
     private DatePicker fechaSalidaPicker;
 
@@ -72,37 +77,21 @@ public class AddFlightController {
     private Button btnClose;
     @FXML
     private TextField txtnumero;
-    @FXML
-    private TextField txtIATAAerolinea;
-    @FXML
-    private TextField txtICAO;
-    @FXML
-    private TextField txtaeropuertoOrigen;
-    @FXML
-    private TextField txtaeropuertoDestino;
+
+
     @FXML
     private TextField txtmatricula;
     @FXML
     private TextField txtasientos;
     @FXML
     private TextField txtbultos;
-    @FXML
-    private TextField txthorarioSalidaEst;
-    @FXML
-    private TextField txthorarioLLegadaEst;
-    @FXML
-    private TextField txthorariosSalidaRea;
-    @FXML
-    private TextField txthorarioLLegadaReal;
-    @FXML
-    private TextField txtaprobadoSalida;
-    @FXML
-    private TextField txtaprobadoLLegada;
-    @FXML
-    private TextField txtestado;
+
 
     @FXML
     private javafx.scene.control.Button btnAdd;
+    @Autowired
+    private AirlaneRepository airlaneRepository;
+
     @FXML
     void close(ActionEvent actionEvent) {
         Node source = (Node)  actionEvent.getSource();
@@ -113,8 +102,8 @@ public class AddFlightController {
     void agregarVuelo(ActionEvent event) throws IOException, InvalidFlightInformation {
 
         long numero= Long.parseLong(txtnumero.getText());
-        String ICAO=txtICAO.getText();
-        String IATAAerolinea=txtIATAAerolinea.getText();
+        String ICAO=airlaneRepository.findOneById(Session.getInstance().getAirline()).getICAO();
+        String IATAAerolinea= airlaneRepository.findOneById(Session.getInstance().getAirline()).getIATA();
         String aeropuertoOrigen=choiceBoxOAirport.getValue();
         String aeropuertoDestino=choiceBoxDAirport.getValue();
         String matricula=txtmatricula.getText();

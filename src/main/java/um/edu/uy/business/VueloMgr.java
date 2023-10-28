@@ -23,21 +23,42 @@ public class VueloMgr {
             System.out.println("Todo mal");
             return;
         }
-        Airline a1 = airlaneRepository.findOneByIATA(vuelo.getIATAAerolinea());
-        Airline a3= airlaneRepository.findOneByIATA("LA");
-        Airline a2 = airlaneRepository.findOneByICAO(vuelo.getICAO());
-        System.out.println(a1.ICAO);
+        if (vuelo.getIATAAerolinea()==null || vuelo.getICAO()==null || vuelo.getAeropuertoOrigen()==null || vuelo.getAeropuertoDestino()==null || vuelo.getMatricula()==null ||  vuelo.getHorarioSalidaEst()==null || vuelo.getHorarioLLegadaEst()==null){
+            StringBuilder errorMessage = new StringBuilder("Error adding flight. 1");
+            if (vuelo.getIATAAerolinea()==null) {
+                errorMessage.append("IATA is required. ");
+            }
+            if (vuelo.getICAO()==null) {
+                errorMessage.append("ICAO is required. ");
+            }
+            if (vuelo.getAeropuertoOrigen()==null) {
+                errorMessage.append("Origin airport is required. ");
+            }
+            if (vuelo.getAeropuertoDestino()==null) {
+                errorMessage.append("Destination airport is required. ");
+            }
+            if (vuelo.getMatricula()==null) {
+                errorMessage.append("Matricula is required. ");
+            }
+
+
+            if (vuelo.getHorarioSalidaEst()==null) {
+                errorMessage.append("Estimated departure time is required. ");
+            }
+            if (vuelo.getHorarioLLegadaEst()==null) {
+                errorMessage.append("Estimated arrival time is required. ");
+            }
+            throw new InvalidFlightInformation(errorMessage.toString());
+        }
 
 
         if (!airlaneRepository.existsByIATAAndICAO(vuelo.getIATAAerolinea(),vuelo.getICAO())) {
-            StringBuilder errorMessage = new StringBuilder("Error adding flight. ");
+            StringBuilder errorMessage = new StringBuilder("Error adding flight. 2");
 
 
             throw new InvalidFlightInformation(errorMessage.toString());}
 
-        else{
-                vueloRepository.save(vuelo);
-            }
+        else vueloRepository.save(vuelo);
         }
 
     public void actualizarVueloLLegada(Vuelo vuelo,boolean act){

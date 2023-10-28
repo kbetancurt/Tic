@@ -1,12 +1,16 @@
 package um.edu.uy.business.entities;
 
+import lombok.Getter;
+import lombok.Setter;
 import org.hibernate.annotations.GenericGenerator;
 
 import javax.persistence.*;
 
 
+@Getter
+@Setter
 @Entity
-@Table(name="track")
+@Table(name = "track")
 public class Track {
     @Id
     @GeneratedValue(generator="track_ids")

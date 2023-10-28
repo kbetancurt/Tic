@@ -54,7 +54,7 @@ public class FlightViewerController {
 
         for (Vuelo vuelo : vueloMgr.obtenerVuelos()) {
             System.out.println(vuelo.getIATAAerolinea());
-//            flightTbl.getItems().add(vuelo);
+            flightTbl.getItems().add(vuelo);
         }
 
 

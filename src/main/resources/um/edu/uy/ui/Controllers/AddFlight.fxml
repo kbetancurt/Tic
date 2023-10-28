@@ -66,21 +66,8 @@
       <Spinner fx:id="minutoSalida" layoutX="526.0" layoutY="218.0" prefHeight="25.0" prefWidth="77.0" />
       <Spinner fx:id="horaLLegada" layoutX="451.0" layoutY="268.0" prefHeight="25.0" prefWidth="61.0" />
       <Spinner fx:id="minutoLLegada" layoutX="528.0" layoutY="268.0" prefHeight="25.0" prefWidth="67.0" />
-      <TextField fx:id="txtICAO" layoutX="322.0" layoutY="75.0" prefHeight="25.0" prefWidth="215.0"/>
-
-      <Label layoutX="78.0" layoutY="77.0" prefHeight="6.0" prefWidth="96.0" text="ICAO">
-         <font>
-            <Font size="15.0" />
-         </font>
-      </Label>
-      <TextField fx:id="txtIATAAerolinea" layoutX="322.0" layoutY="108.0" prefHeight="25.0" prefWidth="215.0"/>
 
 
-      <Label layoutX="78.0" layoutY="110.0" prefHeight="6.0" prefWidth="96.0" text="IATA">
-         <font>
-            <Font size="15.0" />
-         </font>
-      </Label>
       <Label layoutX="78.0" layoutY="338.0" prefHeight="6.0" prefWidth="96.0" text="Matricula">
          <font>
             <Font size="15.0" />

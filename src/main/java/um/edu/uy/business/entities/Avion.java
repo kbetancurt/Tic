@@ -1,5 +1,7 @@
 package um.edu.uy.business.entities;
 
+import lombok.Getter;
+import lombok.Setter;
 import org.hibernate.annotations.GenericGenerator;
 
 import javax.persistence.Entity;
@@ -7,8 +9,10 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
 import javax.persistence.Table;
 
+@Getter
+@Setter
 @Entity
-@Table (name = "avion")
+@Table(name = "avion")
 
 public class Avion {
     @Id
@@ -44,43 +48,5 @@ public class Avion {
 
     }
 
-    public long getId() {
-        return id;
-    }
-    public long setId(long id) {
-        this.id = id;
-        return id;
-    }
 
-    public int getMax_passengers() {
-        return Max_passengers;
-    }
-
-    public void setMax_passengers(int max_passengers) {
-        this.Max_passengers = max_passengers;
-    }
-
-    public int getMax_weight() {
-        return Max_weight;
-    }
-
-    public void setMax_weight(int max_weight) {
-        this.Max_weight = max_weight;
-    }
-
-    public String getModel() {
-        return Model;
-    }
-
-    public void setModel(String model) {
-        this.Model = model;
-    }
-
-    public String getICAO() {
-        return ICAO;
-    }
-    
-    public void setICAO(String icao) {
-        this.ICAO = icao;
-    }
 }

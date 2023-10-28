@@ -1,13 +1,19 @@
 package um.edu.uy.business.entities;
 
+import lombok.Getter;
+import lombok.Setter;
 import org.hibernate.annotations.GenericGenerator;
 
 import javax.persistence.*;
 import java.sql.Date;
 
 
+@Getter
+@Setter
 @Entity
-@Table(name = "aeroport_employees", uniqueConstraints = {@UniqueConstraint(columnNames = {"mail"})})
+@Table(name = "aeroport_employees", uniqueConstraints = {
+        @UniqueConstraint(columnNames = {"mail"})
+})
 public class AeroportEmployee {
 
     @Id
@@ -45,40 +51,4 @@ public class AeroportEmployee {
         this.mail=mail;
     }
 
-    public long getId() {
-        return id;
-    }
-
-    public void setId(long id) {
-        this.id = id;
-    }
-
-    public String getName() {
-        return name;
-    }
-
-    public void setName(String name) {
-        this.name = name;
-    }
-
-    public String getAddress() {
-        return address;
-    }
-
-    public void setAddress(String address) {
-        this.address = address;
-    }
-
-    public String getPassport() {
-        return passport;
-    }
-
-    public void setPassport(String passport) {
-        this.passport = passport;
-    }
-    public void setPassword(String password){this.password=password;}
-
-    public void setMail(String mail){this.mail=mail;}
-
-    public String getMail(){return mail;}
 }
