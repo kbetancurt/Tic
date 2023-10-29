@@ -22,25 +22,16 @@ public class Avion {
     public int Max_passengers;
     public int Max_weight;
     public String Model;
-    public String ICAO;
+    public String Matricula;
     public long Id_aerolinea;
-    public String categoria;
 
-    public Avion(long id, int max_passengers, int max_weight, String model, String icao, long id_aerolinea, String categoria) {
-        this.id = id;
+
+
+    public Avion( int max_passengers, int max_weight, String model, String matricula, long id_aerolinea) {
         this.Max_passengers = max_passengers;
         this.Max_weight = max_weight;
         this.Model = model;
-        this.ICAO = icao;
-        this.Id_aerolinea = id_aerolinea;
-        this.categoria=categoria;
-    }
-
-    public Avion( int max_passengers, int max_weight, String model, String icao, long id_aerolinea) {
-        this.Max_passengers = max_passengers;
-        this.Max_weight = max_weight;
-        this.Model = model;
-        this.ICAO = icao;
+        this.Matricula = matricula;
         this.Id_aerolinea = id_aerolinea;
     }
 

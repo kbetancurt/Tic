@@ -23,7 +23,7 @@ public class AvionMgr {
         List<Avion> aviones = (List<Avion>) avionRepository.findAll();
         for (Avion avion:aviones) {
             if (avion.getId_aerolinea()== Session.getInstance().getAirline()) {
-                planeNames.add(avion.getICAO()+" "+avion.getModel());
+                planeNames.add(avion.getMatricula()+" "+avion.getModel());
             }
         }
         return planeNames;

@@ -38,8 +38,8 @@ public class AddFlightController {
     @FXML
     void initialize()
     {
-        choiceBoxOAirport.getItems().addAll(airportMgr.airportNameList());
-        choiceBoxDAirport.getItems().addAll(airportMgr.airportNameList());
+
+        choiceBoxDAirport.getItems().addAll(airportMgr.airportICAOList());
         choiceBoxPlanes.getItems().addAll(avionMgr.planeList());
         horaSalida.setValueFactory(new SpinnerValueFactory.IntegerSpinnerValueFactory(0, 23, 0));
         minutoSalida.setValueFactory(new SpinnerValueFactory.IntegerSpinnerValueFactory(0, 59, 0));
@@ -48,8 +48,6 @@ public class AddFlightController {
     }
 
 
-    @FXML
-    private ChoiceBox<String> choiceBoxOAirport;
     @FXML
     private ChoiceBox<String> choiceBoxPlanes;
     @FXML
@@ -79,8 +77,7 @@ public class AddFlightController {
     private TextField txtnumero;
 
 
-    @FXML
-    private TextField txtmatricula;
+
     @FXML
     private TextField txtasientos;
     @FXML
@@ -99,14 +96,15 @@ public class AddFlightController {
         stage.close();
     }
     @FXML
-    void agregarVuelo(ActionEvent event) throws IOException, InvalidFlightInformation {
+    void agregarVuelo(ActionEvent event) throws IOException, InvalidFlightInformation{
 
         long numero= Long.parseLong(txtnumero.getText());
         String ICAO=airlaneRepository.findOneById(Session.getInstance().getAirline()).getICAO();
         String IATAAerolinea= airlaneRepository.findOneById(Session.getInstance().getAirline()).getIATA();
-        String aeropuertoOrigen=choiceBoxOAirport.getValue();
+        String aeropuertoOrigen=ICAO;
         String aeropuertoDestino=choiceBoxDAirport.getValue();
-        String matricula=txtmatricula.getText();
+        int end= choiceBoxPlanes.getValue().indexOf(" ");
+        String matricula=choiceBoxPlanes.getValue().substring(0,end);
         Integer asientos= Integer.valueOf(txtasientos.getText());
         Integer bultos= Integer.valueOf(txtbultos.getText());
         LocalDate salidaDate = fechaSalidaPicker.getValue();
@@ -117,8 +115,33 @@ public class AddFlightController {
         int llegadaMinute = minutoLLegada.getValue();
         LocalDateTime salidaDateTime = LocalDateTime.of(salidaDate, LocalTime.of(salidaHour, salidaMinute));
         LocalDateTime llegadaDateTime = LocalDateTime.of(llegadaDate, LocalTime.of(llegadaHour, llegadaMinute));
-        Vuelo vuelo= new Vuelo(numero,numero,IATAAerolinea,ICAO,aeropuertoOrigen,aeropuertoDestino,matricula,asientos,bultos,salidaDateTime,llegadaDateTime);
-        vueloMgr.addVuelo(vuelo);
+        Vuelo vuelo= new Vuelo(numero,ICAO,IATAAerolinea,aeropuertoOrigen,aeropuertoDestino,matricula,asientos,bultos,salidaDateTime,llegadaDateTime);
+        if (vuelo.getAeropuertoOrigen() == null || vuelo.getAeropuertoDestino() == null || vuelo.getMatricula() == null || vuelo.getHorarioSalidaEst() == null || vuelo.getHorarioLLegadaEst() == null) {
+
+            showAlert("Datos faltantes","No se ingresaron los datos necesarios para completar el ingreso.");
+
+
+        }
+        if (vuelo.getHorarioSalidaEst().isAfter(vuelo.getHorarioLLegadaEst())) {
+
+            showAlert("Datos erroneos","La hora de llegada es antes que la de salida");
+
+        }
+        if (vuelo.getHorarioSalidaEst().isBefore(java.time.LocalDateTime.now())) {
+
+            showAlert("Datos erroneos","La hora de salida es antes que la actual");
+
+        }
+        if (vuelo.getHorarioLLegadaEst().isBefore(java.time.LocalDateTime.now())) {
+
+            showAlert("Datos erroneos","La hora de llegada es antes que la actual");
+
+        }
+
+        else {
+            vueloMgr.addVuelo(vuelo);
+        }
+
         showAlert("Vuelo agregado","Se agrego con exito el vuelo");
 
 

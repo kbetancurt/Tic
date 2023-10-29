@@ -24,5 +24,12 @@ public class AirportMgr {
 
     }
 
+    public List<String> airportICAOList(){
+        List<String>airportsICAO = new ArrayList<>();
+        List<Airport> airports = (List<Airport>) airportRepository.findAll();
+        airports.forEach(airport -> { airportsICAO.add(airport.getICAO());});
+        return airportsICAO;
+    }
+
 
 }

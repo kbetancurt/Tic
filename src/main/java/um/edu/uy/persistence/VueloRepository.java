@@ -9,7 +9,7 @@ import java.util.List;
 
 @Repository
 public interface VueloRepository extends CrudRepository<Vuelo,Long> {
-    public Vuelo findOneByIATAAerolinea(String IATAAerolinea);
+    public Vuelo findOneByICAOaerolinea(String IATAAerolinea);
     public Vuelo findAllByAeropuertoDestino(String aeropuertoDestino);
     public Vuelo findAllByAeropuertoOrigen(String aeropuertoOrigen);
 

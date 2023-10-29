@@ -10,6 +10,7 @@ import javafx.stage.Stage;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 
+import um.edu.uy.Session;
 import um.edu.uy.business.AvionMgr;
 import um.edu.uy.business.entities.Avion;
 
@@ -32,10 +33,9 @@ public class AvionController {
     private TextField txpas;
 
     @FXML
-    private TextField txicao;
+    private TextField txmatricula;
 
-    @FXML
-    private TextField txaerolinea;
+
 
     @FXML
     private Button btnAdd;
@@ -59,15 +59,15 @@ public class AvionController {
             String modelo = txmodelo.getText();
             String pesotx = txpeso.getText();
             String pastx = txpas.getText();
-            String icao = txicao.getText();
-            String aerolineatx = txaerolinea.getText();
+            String matricula = txmatricula.getText();
+
 
             int pas= Integer.parseInt(pastx);
             int peso= Integer.parseInt(pesotx);
-            int aerolinea = Integer.parseInt(aerolineatx);
+            int aerolinea = (int) Session.getInstance().getAirline();
 
 
-            Avion avion = new Avion(pas, peso, modelo, icao, aerolinea);
+            Avion avion = new Avion(pas, peso, modelo, matricula, aerolinea);
 
             avionMgr.addAvion(avion);
 

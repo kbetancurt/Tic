@@ -33,6 +33,8 @@ public interface AirlaneRepository extends CrudRepository<Airline, Long> {
 
     public boolean existsByName(String name);
 
+    public boolean existsByICAO(String ICAO);
+
 
 
 }

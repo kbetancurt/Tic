@@ -77,8 +77,8 @@ public class LogInController implements Initializable {
                 int end = txtMailUser.getText().indexOf(".com");
 
                 String NombreAerolinea = txtMailUser.getText().substring(start, end);
-                if (airlaneRepository.existsByName(NombreAerolinea)) {
-                    getInstance().setAirline(airlaneRepository.findOneByName(NombreAerolinea).getId());
+                if (airlaneRepository.existsByICAO(NombreAerolinea)) {
+                    getInstance().setAirline(airlaneRepository.findOneByICAO(NombreAerolinea).getId());
                 }
                 else getInstance().setAirline(-1);
                 UserInfo.userEmail=txtMailUser.getText();
