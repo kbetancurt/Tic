@@ -1,11 +1,16 @@
 package um.edu.uy.ui.Controllers;
 
 import javafx.fxml.FXML;
+import javafx.fxml.FXMLLoader;
+import javafx.scene.Node;
+import javafx.scene.Parent;
+import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
 import javafx.scene.control.cell.PropertyValueFactory;
+import javafx.stage.Stage;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 import um.edu.uy.Session;
@@ -83,6 +88,19 @@ public class FlightViewerController {
             }
             vueloRepo.save(vuelo);
             initialize();
+            Node node = (Node) event.getSource();
+            Stage stage = (Stage) node.getScene().getWindow();
+
+            try {
+                Parent root = FXMLLoader.load(getClass().getClassLoader().getResource("resources/um/edu/uy/ui/Controllers/FlightViewer.fxml"));
+                stage.setUserData(vuelo);
+                Scene scene = new Scene(root);
+                stage.setScene(scene);
+                stage.show();
+            } catch (Exception e) {
+                e.printStackTrace();
+            }
+
         });
 
         DeclineBtn.setOnAction(event -> {

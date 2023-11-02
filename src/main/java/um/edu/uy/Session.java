@@ -2,10 +2,7 @@ package um.edu.uy;
 
 
 import lombok.Getter;
-import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.stereotype.Component;
-import um.edu.uy.business.AirlaneMgr;
-import um.edu.uy.persistence.AirlaneRepository;
+
 
 @Getter
 

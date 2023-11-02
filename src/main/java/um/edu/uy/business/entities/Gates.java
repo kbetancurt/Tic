@@ -17,6 +17,6 @@ public class Gates {
 
     @ManyToOne
     @JoinColumn(name="airport_id")
-    private Airport airport;
+    public Airport airport;
 
 }
