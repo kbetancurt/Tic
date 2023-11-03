@@ -5,7 +5,7 @@ import org.springframework.stereotype.Repository;
 import um.edu.uy.business.entities.Airline;
 
 @Repository
-public interface AirlaneRepository extends CrudRepository<Airline, Long> {
+public interface AirlineRepository extends CrudRepository<Airline, Long> {
 
     /**
      * Retorna un cliente por documento si encuentra mas de una lanza una excepcion

@@ -1,12 +1,11 @@
 package um.edu.uy.business;
 
-import javafx.collections.ObservableList;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import um.edu.uy.business.entities.Airline;
 import um.edu.uy.business.entities.Vuelo;
 import um.edu.uy.business.exceptions.InvalidFlightInformation;
-import um.edu.uy.persistence.AirlaneRepository;
+import um.edu.uy.persistence.AirlineRepository;
 import um.edu.uy.persistence.VueloRepository;
 
 import java.util.ArrayList;
@@ -17,9 +16,9 @@ public class VueloMgr {
     @Autowired
     VueloRepository vueloRepository;
     @Autowired
-    AirlaneRepository airlaneRepository;
+    AirlineRepository airlineRepository;
     public void addVuelo(Vuelo vuelo) throws InvalidFlightInformation {
-        if (airlaneRepository == null) {
+        if (airlineRepository == null) {
             System.out.println("Todo mal");
             return;
         }
@@ -57,6 +56,12 @@ public class VueloMgr {
         return (List<Vuelo>) vueloRepository.findAll();
 
     }
+    public List<Vuelo> obtenerVuelosAerolinea(String aerolinea){
+        List<String> vuelos = new ArrayList<>();
+        List<Vuelo> vuelos1 = (List<Vuelo>) vueloRepository.findAllByICAOaerolinea(aerolinea);
+        vuelos1.forEach(vuelo -> {vuelos.add(vuelo.toString());});
+        return vuelos1;}
+
 
 
 

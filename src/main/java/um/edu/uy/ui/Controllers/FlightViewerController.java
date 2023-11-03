@@ -16,11 +16,10 @@ import org.springframework.stereotype.Component;
 import um.edu.uy.Session;
 import um.edu.uy.business.VueloMgr;
 import um.edu.uy.business.entities.Vuelo;
-import um.edu.uy.persistence.AirlaneRepository;
+import um.edu.uy.persistence.AirlineRepository;
 import um.edu.uy.persistence.VueloRepository;
 
 import java.sql.Time;
-import java.util.List;
 import java.util.Objects;
 
 @Component
@@ -30,7 +29,7 @@ public class FlightViewerController {
     @Autowired
     private VueloRepository vueloRepo;
     @Autowired
-    private AirlaneRepository airlaneRepository;
+    private AirlineRepository airlineRepository;
     @FXML
     private Button ApproveBtn;
     @FXML

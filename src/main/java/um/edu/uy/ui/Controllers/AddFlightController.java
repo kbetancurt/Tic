@@ -10,15 +10,11 @@ import org.springframework.stereotype.Component;
 import um.edu.uy.Session;
 import um.edu.uy.business.*;
 import um.edu.uy.business.entities.Vuelo;
-import um.edu.uy.business.entities.Airline;
 import um.edu.uy.business.exceptions.InvalidFlightInformation;
-import um.edu.uy.persistence.AirlaneRepository;
-import um.edu.uy.persistence.VueloRepository;
-import java.awt.*;
+import um.edu.uy.persistence.AirlineRepository;
+
 import java.awt.Button;
 import java.io.IOException;
-import java.sql.Date;
-import java.sql.Time;
 import java.time.LocalDate;
 import java.time.LocalDateTime;
 import java.time.LocalTime;
@@ -87,7 +83,7 @@ public class AddFlightController {
     @FXML
     private javafx.scene.control.Button btnAdd;
     @Autowired
-    private AirlaneRepository airlaneRepository;
+    private AirlineRepository airlineRepository;
 
     @FXML
     void close(ActionEvent actionEvent) {
@@ -99,8 +95,11 @@ public class AddFlightController {
     void agregarVuelo(ActionEvent event) throws IOException, InvalidFlightInformation{
 
         long numero= Long.parseLong(txtnumero.getText());
-        String ICAO=airlaneRepository.findOneById(Session.getInstance().getAirline()).getICAO();
-        String IATAAerolinea= airlaneRepository.findOneById(Session.getInstance().getAirline()).getIATA();
+        if(airlineRepository ==null){
+            System.out.println("ERRROR");
+        }
+        String ICAO= airlineRepository.findOneById(Session.getInstance().getAirline()).getICAO();
+        String IATAAerolinea= airlineRepository.findOneById(Session.getInstance().getAirline()).getIATA();
         String aeropuertoOrigen=ICAO;
         String aeropuertoDestino=choiceBoxDAirport.getValue();
         int end= choiceBoxPlanes.getValue().indexOf(" ");

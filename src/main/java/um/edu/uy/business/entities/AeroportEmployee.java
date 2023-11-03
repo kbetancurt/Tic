@@ -36,7 +36,9 @@ public class AeroportEmployee {
     @ManyToOne
     @JoinColumn(name="airport")
     public Airport airport;
-
+    @ManyToOne
+    @JoinColumn (name="airline")
+    public Airline airline;
 
     public AeroportEmployee() {
     }
@@ -53,9 +55,26 @@ public class AeroportEmployee {
         this.airport=airport;
         this.mail=mail;
     }
+    public AeroportEmployee(String passport, String nationality, Date birthDate, String name, String lastName, String address,String role,Airport airport,String mail,Airline airline) {
+        this.passport = passport;
+        this.nationality = nationality;
+        this.birthDate = birthDate;
+        this.name = name;
+        this.lastName = lastName;
+        this.address = address;
+        this.role=role;
+        this.password=passport;
+        this.airport=airport;
+        this.mail=mail;
+        this.airline=airline;
+    }
 
     @JoinColumn(name="airport")
     public Airport getAirport() {
         return airport;
+    }
+    @JoinColumn(name="airline")
+    public Airline getAirline() {
+        return airline;
     }
 }

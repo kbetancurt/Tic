@@ -13,8 +13,11 @@ import um.edu.uy.business.AirportMgr;
 import um.edu.uy.business.UserInfo;
 import um.edu.uy.business.entities.AeroportEmployee;
 import um.edu.uy.business.entities.Airport;
+import um.edu.uy.business.entities.Airline;
+
 import um.edu.uy.business.exceptions.AirportEmployeeAlreadyExists;
 import um.edu.uy.business.exceptions.InvalidAirportEmployeeInformation;
+import um.edu.uy.persistence.AirlineRepository;
 import um.edu.uy.persistence.AirportRepository;
 
 import java.sql.Date;
@@ -30,6 +33,8 @@ public class AddAirlineAdminController {
 
     @FXML
     private Button btnClose;
+    @Autowired
+    AirlineRepository airlineRepository;
 
     @FXML
     private Button btnAdd;
@@ -75,19 +80,20 @@ public class AddAirlineAdminController {
         } else {
 
             try {
+                Airline airlane=airlineRepository.findOneById(Session.getInstance().getAirline());
                 String name = txtName.getText();
                 String lastname=txtLastname.getText();
                 String address = txtAddress.getText();
                 String passport= txtPassport.getText();
                 String nationality=txtNationality.getText();
                 Date birthDate = Date.valueOf(datePickerBirthDate.getValue());
-                String role = "Admin";
+                String role = "Administrador Aerolinea";
                 Airport airport= airportRepository.findOneByICAO(Session.getInstance().getAirport());
-                String mail = aeroportEmployeeMgr.GenerateMail(name,lastname,airport.getICAO());
+                String mail = aeroportEmployeeMgr.generateMailAirline(name,lastname,airlane.getICAO());
 
                 try {
 
-                    AeroportEmployee aeroportEmployee = new AeroportEmployee(passport,nationality,birthDate,name,lastname,address,role,airport,mail);
+                    AeroportEmployee aeroportEmployee = new AeroportEmployee(passport,nationality,birthDate,name,lastname,address,role,airport,mail,airlane);
 
                     aeroportEmployeeMgr.addClient(aeroportEmployee);
 

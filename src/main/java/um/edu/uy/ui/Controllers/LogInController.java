@@ -14,16 +14,12 @@ import javafx.scene.control.Button;
 import javafx.scene.control.TextField;
 import javafx.stage.Stage;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.stereotype.Component;
-import org.springframework.stereotype.Controller;
 import um.edu.uy.Main;
-import um.edu.uy.Session;
 import um.edu.uy.business.AeroportEmployeeMgr;
 import um.edu.uy.business.UserInfo;
 import um.edu.uy.business.entities.AeroportEmployee;
-import um.edu.uy.business.entities.Airport;
-import um.edu.uy.persistence.AirlaneRepository;
+import um.edu.uy.persistence.AirlineRepository;
 
 
 import java.io.IOException;
@@ -47,7 +43,7 @@ public class LogInController implements Initializable {
     @FXML
     private Button bttnLogIn;
     @Autowired
-    private AirlaneRepository airlaneRepository;
+    private AirlineRepository airlineRepository;
 
     @FXML
     private void logIn(ActionEvent event) throws IOException {
@@ -76,11 +72,10 @@ public class LogInController implements Initializable {
                 int start = txtMailUser.getText().indexOf("@") + 1;
                 int end = txtMailUser.getText().indexOf(".com");
 
-                String NombreAerolinea = txtMailUser.getText().substring(start, end);
-                if (airlaneRepository.existsByICAO(NombreAerolinea)) {
-                    getInstance().setAirline(airlaneRepository.findOneByICAO(NombreAerolinea).getId());
+                if (employee.airline!=null){
+                    getInstance().setAirline(employee.airline.getId());
                 }
-                else getInstance().setAirline(-1);
+                else {getInstance().setAirline(-1);}
                 UserInfo.userEmail=txtMailUser.getText();
                 UserInfo.employee=employee;
                 if (employee.password.equals(employee.passport)){
