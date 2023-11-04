@@ -69,8 +69,6 @@ public class LogInController implements Initializable {
                 getInstance().setRole(employee.role);
 
                 getInstance().setAirport(employee.getAirport().getICAO());
-                int start = txtMailUser.getText().indexOf("@") + 1;
-                int end = txtMailUser.getText().indexOf(".com");
 
                 if (employee.airline!=null){
                     getInstance().setAirline(employee.airline.getId());

@@ -13,6 +13,7 @@ import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.stage.Stage;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
+import um.edu.uy.Main;
 import um.edu.uy.Session;
 import um.edu.uy.business.VueloMgr;
 import um.edu.uy.business.entities.Vuelo;
@@ -89,10 +90,12 @@ public class FlightViewerController {
             initialize();
             Node node = (Node) event.getSource();
             Stage stage = (Stage) node.getScene().getWindow();
+            Session.getInstance().setVuelo(vuelo);
 
             try {
-                Parent root = FXMLLoader.load(getClass().getClassLoader().getResource("resources/um/edu/uy/ui/Controllers/FlightViewer.fxml"));
-                stage.setUserData(vuelo);
+                FXMLLoader fxmlLoader = new FXMLLoader();
+                fxmlLoader.setControllerFactory(Main.getContext()::getBean);
+                Parent root = fxmlLoader.load(AddAirportUserController.class.getResourceAsStream("SelectGate.fxml"));
                 Scene scene = new Scene(root);
                 stage.setScene(scene);
                 stage.show();

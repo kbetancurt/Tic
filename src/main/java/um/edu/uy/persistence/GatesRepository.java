@@ -6,4 +6,6 @@ import um.edu.uy.business.entities.Gates;
 
 @Repository
 public interface GatesRepository extends CrudRepository<Gates,Long> {
+
+    public Gates findAllByAirport_ICAO(String ICAO);
 }
