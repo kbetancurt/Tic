@@ -27,25 +27,30 @@ public class SelectGateController {
     private FlowPane button_grid;
 
 
+    @FXML
+    void close(ActionEvent actionEvent) {
+        Node source = (Node)  actionEvent.getSource();
+        Stage stage  = (Stage) source.getScene().getWindow();
+        stage.close();
+    }
 
 
 
     public void initialize() {
-        button_grid.sceneProperty().addListener((observableScene, oldScene, newScene) -> {
-            if (oldScene == null && newScene != null) {
-                Stage stage = (Stage) newScene.getWindow();
                 Vuelo vuelo = Session.getInstance().getVuelo();
                 LocalDateTime startOccupation = vuelo.getHorarioSalidaEst();
                 List<Gates> availableGates = gateAvailabilityMgr.getAvailableGates(startOccupation);
 
                 for (Gates gate : availableGates) {
 
-                    Button gate_button = new Button(gate.getName());button_grid.getChildren().add(gate_button);
-                    gate_button.setOnAction(event -> {gateAvailabilityMgr.occupyGate(gate, vuelo);stage.close();
+                    Button gate_button = new Button(gate.getName());
+                    button_grid.getChildren().add(gate_button);
+                    gate_button.setOnAction(event -> {gateAvailabilityMgr.occupyGate(gate, vuelo);
+                        close(event);
                     });
+
                 }
 
             }
-        });
     }
-}
+

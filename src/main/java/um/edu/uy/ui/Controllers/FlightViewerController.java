@@ -88,16 +88,14 @@ public class FlightViewerController {
             }
             vueloRepo.save(vuelo);
             initialize();
-            Node node = (Node) event.getSource();
-            Stage stage = (Stage) node.getScene().getWindow();
             Session.getInstance().setVuelo(vuelo);
 
             try {
                 FXMLLoader fxmlLoader = new FXMLLoader();
                 fxmlLoader.setControllerFactory(Main.getContext()::getBean);
-                Parent root = fxmlLoader.load(AddAirportUserController.class.getResourceAsStream("SelectGate.fxml"));
-                Scene scene = new Scene(root);
-                stage.setScene(scene);
+                Parent root = fxmlLoader.load(SelectGateController.class.getResourceAsStream("SelectGate.fxml"));
+                Stage stage = new Stage();
+                stage.setScene(new Scene(root));
                 stage.show();
             } catch (Exception e) {
                 e.printStackTrace();
@@ -118,17 +116,6 @@ public class FlightViewerController {
             initialize();
         });
     }
-
-
-
-
-
-
-
-
-
-
-
 
 
 
