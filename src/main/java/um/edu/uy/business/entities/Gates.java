@@ -1,11 +1,15 @@
 package um.edu.uy.business.entities;
+import lombok.Getter;
+import lombok.Setter;
 import org.hibernate.annotations.GenericGenerator;
 
 import javax.persistence.*;
 
 
+@Getter
+@Setter
 @Entity
-@Table(name="gates")
+@Table(name = "gates")
 public class Gates {
     @Id
     @GeneratedValue(generator="gates_ids")

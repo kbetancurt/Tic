@@ -13,6 +13,7 @@ import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.stage.Stage;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
+import um.edu.uy.Main;
 import um.edu.uy.Session;
 import um.edu.uy.business.VueloMgr;
 import um.edu.uy.business.entities.Vuelo;
@@ -87,14 +88,14 @@ public class FlightViewerController {
             }
             vueloRepo.save(vuelo);
             initialize();
-            Node node = (Node) event.getSource();
-            Stage stage = (Stage) node.getScene().getWindow();
+            Session.getInstance().setVuelo(vuelo);
 
             try {
-                Parent root = FXMLLoader.load(getClass().getClassLoader().getResource("resources/um/edu/uy/ui/Controllers/FlightViewer.fxml"));
-                stage.setUserData(vuelo);
-                Scene scene = new Scene(root);
-                stage.setScene(scene);
+                FXMLLoader fxmlLoader = new FXMLLoader();
+                fxmlLoader.setControllerFactory(Main.getContext()::getBean);
+                Parent root = fxmlLoader.load(SelectGateController.class.getResourceAsStream("SelectGate.fxml"));
+                Stage stage = new Stage();
+                stage.setScene(new Scene(root));
                 stage.show();
             } catch (Exception e) {
                 e.printStackTrace();
@@ -115,17 +116,6 @@ public class FlightViewerController {
             initialize();
         });
     }
-
-
-
-
-
-
-
-
-
-
-
 
 
 

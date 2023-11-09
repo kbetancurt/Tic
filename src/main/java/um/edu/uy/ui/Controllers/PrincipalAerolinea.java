@@ -24,6 +24,17 @@ public class PrincipalAerolinea {
 
     @FXML
     private Button bttnclose;
+
+
+    public void addAirlineAdmin(ActionEvent event) throws Exception {
+        FXMLLoader fxmlLoader = new FXMLLoader();
+        fxmlLoader.setControllerFactory(Main.getContext()::getBean);
+        Parent root = fxmlLoader.load(AddAirlineAdminController.class.getResourceAsStream("AddAirlineAdmin.fxml"));
+        Stage stage = new Stage();
+        stage.setScene(new Scene(root));
+        stage.show();
+    }
+
     @FXML
     public void addAirplane(ActionEvent event) throws Exception {
         FXMLLoader fxmlLoader = new FXMLLoader();

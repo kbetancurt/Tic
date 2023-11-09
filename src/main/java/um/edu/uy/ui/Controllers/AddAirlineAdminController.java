@@ -10,13 +10,12 @@ import org.springframework.stereotype.Component;
 import um.edu.uy.Session;
 import um.edu.uy.business.AeroportEmployeeMgr;
 import um.edu.uy.business.AirportMgr;
-import um.edu.uy.business.UserInfo;
 import um.edu.uy.business.entities.AeroportEmployee;
-import um.edu.uy.business.entities.Airport;
 import um.edu.uy.business.entities.Airline;
-
+import um.edu.uy.business.entities.Airport;
 import um.edu.uy.business.exceptions.AirportEmployeeAlreadyExists;
 import um.edu.uy.business.exceptions.InvalidAirportEmployeeInformation;
+
 import um.edu.uy.persistence.AirlineRepository;
 import um.edu.uy.persistence.AirportRepository;
 
@@ -33,8 +32,6 @@ public class AddAirlineAdminController {
 
     @FXML
     private Button btnClose;
-    @Autowired
-    AirlineRepository airlineRepository;
 
     @FXML
     private Button btnAdd;
@@ -54,6 +51,8 @@ public class AddAirlineAdminController {
     private DatePicker datePickerBirthDate;
     @Autowired
     private AirportRepository airportRepository;
+    @Autowired
+    private AirlineRepository airlineRepository;
 
 
     @FXML
@@ -80,7 +79,6 @@ public class AddAirlineAdminController {
         } else {
 
             try {
-                Airline airlane=airlineRepository.findOneById(Session.getInstance().getAirline());
                 String name = txtName.getText();
                 String lastname=txtLastname.getText();
                 String address = txtAddress.getText();
@@ -88,12 +86,15 @@ public class AddAirlineAdminController {
                 String nationality=txtNationality.getText();
                 Date birthDate = Date.valueOf(datePickerBirthDate.getValue());
                 String role = "Administrador Aerolinea";
+                long airlineid = Session.getInstance().getAirline();
+                Airline airline = airlineRepository.findOneById(airlineid);
+                String AirlineIcao = airline.getICAO();
                 Airport airport= airportRepository.findOneByICAO(Session.getInstance().getAirport());
-                String mail = aeroportEmployeeMgr.generateMailAirline(name,lastname,airlane.getICAO());
+                String mail = aeroportEmployeeMgr.GenerateMail(name,lastname,AirlineIcao);
 
                 try {
 
-                    AeroportEmployee aeroportEmployee = new AeroportEmployee(passport,nationality,birthDate,name,lastname,address,role,airport,mail,airlane);
+                    AeroportEmployee aeroportEmployee = new AeroportEmployee(passport,nationality,birthDate,name,lastname,address,role,airport,mail);
 
                     aeroportEmployeeMgr.addClient(aeroportEmployee);
 

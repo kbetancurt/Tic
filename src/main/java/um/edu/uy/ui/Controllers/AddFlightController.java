@@ -103,7 +103,7 @@ public class AddFlightController {
         }
         String ICAO= airportRepository.findOneByICAO(Session.getInstance().getAirport()).getICAO();
         String IATAAerolinea= airlineRepository.findOneById(Session.getInstance().getAirline()).getIATA();
-        String aeropuertoOrigen=ICAO;
+        String aeropuertoOrigen=Session.getInstance().getAirport();
         String aeropuertoDestino=choiceBoxDAirport.getValue();
         int end= choiceBoxPlanes.getValue().indexOf(" ");
         String matricula=choiceBoxPlanes.getValue().substring(0,end);

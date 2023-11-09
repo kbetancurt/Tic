@@ -11,4 +11,6 @@ public interface AirportRepository extends CrudRepository<Airport, Long> {
    public Airport findById(long id);
 
    public Airport findOneByName(String airportName);
+
+   public Airport findByICAO(String airport);
 }
