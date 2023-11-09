@@ -10,6 +10,7 @@ import um.edu.uy.business.exceptions.InvalidFlightInformation;
 import um.edu.uy.persistence.AirlineRepository;
 import um.edu.uy.persistence.VueloRepository;
 
+import javax.transaction.Transactional;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -66,10 +67,6 @@ public class VueloMgr {
         vuelos1.forEach(vuelo -> {vuelos.add(vuelo.toString());});
         return vuelos1;}
 
-    public void registerPassenger(Passenger passenger, Vuelo vuelo ){
-        vuelo.setAsientosDisponibles(vuelo.getAsientosDisponibles()-1);
-        vuelo.passengerList.add(passenger);
-    }
 
 
 

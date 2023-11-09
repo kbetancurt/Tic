@@ -39,13 +39,8 @@ public class Vuelo {
     public boolean aprobadoSalida;
     public boolean aprobadoLLegada;
     public String estado;
-    @ManyToMany
-    @JoinTable(
-            name = "passenger_flight",
-            joinColumns = @JoinColumn(name = "vuelo_id"),
-            inverseJoinColumns = @JoinColumn(name = "passenger_id")
-    )
-    public List<Passenger> passengerList= new ArrayList<>();
+    @OneToMany(mappedBy = "vuelo")
+    private List<PassengerFlight> passengerFlights;
 
 
 

@@ -30,9 +30,5 @@ public class PassengerMgr {
     public Passenger getPassenger(String passport) {
         return passengerRepository.findOneByPassport(passport);
     }
-    public void registerFlight(Passenger passenger, Vuelo flight){
-        passenger.getVueloList().add(flight);
-        passengerRepository.save(passenger);
 
-    }
 }

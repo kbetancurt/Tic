@@ -25,8 +25,8 @@ public class Passenger{
         public String name;
         public String lastName;
         public String password;
-        @ManyToMany(mappedBy = "passengerList")
-        public List<Vuelo> vueloList= new ArrayList<>();
+        @OneToMany(mappedBy = "passenger")
+        private List<PassengerFlight> vueloPassengers;
 
         public Passenger() {
         }

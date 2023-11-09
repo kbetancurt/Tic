@@ -9,6 +9,7 @@ import javafx.stage.Stage;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 import um.edu.uy.business.AirlaneMgr;
+import um.edu.uy.business.PassengerFlightMgr;
 import um.edu.uy.business.PassengerMgr;
 import um.edu.uy.business.VueloMgr;
 import um.edu.uy.Session;
@@ -33,6 +34,8 @@ public class PassengerController {
     AirlineRepository airlineRepository;
     @Autowired
     VueloRepository vueloRepository;
+    @Autowired
+    PassengerFlightMgr passengerFlightMgr;
     @FXML
     private TableView<Vuelo> flights;
 
@@ -51,8 +54,7 @@ public class PassengerController {
     private Button btnClose;
     @FXML
     private TableColumn<Vuelo, Integer> flightNumber;
-    @FXML
-    private TableColumn<Vuelo,Integer> availableSeats;
+
     @FXML
     private TableColumn<Vuelo,String> destinationAirport;
     @FXML
@@ -62,7 +64,6 @@ public class PassengerController {
 
 
         flightNumber.setCellValueFactory(new PropertyValueFactory<>("numero"));
-        availableSeats.setCellValueFactory(new PropertyValueFactory<>("asientosDisponibles"));
         destinationAirport.setCellValueFactory(new PropertyValueFactory<>("aeropuertoDestino"));
         originAirport.setCellValueFactory(new PropertyValueFactory<>("aeropuertoOrigen"));
         for (Vuelo vuelo : vueloMgr.obtenerVuelosAerolinea()) {
@@ -88,12 +89,14 @@ public class PassengerController {
             String mail= generateMail(nombre,apellido);
             Passenger passenger = new Passenger(passport,nacionalidad,nombre,apellido,mail);
             passengerMgr.addPassenger(passenger);
-            vueloMgr.registerPassenger(passenger,flight);
+            passengerFlightMgr.addPassengerFlight(passenger,flight);
+            close(new ActionEvent());
         }
         else
         {
             Passenger passenger = passengerMgr.getPassenger(passport);
-            vueloMgr.registerPassenger(passenger,flight);
+            passengerFlightMgr.addPassengerFlight(passenger,flight);
+            close(new ActionEvent());
         }
 
 
