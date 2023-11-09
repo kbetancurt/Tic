@@ -2,10 +2,10 @@ package um.edu.uy.business;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
-import um.edu.uy.persistence.TrackRepository;
+import um.edu.uy.persistence.RunwayRepository;
 
 @Service
-public class TrackMgr {
+public class RunwayMgr {
     @Autowired
-    TrackRepository trackRepository;
+    RunwayRepository runwayRepository;
 }

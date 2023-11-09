@@ -10,4 +10,6 @@ import java.util.List;
 @Repository
 public interface GatesRepository extends CrudRepository<Gates,Long> {
     public List<Gates> findAllByAirport(Airport airport);
+
+    public List<Gates> findByAirport_ICAO(String airport);
 }

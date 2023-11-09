@@ -29,7 +29,7 @@ public class Airport {
     public List<Gates> gates;
 
     @OneToMany(mappedBy = "airport")
-    public List<Track> tracks;
+    public List<Runway> runways;
 
 
 }
