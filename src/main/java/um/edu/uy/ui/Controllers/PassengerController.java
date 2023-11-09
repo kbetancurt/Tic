@@ -3,16 +3,21 @@ package um.edu.uy.ui.Controllers;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.scene.Node;
-import javafx.scene.control.ChoiceBox;
+import javafx.scene.control.TableColumn;
+import javafx.scene.control.TableView;
 import javafx.stage.Stage;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 import um.edu.uy.business.AirlaneMgr;
-import um.edu.uy.business.AvionMgr;
 import um.edu.uy.business.PassengerMgr;
 import um.edu.uy.business.VueloMgr;
 import um.edu.uy.Session;
+import um.edu.uy.business.entities.Passenger;
+import um.edu.uy.business.entities.Vuelo;
 import um.edu.uy.persistence.AirlineRepository;
+import um.edu.uy.persistence.VueloRepository;
+import javafx.scene.control.cell.PropertyValueFactory;
+import javafx.scene.control.TextField;
 
 import java.awt.*;
 
@@ -26,8 +31,14 @@ public class PassengerController {
     AirlaneMgr airlaneMgr;
     @Autowired
     AirlineRepository airlineRepository;
+    @Autowired
+    VueloRepository vueloRepository;
+    @FXML
+    private TableView<Vuelo> flights;
+
     @FXML
     private TextField txtNombre;
+
     @FXML
     private TextField txtApellido;
     @FXML
@@ -39,32 +50,53 @@ public class PassengerController {
     @FXML
     private Button btnClose;
     @FXML
-    private ChoiceBox<String> choiceBoxFlights;
+    private TableColumn<Vuelo, Integer> flightNumber;
+    @FXML
+    private TableColumn<Vuelo,Integer> availableSeats;
+    @FXML
+    private TableColumn<Vuelo,String> destinationAirport;
+    @FXML
+    private TableColumn<Vuelo,String> originAirport;
     @FXML
     void initialize(){
-        if (airlineRepository==null){
-            System.out.println("error");
-            return;
+
+
+        flightNumber.setCellValueFactory(new PropertyValueFactory<>("numero"));
+        availableSeats.setCellValueFactory(new PropertyValueFactory<>("asientosDisponibles"));
+        destinationAirport.setCellValueFactory(new PropertyValueFactory<>("aeropuertoDestino"));
+        originAirport.setCellValueFactory(new PropertyValueFactory<>("aeropuertoOrigen"));
+        for (Vuelo vuelo : vueloMgr.obtenerVuelosAerolinea()) {
+                flights.getItems().add(vuelo);
+            }
         }
-        long aerolinea = Session.getInstance().getAirline();
-        System.out.println(aerolinea);
-        if (airlineRepository.findOneById(aerolinea)==null){
-            System.out.println("error");
-            return;
-        }
-        String ICA0= airlineRepository.findOneById(aerolinea).getICAO();
-        if (vueloMgr.obtenerVuelosAerolinea(ICA0)==null){
-            System.out.println("No hay vuelos disponibles");
-            return;
-        }
-        choiceBoxFlights.getItems().addAll(vueloMgr.obtenerVuelosAerolinea(ICA0).toString());
-    }
+
 
     public boolean existsPassenger(String passport) {
         return passengerMgr.existsPassenger(passport);
     }
+
     public String generateMail(String nombre, String apellido) {
         return passengerMgr.generateMail(nombre,apellido);
+    }
+    public void addPassenger(){
+        String passport= txtPasaporte.getText();
+        String apellido= txtApellido.getText();
+        String nombre= txtNombre.getText();
+        String nacionalidad= txtNacionalidad.getText();
+        Vuelo flight = flights.getSelectionModel().getSelectedItem();
+        if (!existsPassenger(passport)){
+            String mail= generateMail(nombre,apellido);
+            Passenger passenger = new Passenger(passport,nacionalidad,nombre,apellido,mail);
+            passengerMgr.addPassenger(passenger);
+            vueloMgr.registerPassenger(passenger,flight);
+        }
+        else
+        {
+            Passenger passenger = passengerMgr.getPassenger(passport);
+            vueloMgr.registerPassenger(passenger,flight);
+        }
+
+
     }
     @FXML
     void close(ActionEvent actionEvent) {

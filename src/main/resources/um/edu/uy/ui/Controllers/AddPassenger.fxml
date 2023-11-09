@@ -2,8 +2,9 @@
 
 <?import javafx.scene.control.Accordion?>
 <?import javafx.scene.control.Button?>
-<?import javafx.scene.control.ChoiceBox?>
 <?import javafx.scene.control.Label?>
+<?import javafx.scene.control.TableColumn?>
+<?import javafx.scene.control.TableView?>
 <?import javafx.scene.control.TextField?>
 <?import javafx.scene.layout.HBox?>
 <?import javafx.scene.layout.Pane?>
@@ -23,18 +24,24 @@
             <Label layoutX="30.0" layoutY="126.0" prefHeight="31.0" prefWidth="227.0" text="Apellido" />
             <Label layoutX="30.0" layoutY="165.0" prefHeight="25.0" prefWidth="227.0" text="Pasaporte" />
             <Label layoutX="32.0" layoutY="200.0" prefHeight="31.0" prefWidth="234.0" text="Nacionalidad" />
-            <Label layoutX="40.0" layoutY="264.0" prefHeight="37.0" prefWidth="227.0" text="Vuelo" />
-            <Label layoutX="40.0" layoutY="301.0" prefHeight="31.0" prefWidth="227.0" text="Lugares disponibles" />
+            <Label layoutX="30.0" layoutY="266.0" prefHeight="37.0" prefWidth="227.0" text="Vuelos" />
          </children>
       </Pane>
       <Pane prefHeight="400.0" prefWidth="341.0" style="-fx-background-color: #FDF47E;">
          <children>
-            <TextField fx:id="txtpasaporte" layoutX="14.0" layoutY="163.0" />
-            <TextField fx:id="txtnombre" layoutX="14.0" layoutY="70.0" />
-            <TextField fx:id="txtapellido" layoutX="14.0" layoutY="118.0" />
-            <TextField fx:id="txtnacionalidad" layoutX="14.0" layoutY="200.0" />
-            <ChoiceBox fx:id="choiceBoxFlights" layoutX="14.0" layoutY="269.0" prefHeight="25.0" prefWidth="215.0" />
-            <Label fx:id="txtlugares" layoutX="14.0" layoutY="312.0" prefHeight="17.0" prefWidth="185.0" text="Lugares disponibles en el vuelo" />
+            <TextField fx:id="txtPasaporte" layoutX="14.0" layoutY="163.0" />
+            <TextField fx:id="txtNombre" layoutX="14.0" layoutY="70.0" />
+            <TextField fx:id="txtApellido" layoutX="14.0" layoutY="118.0" />
+            <TextField fx:id="txtNacionalidad" layoutX="14.0" layoutY="200.0" />
+            <TableView fx:id="flights" layoutX="14.0" layoutY="250.0" prefHeight="96.0" prefWidth="297.0">
+              <columns>
+                <TableColumn fx:id="flightNumber" prefWidth="75.0" text="FlightNumber" />
+                 <TableColumn fx:id="originAirport" prefWidth="75.0" text="Origin Airport" />
+                 <TableColumn fx:id="destinationAirport" prefWidth="75.0" text="Destination Airport" />
+                 <TableColumn fx:id="availableSeats" prefWidth="75.0" text="AvaivableSeats" />
+              </columns>
+            </TableView>
+            <Button fx:id="bttnAdd" layoutX="248.0" layoutY="361.0" mnemonicParsing="false" onAction="#addPassenger" text="Add" />
          </children></Pane>
       <Accordion />
       <Label text="Label" />

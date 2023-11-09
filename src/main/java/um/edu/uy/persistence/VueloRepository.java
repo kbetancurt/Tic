@@ -12,6 +12,8 @@ public interface VueloRepository extends CrudRepository<Vuelo,Long> {
     public Vuelo findOneByICAOaerolinea(String IATAAerolinea);
     public Vuelo findAllByAeropuertoDestino(String aeropuertoDestino);
     public Vuelo findAllByAeropuertoOrigen(String aeropuertoOrigen);
-    public Vuelo findAllByICAOaerolinea(String ICAOaerolinea);
+    public List<Vuelo> findAllByICAOaerolinea(String ICAOaerolinea);
+    public Vuelo findOneById(long id);
+    public Vuelo findByNumero(long flightNumber);
 
 }

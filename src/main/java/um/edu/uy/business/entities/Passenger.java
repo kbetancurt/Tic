@@ -5,6 +5,8 @@ import lombok.Setter;
 import org.hibernate.annotations.GenericGenerator;
 
 import javax.persistence.*;
+import java.util.ArrayList;
+import java.util.List;
 
 @Getter
 @Setter
@@ -20,13 +22,11 @@ public class Passenger{
         public String passport;
         public String nationality;
         public String mail;
-        public String role;
         public String name;
         public String lastName;
         public String password;
-
-
-
+        @ManyToMany(mappedBy = "passengerList")
+        public List<Vuelo> vueloList= new ArrayList<>();
 
         public Passenger() {
         }

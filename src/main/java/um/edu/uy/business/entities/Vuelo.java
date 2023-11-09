@@ -6,12 +6,11 @@ import lombok.NoArgsConstructor;
 import lombok.Setter;
 import org.hibernate.annotations.GenericGenerator;
 
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.Id;
-import javax.persistence.Table;
+import javax.persistence.*;
 
 import java.time.LocalDateTime;
+import java.util.ArrayList;
+import java.util.List;
 
 
 @NoArgsConstructor
@@ -31,6 +30,7 @@ public class Vuelo {
     public String aeropuertoDestino;
     public String matricula;
     public Integer asientos;
+    public Integer asientosDisponibles;
     public Integer bultos;
     public LocalDateTime horarioSalidaEst;
     public LocalDateTime horarioLLegadaEst;
@@ -39,6 +39,13 @@ public class Vuelo {
     public boolean aprobadoSalida;
     public boolean aprobadoLLegada;
     public String estado;
+    @ManyToMany
+    @JoinTable(
+            name = "passenger_flight",
+            joinColumns = @JoinColumn(name = "vuelo_id"),
+            inverseJoinColumns = @JoinColumn(name = "passenger_id")
+    )
+    public List<Passenger> passengerList= new ArrayList<>();
 
 
 
@@ -56,7 +63,7 @@ public class Vuelo {
         this.aprobadoSalida = false;
         this.aprobadoLLegada = false;
         this.estado = "pendiente";
-
+        this.asientosDisponibles=asientos;
     }
 
     public boolean getAprobadoSalida() {

@@ -3,6 +3,7 @@ package um.edu.uy.business;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import um.edu.uy.business.entities.Passenger;
+import um.edu.uy.business.entities.Vuelo;
 import um.edu.uy.persistence.PassengerRepository;
 
 @Service
@@ -25,5 +26,13 @@ public class PassengerMgr {
             }
         }
         return newmail;
+    }
+    public Passenger getPassenger(String passport) {
+        return passengerRepository.findOneByPassport(passport);
+    }
+    public void registerFlight(Passenger passenger, Vuelo flight){
+        passenger.getVueloList().add(flight);
+        passengerRepository.save(passenger);
+
     }
 }

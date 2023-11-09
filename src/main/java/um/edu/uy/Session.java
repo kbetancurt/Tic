@@ -12,7 +12,7 @@ public final class Session {
     private static Session instance = null;
     private String user;
     private String role;
-    private String airport;
+    private String  airport;
     private long airline;
 
     private Session() {
@@ -27,7 +27,6 @@ public final class Session {
 
     public void setUser(String user) {
         this.user = user;
-
     }
 
     public void setAirline(long airline) {

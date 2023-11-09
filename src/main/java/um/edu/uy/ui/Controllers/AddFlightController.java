@@ -19,11 +19,14 @@ import java.time.LocalDate;
 import java.time.LocalDateTime;
 import java.time.LocalTime;
 import javafx.scene.control.TextField;
+import um.edu.uy.persistence.AirportRepository;
 
 @Component
 public class AddFlightController {
     @Autowired
     private AeroportEmployeeMgr aeroportEmployeeMgr;
+    @Autowired
+    private AirportRepository airportRepository;
 
     @Autowired
     private AirportMgr airportMgr;
@@ -98,7 +101,7 @@ public class AddFlightController {
         if(airlineRepository ==null){
             System.out.println("ERRROR");
         }
-        String ICAO= airlineRepository.findOneById(Session.getInstance().getAirline()).getICAO();
+        String ICAO= airportRepository.findOneByICAO(Session.getInstance().getAirport()).getICAO();
         String IATAAerolinea= airlineRepository.findOneById(Session.getInstance().getAirline()).getIATA();
         String aeropuertoOrigen=ICAO;
         String aeropuertoDestino=choiceBoxDAirport.getValue();
