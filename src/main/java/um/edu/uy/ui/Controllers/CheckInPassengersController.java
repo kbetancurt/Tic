@@ -74,7 +74,7 @@ public class CheckInPassengersController {
             return;
         }
         String ICA0= airlineRepository.findOneById(aerolinea).getICAO();
-        if (vueloMgr.obtenerVuelosAerolinea(ICA0)==null){
+        if (vueloMgr.obtenerVuelosAerolinea()==null){
             System.out.println("No hay vuelos disponibles");
             return;
         }

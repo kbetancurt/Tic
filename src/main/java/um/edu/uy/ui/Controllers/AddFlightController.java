@@ -142,9 +142,11 @@ public class AddFlightController {
 
         else {
             vueloMgr.addVuelo(vuelo);
+
         }
 
         showAlert("Vuelo agregado","Se agrego con exito el vuelo");
+        close(new ActionEvent());
 
 
     }

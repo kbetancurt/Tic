@@ -65,7 +65,7 @@ public class VueloMgr {
         vuelos1.forEach(vuelo -> {vuelos.add(vuelo.toString());});
         return vuelos1;}
     public Vuelo getVueloAerolinea(Long numero){
-        return vueloRepository.findOnebyNumero(numero);
+        return vueloRepository.findOneByNumero(numero);
     }
 
     public List<Long> numerosVuelos(){
