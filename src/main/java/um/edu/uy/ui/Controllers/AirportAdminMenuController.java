@@ -3,6 +3,7 @@ package um.edu.uy.ui.Controllers;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
+import javafx.scene.Node;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
@@ -27,6 +28,13 @@ public class AirportAdminMenuController {
 
     @FXML
     private Button approvalBtn;
+
+    @FXML
+    private Button bttnAddAirlineEmployee;
+
+    @FXML
+
+    private Button bttnClose;
 
 
     @FXML
@@ -67,6 +75,25 @@ public class AirportAdminMenuController {
         stage.setScene(new Scene(root));
         stage.show();
     }
+
+    @FXML
+    public void addAirlineEmployee(ActionEvent event) throws Exception {
+        FXMLLoader fxmlLoader = new FXMLLoader();
+        fxmlLoader.setControllerFactory(Main.getContext()::getBean);
+        Parent root = fxmlLoader.load(AddAirlineController.class.getResourceAsStream("AddAirlaneEmployee.fxml"));
+        Stage stage = new Stage();
+        stage.setScene(new Scene(root));
+        stage.show();
+    }
+
+    void close(ActionEvent actionEvent)
+    {
+        Node source = (Node)  actionEvent.getSource();
+        Stage stage  = (Stage) source.getScene().getWindow();
+        stage.close();
+    }
+
+
 
     
 
