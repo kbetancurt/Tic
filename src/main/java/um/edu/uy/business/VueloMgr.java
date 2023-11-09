@@ -4,13 +4,11 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import um.edu.uy.Session;
 import um.edu.uy.business.entities.Airline;
-import um.edu.uy.business.entities.Passenger;
 import um.edu.uy.business.entities.Vuelo;
 import um.edu.uy.business.exceptions.InvalidFlightInformation;
 import um.edu.uy.persistence.AirlineRepository;
 import um.edu.uy.persistence.VueloRepository;
 
-import javax.transaction.Transactional;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -66,9 +64,17 @@ public class VueloMgr {
         List<Vuelo> vuelos1 = (List<Vuelo>) vueloRepository.findAllByICAOaerolinea(aerolinea);
         vuelos1.forEach(vuelo -> {vuelos.add(vuelo.toString());});
         return vuelos1;}
+    public Vuelo getVueloAerolinea(Long numero){
+        return vueloRepository.findOnebyNumero(numero);
+    }
 
+    public List<Long> numerosVuelos(){
+        List<Long>flightNumbers = new ArrayList<>();
+        List<Vuelo> vuelos = (List<Vuelo>) vueloRepository.findAll();
+        vuelos.forEach(flight -> { flightNumbers.add(flight.getNumero());});
+        return flightNumbers;
 
-
+    }
 
 
 

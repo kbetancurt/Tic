@@ -69,7 +69,5 @@ public class Vuelo {
         return aprobadoLLegada;
     }
 
-
-
-
+    public long getNumero(){ return numero;}
 }

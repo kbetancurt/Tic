@@ -1,0 +1,54 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.Cursor?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.ChoiceBox?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.layout.Pane?>
+<?import javafx.scene.text.Font?>
+
+<Pane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="319.0" prefWidth="514.0" xmlns="http://javafx.com/javafx/20.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="um.edu.uy.ui.Controllers.CheckInPassengersController">
+   <children>
+      <Label alignment="CENTER" prefHeight="40.0" prefWidth="514.0" style="-fx-background-color: #FDF47E;" text="Check In Passenger">
+         <font>
+            <Font name="Bell MT" size="34.0" />
+         </font>
+      </Label>
+      <TextField fx:id="txtName" layoutX="257.0" layoutY="121.0" prefHeight="25.0" prefWidth="203.0">
+         <cursor>
+            <Cursor fx:constant="TEXT" />
+         </cursor></TextField>
+      <Label layoutX="80.0" layoutY="120.0" prefHeight="27.0" prefWidth="63.0" text="Name">
+         <font>
+            <Font size="18.0" />
+         </font>
+      </Label>
+      <Label layoutX="80.0" layoutY="160.0" prefHeight="27.0" prefWidth="97.0" text="Last Name">
+         <font>
+            <Font size="18.0" />
+         </font>
+      </Label>
+      <Label layoutX="80.0" layoutY="200.0" prefHeight="27.0" prefWidth="97.0" text="Passport">
+         <font>
+            <Font size="18.0" />
+         </font>
+      </Label>
+      <TextField fx:id="txtLastName" layoutX="257.0" layoutY="161.0" prefHeight="25.0" prefWidth="203.0">
+         <cursor>
+            <Cursor fx:constant="TEXT" />
+         </cursor></TextField>
+      <TextField fx:id="txtPassport" layoutX="257.0" layoutY="201.0" prefHeight="25.0" prefWidth="203.0">
+         <cursor>
+            <Cursor fx:constant="TEXT" />
+         </cursor></TextField>
+      <Button fx:id="bttnCheck" layoutX="310.0" layoutY="272.0" mnemonicParsing="false" onAction="#checkPassenger" prefHeight="25.0" prefWidth="63.0" text="Accept" />
+      <Button fx:id="bttnCancel" layoutX="397.0" layoutY="272.0" mnemonicParsing="false" onAction="#close" prefHeight="25.0" prefWidth="63.0" text="Cancel" />
+      <Label layoutX="80.0" layoutY="80.0" prefHeight="27.0" prefWidth="63.0" text="Flight">
+         <font>
+            <Font size="18.0" />
+         </font>
+      </Label>
+      <ChoiceBox fx:id="choiceBoxFlight" layoutX="257.0" layoutY="81.0" prefHeight="25.0" prefWidth="203.0" />
+   </children>
+</Pane>
