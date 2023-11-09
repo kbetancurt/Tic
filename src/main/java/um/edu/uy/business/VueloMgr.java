@@ -3,6 +3,7 @@ package um.edu.uy.business;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import um.edu.uy.business.entities.Airline;
+import um.edu.uy.business.entities.Airport;
 import um.edu.uy.business.entities.Vuelo;
 import um.edu.uy.business.exceptions.InvalidFlightInformation;
 import um.edu.uy.persistence.AirlineRepository;
@@ -62,7 +63,17 @@ public class VueloMgr {
         vuelos1.forEach(vuelo -> {vuelos.add(vuelo.toString());});
         return vuelos1;}
 
+    public Vuelo getVueloAerolinea(Long numero){
+        return vueloRepository.findOnebyNumero(numero);
+    }
 
+    public List<Long> numerosVuelos(){
+        List<Long>flightNumbers = new ArrayList<>();
+        List<Vuelo> vuelos = (List<Vuelo>) vueloRepository.findAll();
+        vuelos.forEach(flight -> { flightNumbers.add(flight.getNumero());});
+        return flightNumbers;
+
+    }
 
 
 
