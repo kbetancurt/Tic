@@ -37,7 +37,7 @@ public class SelectGateController {
         try {
             FXMLLoader fxmlLoader = new FXMLLoader();
             fxmlLoader.setControllerFactory(Main.getContext()::getBean);
-            Parent root = fxmlLoader.load(SelectGateController.class.getResourceAsStream("SelectGate.fxml"));
+            Parent root = fxmlLoader.load(SelectGateController.class.getResourceAsStream("SelectRunway.fxml"));
             Stage stage = new Stage();
             stage.setScene(new Scene(root));
             stage.show();

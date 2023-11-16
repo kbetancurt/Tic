@@ -86,6 +86,7 @@ public class AirportAdminMenuController {
         stage.show();
     }
 
+    @FXML
     void close(ActionEvent actionEvent)
     {
         Node source = (Node)  actionEvent.getSource();
