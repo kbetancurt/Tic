@@ -1,28 +1,57 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
-<?import javafx.scene.control.*?>
-<?import javafx.scene.layout.*?>
-<?import javafx.scene.text.*?>
+<?import com.jfoenix.controls.JFXButton?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.TableColumn?>
+<?import javafx.scene.control.TableView?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.Pane?>
+<?import javafx.scene.text.Font?>
 
-<AnchorPane prefHeight="400.0" prefWidth="600.0" style="-fx-background-color: #FDF47E;" xmlns="http://javafx.com/javafx/17.0.2-ea" xmlns:fx="http://javafx.com/fxml/1" fx:controller="um.edu.uy.ui.Controllers.FlightViewerController">
+<AnchorPane prefHeight="460.0" prefWidth="665.0" xmlns="http://javafx.com/javafx/20.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="um.edu.uy.ui.Controllers.FlightViewerController">
    <children>
-      <TableView fx:id="flightTbl" layoutX="25.0" layoutY="77.0" prefHeight="268.0" prefWidth="550.0">
+      <Pane layoutY="58.0" prefHeight="470.0" prefWidth="325.0" style="-fx-background-color: #FFF2B3;" />
+      <TableView fx:id="flightTbl" layoutX="15.0" layoutY="71.0" prefHeight="397.0" prefWidth="635.0">
         <columns>
             <TableColumn fx:id="airlineCol" prefWidth="75.0" text="Airline" />
             <TableColumn fx:id="originCol" prefWidth="75.0" text="Origin" />
-            <TableColumn fx:id="destinationCol" prefWidth="75.0" text="Destination" />
-            <TableColumn fx:id="departureCol" prefWidth="75.0" text="Departure" />
-            <TableColumn fx:id="arrivalCol" prefWidth="75.0" text="Arrival" />
-            <TableColumn fx:id="approvedOriginCol" prefWidth="75.0" text="aprobado origen" />
-            <TableColumn fx:id="approvedDestinationCol" prefWidth="75.0" text="aprobado destino" />
+            <TableColumn fx:id="destinationCol" prefWidth="86.66665649414062" text="Destination" />
+            <TableColumn fx:id="departureCol" prefWidth="79.99998474121094" text="Departure" />
+            <TableColumn fx:id="arrivalCol" prefWidth="82.66668701171875" text="Arrival" />
+            <TableColumn fx:id="approvedOriginCol" prefWidth="119.99996948242188" text="aprobado origen" />
+            <TableColumn fx:id="approvedDestinationCol" prefWidth="115.3333740234375" text="aprobado destino" />
         </columns>
       </TableView>
-      <Button fx:id="ApproveBtn" layoutX="211.0" layoutY="355.0" mnemonicParsing="false" style="-fx-background-color: #00b300;" text="Approve" />
-      <Button fx:id="DeclineBtn" layoutX="339.0" layoutY="355.0" mnemonicParsing="false" style="-fx-background-color: #ff0000;" text="Decline" />
-      <Label layoutX="20.0" layoutY="6.0" prefHeight="70.0" prefWidth="560.0" text="        Incoming flight approval  " textAlignment="CENTER">
+      <Label prefHeight="58.0" prefWidth="665.0" style="-fx-background-color: #FFC300;" text="Flight Approval" textAlignment="CENTER">
          <font>
-            <Font name="System Bold" size="34.0" />
+            <Font name="Microsoft JhengHei Light" size="34.0" />
          </font>
       </Label>
+      <JFXButton fx:id="bttnAddEmployee" alignment="CENTER" layoutX="390.0" layoutY="480.0" onAction="#addAirlineAdmin" prefHeight="33.0" prefWidth="125.0" ripplerFill="#ffc300" style="-fx-background-color: #FFC300; -fx-background-radius: 5em; -fx-border-radius: 5em;" text="Approve">
+         <font>
+            <Font name="Microsoft JhengHei" size="12.0" />
+         </font>
+         <graphic>
+            <ImageView fitHeight="25.0" fitWidth="34.0" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@../../../../../Images/approval.png" />
+               </image>
+            </ImageView>
+         </graphic>
+      </JFXButton>
+      <JFXButton fx:id="bttnAddEmployee1" alignment="CENTER" layoutX="528.0" layoutY="480.0" onAction="#addAirlineAdmin" prefHeight="33.0" prefWidth="125.0" ripplerFill="#ffc300" style="-fx-background-color: #FFC300; -fx-background-radius: 5em; -fx-border-radius: 5em;" text="Denied">
+         <font>
+            <Font name="Microsoft JhengHei" size="12.0" />
+         </font>
+         <graphic>
+            <ImageView fitHeight="25.0" fitWidth="34.0" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@../../../../../Images/cross.png" />
+               </image>
+            </ImageView>
+         </graphic>
+      </JFXButton>
    </children>
 </AnchorPane>

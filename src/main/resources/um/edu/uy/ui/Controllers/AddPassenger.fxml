@@ -1,42 +1,100 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
-<?import javafx.scene.control.*?>
-<?import javafx.scene.layout.*?>
-<?import javafx.scene.text.*?>
+<?import com.jfoenix.controls.JFXButton?>
+<?import javafx.scene.Cursor?>
+<?import javafx.scene.Group?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.TableColumn?>
+<?import javafx.scene.control.TableView?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.layout.BorderPane?>
+<?import javafx.scene.layout.Pane?>
+<?import javafx.scene.text.Font?>
 
-<HBox maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/17.0.2-ea" xmlns:fx="http://javafx.com/fxml/1" fx:controller="um.edu.uy.ui.Controllers.PassengerController">
-   <children>
-      <Pane prefHeight="400.0" prefWidth="322.0">
+<fx:root maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="461.0" prefWidth="679.0" type="BorderPane" xmlns="http://javafx.com/javafx/20.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="um.edu.uy.ui.Controllers.PassengerController">
+   <top>
+      <Label prefHeight="58.0" prefWidth="679.0" style="-fx-background-color: #FFC300;" text="Passenger Administration" BorderPane.alignment="CENTER">
+         <font>
+            <Font name="Microsoft JhengHei Light" size="34.0" />
+         </font>
+      </Label>
+   </top>
+   <left>
+      <Pane prefHeight="200.0" prefWidth="325.0" style="-fx-background-color: #FFF2B3;" BorderPane.alignment="CENTER">
          <children>
-            <Label alignment="CENTER" prefHeight="55.0" prefWidth="297.0" style="-fx-background-color: #FDF47E;" text="Passenger administration">
-               <font>
-                  <Font name="Bell MT" size="26.0" />
-               </font>
-            </Label>
-            <Button fx:id="bttnclose" layoutX="14.0" layoutY="361.0" mnemonicParsing="false" onAction="#close" text="Cancel" />
-            <Label layoutX="30.0" layoutY="91.0" prefHeight="25.0" prefWidth="227.0" text="Nombre" />
-            <Label layoutX="30.0" layoutY="126.0" prefHeight="31.0" prefWidth="227.0" text="Apellido" />
-            <Label layoutX="30.0" layoutY="165.0" prefHeight="25.0" prefWidth="227.0" text="Pasaporte" />
-            <Label layoutX="32.0" layoutY="200.0" prefHeight="31.0" prefWidth="234.0" text="Nacionalidad" />
-            <Label layoutX="30.0" layoutY="266.0" prefHeight="37.0" prefWidth="227.0" text="Vuelos" />
+            <Group layoutX="17.0" layoutY="81.0">
+               <children>
+                  <Label layoutY="1.0" prefHeight="29.0" prefWidth="61.0" text="Name">
+                     <font>
+                        <Font name="Microsoft JhengHei Light" size="20.0" />
+                     </font>
+                  </Label>
+                  <Label layoutY="51.0" prefHeight="29.0" prefWidth="105.0" text="Last Name">
+                     <font>
+                        <Font name="Microsoft JhengHei Light" size="20.0" />
+                     </font>
+                  </Label>
+                  <Label layoutY="101.0" prefHeight="29.0" prefWidth="105.0" text="Passport">
+                     <font>
+                        <Font name="Microsoft JhengHei Light" size="20.0" />
+                     </font>
+                  </Label>
+                  <Label layoutY="151.0" prefHeight="29.0" prefWidth="105.0" text="Nationality">
+                     <font>
+                        <Font name="Microsoft JhengHei Light" size="20.0" />
+                     </font>
+                  </Label>
+                  <TextField fx:id="txtNombre" layoutX="105.0" prefHeight="31.0" prefWidth="187.0" style="-fx-background-radius: 5em; -fx-border-radius: 5em;">
+                     <cursor>
+                        <Cursor fx:constant="TEXT" />
+                     </cursor>
+                  </TextField>
+                  <TextField fx:id="txtApellido" layoutX="105.0" layoutY="50.0" prefHeight="31.0" prefWidth="187.0" style="-fx-background-radius: 5em; -fx-border-radius: 5em;">
+                     <cursor>
+                        <Cursor fx:constant="TEXT" />
+                     </cursor>
+                  </TextField>
+                  <TextField fx:id="txtPasaporte" layoutX="105.0" layoutY="100.0" prefHeight="31.0" prefWidth="187.0" style="-fx-background-radius: 5em; -fx-border-radius: 5em;">
+                     <cursor>
+                        <Cursor fx:constant="TEXT" />
+                     </cursor>
+                  </TextField>
+                  <TextField fx:id="txtNacionalidad" layoutX="105.0" layoutY="150.0" prefHeight="31.0" prefWidth="187.0" style="-fx-background-radius: 5em; -fx-border-radius: 5em;">
+                     <cursor>
+                        <Cursor fx:constant="TEXT" />
+                     </cursor>
+                  </TextField>
+               </children>
+            </Group>
          </children>
       </Pane>
-      <Pane prefHeight="400.0" prefWidth="341.0" style="-fx-background-color: #FDF47E;">
+   </left>
+   <right>
+      <Pane prefHeight="403.0" prefWidth="355.0" BorderPane.alignment="CENTER">
          <children>
-            <TextField fx:id="txtPasaporte" layoutX="14.0" layoutY="163.0" />
-            <TextField fx:id="txtNombre" layoutX="14.0" layoutY="70.0" />
-            <TextField fx:id="txtApellido" layoutX="14.0" layoutY="118.0" />
-            <TextField fx:id="txtNacionalidad" layoutX="14.0" layoutY="200.0" />
-            <TableView fx:id="flights" layoutX="14.0" layoutY="250.0" prefHeight="96.0" prefWidth="227.0">
+            <TableView fx:id="flights" editable="true" layoutY="34.0" prefHeight="317.0" prefWidth="353.0">
               <columns>
-                <TableColumn fx:id="flightNumber" prefWidth="75.0" text="FlightNumber" />
-                 <TableColumn fx:id="originAirport" prefWidth="75.0" text="Origin Airport" />
-                 <TableColumn fx:id="destinationAirport" prefWidth="75.0" text="Destination Airport" />
+                <TableColumn fx:id="flightNumber" prefWidth="100.66668450832367" text="Flight Number" />
+                <TableColumn fx:id="originAirport" prefWidth="113.9999771118164" text="Origin Airport" />
+                 <TableColumn fx:id="destinationAirport" prefWidth="135.3332977294922" text="Destination Airport" />
               </columns>
             </TableView>
-            <Button fx:id="bttnAdd" layoutX="248.0" layoutY="361.0" mnemonicParsing="false" onAction="#addPassenger" text="Add" />
-         </children></Pane>
-      <Accordion />
-      <Label text="Label" />
-   </children>
-</HBox>
+            <Label alignment="CENTER" layoutX="-2.0" prefHeight="35.0" prefWidth="356.0" style="-fx-background-color: #FFF2B3;" text="Flight">
+               <font>
+                  <Font name="Microsoft JhengHei Light" size="20.0" />
+               </font>
+            </Label>
+            <JFXButton fx:id="btnClose" layoutX="265.0" layoutY="357.0" onAction="#close" prefHeight="32.0" prefWidth="75.0" ripplerFill="#ffc300" style="-fx-background-color: #FFC300; -fx-background-radius: 5em; -fx-border-radius: 5em;" text="Cancel">
+               <font>
+                  <Font name="Microsoft JhengHei" size="12.0" />
+               </font>
+            </JFXButton>
+            <JFXButton fx:id="btnAdd" layoutX="177.0" layoutY="357.0" onAction="#addPassenger" prefHeight="32.0" prefWidth="75.0" ripplerFill="#ffc300" style="-fx-background-color: #FFC300; -fx-background-radius: 5em; -fx-border-radius: 5em;" text="Add">
+               <font>
+                  <Font name="Microsoft JhengHei" size="12.0" />
+               </font>
+            </JFXButton>
+         </children>
+      </Pane>
+   </right>
+</fx:root>

@@ -1,41 +1,80 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
-<?import javafx.scene.control.*?>
-<?import javafx.scene.image.*?>
-<?import javafx.scene.layout.*?>
-<?import javafx.scene.text.*?>
+<?import com.jfoenix.controls.JFXButton?>
+<?import javafx.scene.Cursor?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.PasswordField?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.BorderPane?>
+<?import javafx.scene.layout.Pane?>
+<?import javafx.scene.text.Font?>
 
-<HBox maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/17.0.2-ea" xmlns:fx="http://javafx.com/fxml/1" fx:controller="um.edu.uy.ui.Controllers.LogInController">
-   <children>
-      <Pane prefHeight="400.0" prefWidth="260.0">
+
+<fx:root maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" type="BorderPane" xmlns="http://javafx.com/javafx/20.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="um.edu.uy.ui.Controllers.LogInController">
+   <top>
+      <Label prefHeight="58.0" prefWidth="600.0" style="-fx-background-color: #FFC300;" text="Log In" BorderPane.alignment="CENTER">
+         <font>
+            <Font name="Microsoft JhengHei Light" size="34.0" />
+         </font>
+      </Label>
+   </top>
+   <left>
+      <Pane prefHeight="200.0" prefWidth="325.0" style="-fx-background-color: #FFF2B3;" BorderPane.alignment="CENTER">
          <children>
-            <Label alignment="CENTER" prefHeight="55.0" prefWidth="266.0" style="-fx-background-color: #FDF47E;" text="LOG IN">
+            <Label layoutX="126.0" layoutY="60.0" text="Email">
                <font>
-                  <Font name="Bell MT" size="26.0" />
+                  <Font name="Microsoft JhengHei Light" size="20.0" />
                </font>
+               <graphic>
+                  <ImageView fitHeight="21.0" fitWidth="21.0" pickOnBounds="true" preserveRatio="true">
+                     <image>
+                        <Image url="@../../../../../Images/mail.png" />
+                     </image>
+                  </ImageView>
+               </graphic>
             </Label>
-            <Label alignment="CENTER" layoutX="-5.0" layoutY="107.0" prefHeight="17.0" prefWidth="266.0" text="Mail">
+            <Label layoutX="107.0" layoutY="160.0" text="Password">
                <font>
-                  <Font size="16.0" />
+                  <Font name="Microsoft JhengHei Light" size="20.0" />
                </font>
+               <graphic>
+                  <ImageView fitHeight="21.0" fitWidth="21.0" pickOnBounds="true" preserveRatio="true">
+                     <image>
+                        <Image url="@../../../../../Images/lock.png" />
+                     </image>
+                  </ImageView>
+               </graphic>
             </Label>
-            <Label alignment="CENTER" layoutY="207.0" prefHeight="25.0" prefWidth="255.0" text="Password">
-               <font>
-                  <Font size="16.0" />
-               </font>
-            </Label>
-            <TextField fx:id="txtMailUser" layoutX="3.0" layoutY="142.0" prefHeight="25.0" prefWidth="249.0" promptText="Enter Mail" />
-            <PasswordField fx:id="txtPasswordUser" layoutX="3.0" layoutY="248.0" prefHeight="25.0" prefWidth="249.0" />
-            <Button fx:id="bttnLogIn" layoutX="39.0" layoutY="353.0" mnemonicParsing="false" onAction="#logIn" prefHeight="25.0" prefWidth="54.0" text="Enter" />
-            <Button fx:id="bttncancel" layoutX="157.0" layoutY="353.0" mnemonicParsing="false" onAction="#close" prefHeight="25.0" prefWidth="54.0" text="Cancel" />
+            <TextField fx:id="txtMailUser" layoutX="28.0" layoutY="110.0" prefHeight="31.0" prefWidth="270.0" style="-fx-background-radius: 5em; -fx-border-radius: 5em;" />
+            <PasswordField fx:id="txtPasswordUser" layoutX="28.0" layoutY="210.0" prefHeight="31.0" prefWidth="270.0" style="-fx-background-radius: 5em; -fx-border-radius: 5em;">
+               <cursor>
+                  <Cursor fx:constant="TEXT" />
+               </cursor>
+            </PasswordField>
          </children>
       </Pane>
-      <Pane prefHeight="400.0" prefWidth="349.0" style="-fx-background-color: #FDF47E;">
+   </left>
+   <right>
+      <Pane prefHeight="342.0" prefWidth="275.0" BorderPane.alignment="CENTER">
          <children>
-            <ImageView fitHeight="300.0" fitWidth="353.0" layoutX="-2.0" layoutY="0" pickOnBounds="false" preserveRatio="true" >
-               <Image url="/Images/LogInImage.png" backgroundLoading="true" />
+            <ImageView fitHeight="253.0" fitWidth="253.0" layoutX="11.0" layoutY="70.0" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@../../../../../Images/LogInImage.png" />
+               </image>
             </ImageView>
-
-         </children></Pane>
-   </children>
-</HBox>
+            <JFXButton fx:id="bttnclose" layoutX="201.0" layoutY="296.0" onAction="#close" prefHeight="32.0" prefWidth="60.0" ripplerFill="#ffc300" style="-fx-background-color: #FFC300; -fx-background-radius: 5em; -fx-border-radius: 5em;" text="Cancel">
+               <font>
+                  <Font name="Microsoft JhengHei" size="12.0" />
+               </font>
+            </JFXButton>
+            <JFXButton fx:id="bttnLogIn" layoutX="137.0" layoutY="296.0" onAction="#logIn" prefHeight="32.0" prefWidth="60.0" ripplerFill="#ffc300" style="-fx-background-color: #FFC300; -fx-background-radius: 5em; -fx-border-radius: 5em;" text="Enter">
+               <font>
+                  <Font name="Microsoft JhengHei" size="12.0" />
+               </font>
+            </JFXButton>
+         </children>
+      </Pane>
+   </right>
+</fx:root>
