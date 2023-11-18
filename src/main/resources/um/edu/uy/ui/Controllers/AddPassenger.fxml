@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
-<?import com.jfoenix.controls.JFXButton?>
+
 <?import javafx.scene.Cursor?>
 <?import javafx.scene.Group?>
 <?import javafx.scene.control.Label?>
@@ -11,7 +11,8 @@
 <?import javafx.scene.layout.Pane?>
 <?import javafx.scene.text.Font?>
 
-<fx:root maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="461.0" prefWidth="679.0" type="BorderPane" xmlns="http://javafx.com/javafx/20.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="um.edu.uy.ui.Controllers.PassengerController">
+<?import javafx.scene.control.Button?>
+<BorderPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="461.0" prefWidth="679.0" xmlns="http://javafx.com/javafx/20.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="um.edu.uy.ui.Controllers.PassengerController">
    <top>
       <Label prefHeight="58.0" prefWidth="679.0" style="-fx-background-color: #FFC300;" text="Passenger Administration" BorderPane.alignment="CENTER">
          <font>
@@ -84,17 +85,17 @@
                   <Font name="Microsoft JhengHei Light" size="20.0" />
                </font>
             </Label>
-            <JFXButton fx:id="btnClose" layoutX="265.0" layoutY="357.0" onAction="#close" prefHeight="32.0" prefWidth="75.0" ripplerFill="#ffc300" style="-fx-background-color: #FFC300; -fx-background-radius: 5em; -fx-border-radius: 5em;" text="Cancel">
+            <Button fx:id="btnClose" layoutX="265.0" layoutY="357.0" onAction="#close" prefHeight="32.0" prefWidth="75.0" ripplerFill="#ffc300" style="-fx-background-color: #FFC300; -fx-background-radius: 5em; -fx-border-radius: 5em;" text="Cancel">
                <font>
                   <Font name="Microsoft JhengHei" size="12.0" />
                </font>
-            </JFXButton>
-            <JFXButton fx:id="btnAdd" layoutX="177.0" layoutY="357.0" onAction="#addPassenger" prefHeight="32.0" prefWidth="75.0" ripplerFill="#ffc300" style="-fx-background-color: #FFC300; -fx-background-radius: 5em; -fx-border-radius: 5em;" text="Add">
+            </Button>
+            <Button fx:id="btnAdd" layoutX="177.0" layoutY="357.0" onAction="#addPassenger" prefHeight="32.0" prefWidth="75.0" ripplerFill="#ffc300" style="-fx-background-color: #FFC300; -fx-background-radius: 5em; -fx-border-radius: 5em;" text="Add">
                <font>
                   <Font name="Microsoft JhengHei" size="12.0" />
                </font>
-            </JFXButton>
+            </Button>
          </children>
       </Pane>
    </right>
-</fx:root>
+</BorderPane>

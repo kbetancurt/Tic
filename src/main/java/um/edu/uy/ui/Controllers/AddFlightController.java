@@ -71,7 +71,7 @@ public class AddFlightController {
     @Autowired
     private VueloMgr vueloMgr;
     @FXML
-    private Button btnClose;
+    private javafx.scene.control.Button btnClose;
     @FXML
     private TextField txtnumero;
 

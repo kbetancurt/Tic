@@ -42,6 +42,9 @@ public class LogInController implements Initializable {
 
     @FXML
     private Button bttnLogIn;
+
+    @FXML
+    private  Button bttnCancel;
     @Autowired
     private AirlineRepository airlineRepository;
 
