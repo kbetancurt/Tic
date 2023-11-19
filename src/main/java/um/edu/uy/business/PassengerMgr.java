@@ -12,6 +12,7 @@ public class PassengerMgr {
     private PassengerRepository passengerRepository;
     public void addPassenger(Passenger passenger) {
         passengerRepository.save(passenger);
+        System.out.println("Passenger saved");
     }
     public boolean existsPassenger(String passport) {
         return passengerRepository.existsByPassport(passport);

@@ -3,11 +3,13 @@ package um.edu.uy.ui.Controllers;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.scene.Node;
+import javafx.scene.control.Alert;
 import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
 import javafx.stage.Stage;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
+import um.edu.uy.DTO.PassengerRequest;
 import um.edu.uy.business.AirlaneMgr;
 import um.edu.uy.business.PassengerFlightMgr;
 import um.edu.uy.business.PassengerMgr;
@@ -19,6 +21,7 @@ import um.edu.uy.persistence.AirlineRepository;
 import um.edu.uy.persistence.VueloRepository;
 import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.scene.control.TextField;
+import um.edu.uy.restcontrollers.PassengerRestController;
 
 import java.awt.*;
 
@@ -26,6 +29,8 @@ import java.awt.*;
 public class PassengerController {
     @Autowired
     PassengerMgr passengerMgr;
+    @Autowired
+    PassengerRestController passengerRestController;
     @Autowired
     VueloMgr vueloMgr;
     @Autowired
@@ -86,17 +91,24 @@ public class PassengerController {
         String nacionalidad= txtNacionalidad.getText();
         Vuelo flight = flights.getSelectionModel().getSelectedItem();
         if (!existsPassenger(passport)){
+
             String mail= generateMail(nombre,apellido);
             Passenger passenger = new Passenger(passport,nacionalidad,nombre,apellido,mail);
-            passengerMgr.addPassenger(passenger);
-            passengerFlightMgr.addPassengerFlight(passenger,flight);
-            close(new ActionEvent());
+            PassengerRequest passengerRequest = new PassengerRequest();
+            passengerRequest.setApellido(apellido);
+            passengerRequest.setNacionalidad(nacionalidad);
+            passengerRequest.setNombre(nombre);
+            passengerRequest.setPassport(passport);
+            passengerRequest.setMail(mail);
+            passengerRestController.addPassenger(passengerRequest);
+            //passengerFlightMgr.addPassengerFlight(passenger,flight);
+            showAlert("Agregado exitosamente","Se agrego con exito el pasajero");
         }
         else
         {
             Passenger passenger = passengerMgr.getPassenger(passport);
             passengerFlightMgr.addPassengerFlight(passenger,flight);
-            close(new ActionEvent());
+            showAlert("Agregado exitosamente","Se agrego con exito el pasajero");
 
         }
 
@@ -107,6 +119,13 @@ public class PassengerController {
         Node source = (Node)  actionEvent.getSource();
         Stage stage  = (Stage) source.getScene().getWindow();
         stage.close();
+    }
+    private void showAlert (String title, String contextText){
+        Alert alert = new Alert(Alert.AlertType.INFORMATION);
+        alert.setTitle(title);
+        alert.setHeaderText(null);
+        alert.setContentText(contextText);
+        alert.showAndWait();
     }
 
 
