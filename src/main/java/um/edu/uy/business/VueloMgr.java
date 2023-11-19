@@ -52,6 +52,10 @@ public class VueloMgr {
 
 
     }
+    public void updatePesoVuelo(Vuelo vuelo, int peso){
+        vuelo.setBultosAcumulados(vuelo.getBultosAcumulados()+peso);
+        vueloRepository.save(vuelo);
+    }
 
     public List<Vuelo> obtenerVuelos(){
         return (List<Vuelo>) vueloRepository.findAllByAeropuertoOrigenOrAeropuertoDestinoAndHorarioSalidaEstAfter(Session.getInstance().getAirport());
@@ -81,6 +85,12 @@ public class VueloMgr {
         List<Vuelo> vuelos1 = (List<Vuelo>) vueloRepository.findAllByICAOaerolinea(aerolinea);
         vuelos1.forEach(vuelo -> {vuelos.add(vuelo.toString());});
         return vuelos1;}
+
+    public Integer peso_disponible(Vuelo vuelo){
+        return vuelo.getBultos()-vuelo.getBultosAcumulados();
+    }
+
+
 
 
 

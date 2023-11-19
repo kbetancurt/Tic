@@ -32,6 +32,7 @@ public class Vuelo {
     public Integer asientos;
     public Integer asientosDisponibles;
     public Integer bultos;
+    public Integer bultosAcumulados=0;
     public LocalDateTime horarioSalidaEst;
     public LocalDateTime horarioLLegadaEst;
     public LocalDateTime horariosSalidaReal;

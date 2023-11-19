@@ -61,6 +61,7 @@ public class PrincipalAerolinea {
         Stage stage = new Stage();
         stage.setScene(new Scene(root));
         stage.show();}
+    @FXML
     public void addPassenger(ActionEvent event) throws Exception{
         FXMLLoader fxmlLoader = new FXMLLoader();
         fxmlLoader.setControllerFactory(Main.getContext()::getBean);
@@ -69,6 +70,7 @@ public class PrincipalAerolinea {
         stage.setScene(new Scene(root));
         stage.show();}
 
+    @FXML
     public void checkInPassengers(ActionEvent event) throws Exception{
         FXMLLoader fxmlLoader = new FXMLLoader();
         fxmlLoader.setControllerFactory(Main.getContext()::getBean);
