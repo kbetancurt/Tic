@@ -30,5 +30,9 @@ public class PassengerMgr {
     public Passenger getPassenger(String passport) {
         return passengerRepository.findOneByPassport(passport);
     }
+    public Passenger getPassengerByMail(String mail) {
+        return passengerRepository.findOneByMail(mail);
+    }
+
 
 }

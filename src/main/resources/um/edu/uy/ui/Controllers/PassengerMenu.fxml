@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.TableColumn?>
+<?import javafx.scene.control.TableView?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.text.Font?>
+
+<AnchorPane prefHeight="400.0" prefWidth="600.0" style="-fx-background-color: #FDF47E;" xmlns="http://javafx.com/javafx/20.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="um.edu.uy.ui.Controllers.PassengerMenuController">
+   <children>
+      <TableView fx:id="flightTbl" layoutX="25.0" layoutY="77.0" prefHeight="106.0" prefWidth="550.0">
+         <columns>
+            <TableColumn fx:id="flightIDColFlight" prefWidth="75.0" text="ID" />
+            <TableColumn fx:id="originCol" prefWidth="75.0" text="Origin" />
+            <TableColumn fx:id="destinationCol" prefWidth="75.0" text="Destination" />
+            <TableColumn fx:id="departureCol" prefWidth="75.0" text="Departure" />
+            <TableColumn fx:id="arrivalCol" prefWidth="75.0" text="Arrival" />
+            <TableColumn fx:id="approvedOriginCol" prefWidth="75.0" text="aprobado origen" />
+            <TableColumn fx:id="approvedDestinationCol" prefWidth="75.0" text="aprobado destino" />
+            <TableColumn fx:id="airlineCol" prefWidth="75.0" text="Origin" />
+         </columns>
+      </TableView>
+      <Label layoutX="30.0" layoutY="6.0" prefHeight="70.0" prefWidth="550.0" text="Vuelos" textAlignment="CENTER">
+         <font>
+            <Font name="System Bold" size="34.0" />
+         </font>
+      </Label>
+      <TableView fx:id="passengerFlightTbl" layoutX="25.0" layoutY="266.0" prefHeight="117.0" prefWidth="550.0">
+        <columns>
+          <TableColumn fx:id="flightIdPF" prefWidth="128.66665649414062" text="ID Vuelo" />
+          <TableColumn fx:id="checkIn" prefWidth="204.66668701171875" text="Check In" />
+            <TableColumn fx:id="maletas" prefWidth="216.00006103515625" text="Maletas" />
+        </columns>
+      </TableView>
+      <Label layoutX="25.0" layoutY="189.0" prefHeight="70.0" prefWidth="550.0" text="Check-in vuelos" textAlignment="CENTER">
+         <font>
+            <Font name="System Bold" size="34.0" />
+         </font>
+      </Label>
+   </children>
+</AnchorPane>

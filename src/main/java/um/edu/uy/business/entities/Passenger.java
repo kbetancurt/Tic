@@ -16,9 +16,9 @@ import java.util.List;
             ,@UniqueConstraint(columnNames = {"passport"})})
 public class Passenger{
         @Id
-        @GeneratedValue(generator="aeroport_employees_ids")
-        @GenericGenerator(name="aeroport_employees_ids", strategy = "increment")
-        public long id_employee;
+        @GeneratedValue(generator="passenger_ids")
+        @GenericGenerator(name="passenger_ids", strategy = "increment")
+        public long id;
         public String passport;
         public String nationality;
         public String mail;

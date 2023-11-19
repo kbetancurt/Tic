@@ -17,6 +17,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 import um.edu.uy.Main;
 import um.edu.uy.business.AeroportEmployeeMgr;
+import um.edu.uy.business.PassengerMgr;
 import um.edu.uy.business.UserInfo;
 import um.edu.uy.business.entities.AeroportEmployee;
 import um.edu.uy.persistence.AirlineRepository;
@@ -33,6 +34,8 @@ import static um.edu.uy.Session.*;
 public class LogInController implements Initializable {
     @Autowired
     private AeroportEmployeeMgr aeroportEmployeeMgr;
+    @Autowired
+    private PassengerMgr passengerMgr;
 
     @FXML
     private TextField txtMailUser;
@@ -50,6 +53,7 @@ public class LogInController implements Initializable {
 
     @FXML
     private void logIn(ActionEvent event) throws IOException {
+
         if (aeroportEmployeeMgr==(null)) {
             System.out.println("ERORR");
             return;
@@ -62,6 +66,24 @@ public class LogInController implements Initializable {
                     "No se ingresaron los datos necesarios para completar el ingreso.");
 
         } else {
+            if (passengerMgr.getPassengerByMail(txtMailUser.getText()) != null) {
+                if (passengerMgr.getPassengerByMail(txtMailUser.getText()).password.equals(txtPasswordUser.getText())) {
+                    close(event);
+                    getInstance().setUser(txtMailUser.getText());
+                    getInstance().setRole("Pasajero");
+                    FXMLLoader fxmlLoader = new FXMLLoader();
+                    fxmlLoader.setControllerFactory(Main.getContext()::getBean);
+                    Parent root = fxmlLoader.load(PassengerMenuController.class.getResourceAsStream("PassengerMenu.fxml"));
+                    Stage stage = new Stage();
+                    stage.setScene(new Scene(root));
+                    stage.show();
+                }
+                else{
+                    showAlert("Datos Incorrectos!", "Mail o contraseña incorrectos");
+                }
+            }
+
+            else{
             if (aeroportEmployeeMgr.getAirportEmployee(txtMailUser.getText()) == null || !Objects.equals(aeroportEmployeeMgr.getAirportEmployee(txtMailUser.getText()).password, txtPasswordUser.getText())) {
                 showAlert("Datos Incorrectos!", "Mail o contraseña incorrectos");
 
@@ -110,7 +132,7 @@ public class LogInController implements Initializable {
                         stage.show();}
                     }
             }}
-        }
+        }}
 
 
     private void clean() {
@@ -135,5 +157,4 @@ public class LogInController implements Initializable {
     @Override
     public void initialize (URL location, ResourceBundle resources){
         }
-
 }

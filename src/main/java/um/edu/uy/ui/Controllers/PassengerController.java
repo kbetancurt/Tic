@@ -97,6 +97,7 @@ public class PassengerController {
             Passenger passenger = passengerMgr.getPassenger(passport);
             passengerFlightMgr.addPassengerFlight(passenger,flight);
             close(new ActionEvent());
+
         }
 
 
@@ -107,6 +108,7 @@ public class PassengerController {
         Stage stage  = (Stage) source.getScene().getWindow();
         stage.close();
     }
+
 
 
 }
