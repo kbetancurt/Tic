@@ -95,7 +95,7 @@ public class AddAirlineAdminController {
 
                 try {
 
-                    AeroportEmployee aeroportEmployee = new AeroportEmployee(passport,nationality,birthDate,name,lastname,address,role,airport,mail);
+                    AeroportEmployee aeroportEmployee = new AeroportEmployee(passport,nationality,birthDate,name,lastname,address,role,airport,mail,airline);
 
                     aeroportEmployeeMgr.addClient(aeroportEmployee);
 

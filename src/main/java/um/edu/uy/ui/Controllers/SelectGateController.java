@@ -70,6 +70,8 @@ public class SelectGateController {
 
                     Button gate_button = new Button(gate.getName());
                     button_grid.getChildren().add(gate_button);
+                    gate_button.setStyle("-fx-font-size: 18;  -fx-background-color: #FFC300; -fx-background-radius: 1em;");
+                    gate_button.setPrefSize(100, 100);
                     gate_button.setOnAction(event -> {gateAvailabilityMgr.occupyGate(gate, vuelo);
                         close(event);
                     });

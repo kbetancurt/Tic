@@ -57,6 +57,8 @@ public class SelectRunwayController {
 
             Button runway_button = new Button(runway.getName());
             button_grid.getChildren().add(runway_button);
+            runway_button.setStyle("-fx-background-color: #FFC300; -fx-background-radius: 5em;");
+            runway_button.setPrefSize(100, 100);
             runway_button.setOnAction(event -> {
                 runwayAvailabilityMgr.occupyRunway(runway, vuelo);
                 close(event);

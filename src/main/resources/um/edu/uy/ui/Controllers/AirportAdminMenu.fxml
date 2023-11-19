@@ -1,14 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
-<?import javafx.scene.control.Label?>
-<?import javafx.scene.image.Image?>
-<?import javafx.scene.image.ImageView?>
-<?import javafx.scene.layout.BorderPane?>
-<?import javafx.scene.layout.Pane?>
-<?import javafx.scene.text.Font?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.image.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.scene.text.*?>
 
-<?import javafx.scene.control.Button?>
-<BorderPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/20.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="um.edu.uy.ui.Controllers.AirportAdminMenuController">
+<BorderPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/11.0.14-internal" xmlns:fx="http://javafx.com/fxml/1" fx:controller="um.edu.uy.ui.Controllers.AirportAdminMenuController">
    <top>
       <Label prefHeight="58.0" prefWidth="600.0" style="-fx-background-color: #FFC300;" text=" Airport Admin Menu" BorderPane.alignment="CENTER">
          <font>
@@ -19,14 +16,14 @@
    <right>
       <Pane prefHeight="342.0" prefWidth="270.0" BorderPane.alignment="CENTER">
          <children>
-            <Button fx:id="bttnClose" layoutX="163.0" layoutY="296.0" onAction="#close" prefHeight="32.0" prefWidth="93.0"  style="-fx-background-color: #FFC300; -fx-background-radius: 5em; -fx-border-radius: 5em;" text="Cancel">
+            <Button fx:id="bttnClose" layoutX="163.0" layoutY="296.0" onAction="#close" prefHeight="32.0" prefWidth="93.0" style="-fx-background-color: #FFC300; -fx-background-radius: 5em; -fx-border-radius: 5em;" text="Cancel">
                <font>
                   <Font name="Microsoft JhengHei" size="12.0" />
                </font>
             </Button>
             <ImageView fitHeight="253.0" fitWidth="253.0" layoutX="9.0" layoutY="38.0" pickOnBounds="true" preserveRatio="true">
                <image>
-                  <Image url="/Images/LogInImage.png" />
+                  <Image url="@/Images/LogInImage.png" />
                </image>
             </ImageView>
          </children>
@@ -35,56 +32,56 @@
    <center>
       <Pane prefHeight="342.0" prefWidth="325.0" style="-fx-background-color: #FFF2B3;" BorderPane.alignment="CENTER">
          <children>
-            <Button fx:id="bttnAddAirportEmployee" alignment="CENTER"  layoutX="78.0" layoutY="30.0" onAction="#addAirportEmployee" prefHeight="33.0" prefWidth="175.0"  style="-fx-background-color: #FFC300; -fx-background-radius: 5em; -fx-border-radius: 5em;" text=" Add Airport Employee">
+            <Button fx:id="bttnAddAirportEmployee" alignment="CENTER" layoutX="78.0" layoutY="30.0" onAction="#addAirportEmployee" prefHeight="33.0" prefWidth="175.0" style="-fx-background-color: #FFC300; -fx-background-radius: 5em; -fx-border-radius: 5em;" text=" Add Airport Employee">
                <font>
                   <Font name="Microsoft JhengHei" size="12.0" />
                </font>
                <graphic>
                   <ImageView fitHeight="25.0" fitWidth="34.0" pickOnBounds="true" preserveRatio="true">
                      <image>
-                        <Image url="/Images/add.png" />
+                        <Image url="@/Images/add.png" />
                      </image>
                   </ImageView>
                </graphic>
             </Button>
-            <Button fx:id="bttnAddAirline" alignment="CENTER"  layoutX="78.0" layoutY="85.0" onAction="#addAirline" prefHeight="33.0" prefWidth="175.0"  style="-fx-background-color: #FFC300; -fx-background-radius: 5em; -fx-border-radius: 5em;" text="       Add New Airline" textAlignment="CENTER">
+            <Button fx:id="bttnAddAirline" alignment="CENTER" layoutX="78.0" layoutY="85.0" onAction="#addAirline" prefHeight="33.0" prefWidth="175.0" style="-fx-background-color: #FFC300; -fx-background-radius: 5em; -fx-border-radius: 5em;" text="       Add New Airline" textAlignment="CENTER">
                <font>
                   <Font name="Microsoft JhengHei" size="12.0" />
                </font>
             </Button>
-            <Button fx:id="bttnAddAirlineEmployee" alignment="CENTER"  layoutX="78.0" layoutY="140.0" onAction="#addAirlineEmployee" prefHeight="33.0" prefWidth="175.0"  style="-fx-background-color: #FFC300; -fx-background-radius: 5em; -fx-border-radius: 5em;" text="       Add Airline Employee">
+            <Button fx:id="bttnAddAirlineEmployee" alignment="CENTER" layoutX="78.0" layoutY="140.0" onAction="#addAirlineEmployee" prefHeight="33.0" prefWidth="175.0" style="-fx-background-color: #FFC300; -fx-background-radius: 5em; -fx-border-radius: 5em;" text="       Add Airline Employee">
                <font>
                   <Font name="Microsoft JhengHei" size="12.0" />
                </font>
             </Button>
-            <Button fx:id="approvalBtn" alignment="CENTER"  layoutX="78.0" layoutY="195.0" onAction="#flightApproval" prefHeight="33.0" prefWidth="175.0"  style="-fx-background-color: #FFC300; -fx-background-radius: 5em; -fx-border-radius: 5em;" text="       Flight Approval">
+            <Button fx:id="approvalBtn" alignment="CENTER" layoutX="78.0" layoutY="195.0" onAction="#flightApproval" prefHeight="33.0" prefWidth="175.0" style="-fx-background-color: #FFC300; -fx-background-radius: 5em; -fx-border-radius: 5em;" text="       Flight Approval">
                <font>
                   <Font name="Microsoft JhengHei" size="12.0" />
                </font>
             </Button>
-            <Button fx:id="bttnChangePassword" alignment="CENTER"  layoutX="78.0" layoutY="250.0" onAction="#changePassword" prefHeight="33.0" prefWidth="175.0"  style="-fx-background-color: #FFC300; -fx-background-radius: 5em; -fx-border-radius: 5em;" text="      Change Password">
+            <Button fx:id="bttnChangePassword" alignment="CENTER" layoutX="78.0" layoutY="250.0" onAction="#changePassword" prefHeight="33.0" prefWidth="175.0" style="-fx-background-color: #FFC300; -fx-background-radius: 5em; -fx-border-radius: 5em;" text="      Change Password">
                <font>
                   <Font name="Microsoft JhengHei" size="12.0" />
                </font>
             </Button>
             <ImageView fitHeight="25.0" fitWidth="34.0" layoutX="87.0" layoutY="89.0" pickOnBounds="true" preserveRatio="true">
                <image>
-                  <Image url="/Images/plane.png" />
+                  <Image url="@/Images/plane.png" />
                </image>
             </ImageView>
             <ImageView fitHeight="25.0" fitWidth="34.0" layoutX="87.0" layoutY="143.0" pickOnBounds="true" preserveRatio="true">
                <image>
-                  <Image url="/Images/add.png" />
+                  <Image url="@/Images/add.png" />
                </image>
             </ImageView>
             <ImageView fitHeight="21.0" fitWidth="21.0" layoutX="89.0" layoutY="201.0" pickOnBounds="true" preserveRatio="true">
                <image>
-                  <Image url="/Images/approval.png" />
+                  <Image url="@/Images/approval.png" />
                </image>
             </ImageView>
             <ImageView fitHeight="21.0" fitWidth="21.0" layoutX="89.0" layoutY="256.0" pickOnBounds="true" preserveRatio="true">
                <image>
-                  <Image url="/Images/settings.png" />
+                  <Image url="@/Images/settings.png" />
                </image>
             </ImageView>
          </children>
