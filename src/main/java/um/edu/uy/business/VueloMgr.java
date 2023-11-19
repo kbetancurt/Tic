@@ -59,11 +59,8 @@ public class VueloMgr {
     }
     public List<Vuelo> obtenerVuelosAerolinea(){
         long id= (Session.getInstance().getAirline());
-        String aerolinea= airlineRepository.findOneById(id).getICAO();
-        List<String> vuelos = new ArrayList<>();
-        List<Vuelo> vuelos1 = (List<Vuelo>) vueloRepository.findAllByICAOaerolinea(aerolinea);
-        vuelos1.forEach(vuelo -> {vuelos.add(vuelo.toString());});
-        return vuelos1;}
+        return obtenerVuelosAerolinea(id);
+    }
     public Vuelo getVueloAerolinea(Long numero){
         return vueloRepository.findOneByNumero(numero);
     }
@@ -76,6 +73,12 @@ public class VueloMgr {
 
     }
 
+    public List<Vuelo> obtenerVuelosAerolinea(long idAerolinea){
+        String aerolinea= airlineRepository.findOneById(idAerolinea).getICAO();
+        List<String> vuelos = new ArrayList<>();
+        List<Vuelo> vuelos1 = (List<Vuelo>) vueloRepository.findAllByICAOaerolinea(aerolinea);
+        vuelos1.forEach(vuelo -> {vuelos.add(vuelo.toString());});
+        return vuelos1;}
 
 
 
