@@ -15,6 +15,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 import um.edu.uy.Main;
 import um.edu.uy.business.AeroportEmployeeMgr;
+import um.edu.uy.business.PassengerMgr;
 
 import java.io.IOException;
 import java.net.URL;
@@ -25,6 +26,8 @@ public class PasswordChangeController {
 
     @Autowired
     private AeroportEmployeeMgr aeroportEmployeeMgr;
+    @Autowired
+    private PassengerMgr passengerMgr;
 
     @FXML
     private TextField txtNewPassword;
@@ -48,6 +51,32 @@ public class PasswordChangeController {
         Stage stage  = (Stage) source.getScene().getWindow();
         stage.close();
     }
+
+    @FXML
+    private void passengerPasswordChange(ActionEvent event) throws IOException {
+        if (txtNewPassword.getText() == null || txtNewPassword.getText().equals("") ||
+                txtCheckNewPassword.getText() == null || txtCheckNewPassword.getText().equals("") ||
+                txtPasswordUser.getText() == null || txtPasswordUser.getText().equals("")) {
+
+            showAlert(
+                    "Datos faltantes!",
+                    "No se ingresaron los datos necesarios para cambiar la contraseña .");
+
+
+        } else {
+            System.out.println(txtNewPassword.getText());
+            passengerMgr.updatePassword((txtMail.getText()),txtNewPassword.getText());
+            showAlert("Contraseña actualizada","Se actualizo con exito la contraseña");
+            close(event);
+            FXMLLoader fxmlLoader = new FXMLLoader();
+            fxmlLoader.setControllerFactory(Main.getContext()::getBean);
+            Parent root = fxmlLoader.load(Principal.class.getResourceAsStream("PassengerAdmin.fxml"));
+            Stage stage = new Stage();
+            stage.setScene(new Scene(root));
+            stage.show();
+        }
+    }
+
         @FXML
         private void passwordChange(ActionEvent event) throws IOException {
             if (aeroportEmployeeMgr==(null)) {
