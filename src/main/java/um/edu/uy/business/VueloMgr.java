@@ -80,6 +80,12 @@ public class VueloMgr {
         vuelos1.forEach(vuelo -> {vuelos.add(vuelo.toString());});
         return vuelos1;}
 
+    public Integer peso_disponible(Vuelo vuelo){
+        return vuelo.getBultos()-vuelo.getBultosAcumulados();
+    }
+
+
+
 
 
 

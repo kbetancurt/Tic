@@ -10,5 +10,6 @@ import java.util.List;
 public interface PassengerFlightRepository extends CrudRepository<PassengerFlight, Long>{
     PassengerFlight findByPassenger_IdAndVuelo_Id(Long idPassenger, Long idVuelo);
     List<PassengerFlight> findAllByPassenger_Id(Long idPassenger);
+    PassengerFlight findByPassengerAndVuelo(Long idPassenger, Long idVuelo);
 
 }

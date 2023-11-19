@@ -35,6 +35,13 @@ public class PassengerFlightMgr {
         return vuelos;
 
     }
+    public PassengerFlight findPassengerFlight(Passenger passenger, Vuelo vuelo){
+        return passengerFlightRepository.findByPassengerAndVuelo(passenger.getId(),vuelo.getId());
+    }
+    public Integer getVueloId(Vuelo vuelo) {
+        return Math.toIntExact(vuelo.getId());
+
+    }
 
 
 }

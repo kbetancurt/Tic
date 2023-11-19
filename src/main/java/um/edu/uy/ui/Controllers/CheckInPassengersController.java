@@ -13,12 +13,11 @@ import javafx.stage.Stage;
 import org.springframework.beans.factory.annotation.Autowired;
 import um.edu.uy.Main;
 import um.edu.uy.Session;
-import um.edu.uy.business.AirlaneMgr;
-import um.edu.uy.business.PassengerMgr;
-import um.edu.uy.business.UserInfo;
-import um.edu.uy.business.VueloMgr;
+import um.edu.uy.business.*;
 import um.edu.uy.business.entities.Airline;
 import org.springframework.stereotype.Component;
+import um.edu.uy.business.entities.Passenger;
+import um.edu.uy.business.entities.PassengerFlight;
 import um.edu.uy.business.entities.Vuelo;
 import um.edu.uy.business.exceptions.AirlineAlreadyExists;
 import um.edu.uy.business.exceptions.InvalidAirlineInformation;
@@ -30,11 +29,15 @@ import java.io.IOException;
 public class CheckInPassengersController {
     @Autowired
     AirlineRepository airlineRepository;
+    @Autowired
+    AirlaneMgr airlaneMgr;
+    @Autowired
+    VueloMgr vueloMgr;
 
     @Autowired
     PassengerMgr passengerMgr;
     @Autowired
-    VueloMgr vueloMgr;
+    PassengerFlightMgr passengerFlightMgr;
 
     @FXML
     private Button bttnCheck;
@@ -100,6 +103,18 @@ public class CheckInPassengersController {
             String passport = txtPassport.getText();
             Long flightNumber = Long.valueOf(choiceBoxFlight.getValue());
             Vuelo vuelo = vueloMgr.getVueloAerolinea(flightNumber);
+            Integer peso_disponible= vueloMgr.peso_disponible(vuelo);
+            Passenger passenger= passengerMgr.getPassenger(passport);
+            if (vuelo !=null && passenger !=null){
+                PassengerFlight passengerFlight= passengerFlightMgr.findPassengerFlight(passenger,vuelo);
+                if (passengerFlight!=null){
+
+                }
+                else{
+                    showAlert("Error","El pasajero no esta registrado en el vuelo");
+                }
+            }
+
 
             //Falta chequar que este en la tabla pasajero-vuelo y se deberia agregar el id de la valija
 

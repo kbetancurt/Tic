@@ -1,5 +1,6 @@
 package um.edu.uy.ui.Controllers;
 
+import javafx.beans.property.SimpleIntegerProperty;
 import javafx.fxml.FXML;
 import javafx.scene.control.Label;
 import javafx.scene.control.TableColumn;
@@ -69,11 +70,18 @@ public class PassengerMenuController {
         List<Vuelo> vuelos = passengerFlightMgr.obtenerVuelosPasajero(passengerFlights);
         for (Vuelo vuelo:vuelos) {
             flightTbl.getItems().add(vuelo);
+
         }
         passengerFlightTbl.getItems().clear();
-        flightIdPF.setCellValueFactory(new PropertyValueFactory<>("vuelo"));
         maletas.setCellValueFactory(new PropertyValueFactory<>("maletas"));
         checkIn.setCellValueFactory(new PropertyValueFactory<>("checkIn"));
+        flightIdPF.setCellValueFactory(cellData -> {
+            PassengerFlight passengerFlight = cellData.getValue();
+            Vuelo vuelo = passengerFlight.getVuelo();
+            Integer vueloId = Math.toIntExact((vuelo != null) ? vuelo.getId() : null);
+            return new SimpleIntegerProperty(vueloId).asObject();
+        });
+
         passengerFlightTbl.setPlaceholder(new Label("No rows to display"));
         for (PassengerFlight passengerFlight:passengerFlights) {
             passengerFlightTbl.getItems().add(passengerFlight);
