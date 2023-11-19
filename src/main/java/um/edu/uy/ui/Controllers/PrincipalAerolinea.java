@@ -25,11 +25,20 @@ public class PrincipalAerolinea {
     @FXML
     private Button bttnclose;
 
+    @FXML
+    private Button bttnAddPassenger;
+
+    @FXML
+    private Button bttnChangePassword;
+
+    @FXML
+    private Button bttnCheckInPassengers;
+
 
     public void addAirlineAdmin(ActionEvent event) throws Exception {
         FXMLLoader fxmlLoader = new FXMLLoader();
         fxmlLoader.setControllerFactory(Main.getContext()::getBean);
-        Parent root = fxmlLoader.load(AddAirlineAdminController.class.getResourceAsStream("AddAirlineAdmin.fxml"));
+        Parent root = fxmlLoader.load(AddAirlineAdminController.class.getResourceAsStream("AddAirlineEmployee.fxml"));
         Stage stage = new Stage();
         stage.setScene(new Scene(root));
         stage.show();
@@ -59,6 +68,24 @@ public class PrincipalAerolinea {
         Stage stage = new Stage();
         stage.setScene(new Scene(root));
         stage.show();}
+
+    public void checkInPassengers(ActionEvent event) throws Exception{
+        FXMLLoader fxmlLoader = new FXMLLoader();
+        fxmlLoader.setControllerFactory(Main.getContext()::getBean);
+        Parent root = fxmlLoader.load(AddFlightController.class.getResourceAsStream("CheckInPassengers.fxml"));
+        Stage stage = new Stage();
+        stage.setScene(new Scene(root));
+        stage.show();}
+
+    @FXML
+    public void changePassword(ActionEvent event) throws Exception{
+        FXMLLoader fxmlLoader = new FXMLLoader();
+        fxmlLoader.setControllerFactory(Main.getContext()::getBean);
+        Parent root = fxmlLoader.load(PasswordChangeController.class.getResourceAsStream("PasswordChange.fxml"));
+        Stage stage = new Stage();
+        stage.setScene(new Scene(root));
+        stage.show();
+    }
 
 
     @FXML

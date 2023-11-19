@@ -24,9 +24,6 @@ public class AirportAdminMenuController {
     private Button bttnChangePassword;
 
     @FXML
-    private Button bttnChangePersonalInfo;
-
-    @FXML
     private Button approvalBtn;
 
     @FXML

@@ -49,9 +49,9 @@ public class PassengerController {
     @FXML
     private TextField txtPasaporte;
     @FXML
-    private Button btnAdd;
+    private javafx.scene.control.Button btnAdd;
     @FXML
-    private Button btnClose;
+    private javafx.scene.control.Button btnClose;
     @FXML
     private TableColumn<Vuelo, Integer> flightNumber;
 
