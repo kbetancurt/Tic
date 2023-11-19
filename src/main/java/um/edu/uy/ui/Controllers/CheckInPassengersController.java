@@ -1,30 +1,19 @@
 package um.edu.uy.ui.Controllers;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
-import javafx.fxml.FXMLLoader;
 import javafx.scene.Node;
-import javafx.scene.Parent;
-import javafx.scene.Scene;
 import javafx.scene.control.Alert;
 import javafx.scene.control.Button;
 import javafx.scene.control.ChoiceBox;
 import javafx.scene.control.TextField;
 import javafx.stage.Stage;
 import org.springframework.beans.factory.annotation.Autowired;
-import um.edu.uy.Main;
 import um.edu.uy.Session;
-import um.edu.uy.business.AirlaneMgr;
 import um.edu.uy.business.PassengerMgr;
-import um.edu.uy.business.UserInfo;
 import um.edu.uy.business.VueloMgr;
-import um.edu.uy.business.entities.Airline;
 import org.springframework.stereotype.Component;
 import um.edu.uy.business.entities.Vuelo;
-import um.edu.uy.business.exceptions.AirlineAlreadyExists;
-import um.edu.uy.business.exceptions.InvalidAirlineInformation;
 import um.edu.uy.persistence.AirlineRepository;
-
-import java.io.IOException;
 
 @Component
 public class CheckInPassengersController {

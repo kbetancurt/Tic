@@ -65,7 +65,7 @@
          <children>
             <ImageView fitHeight="253.0" fitWidth="253.0" layoutX="11.0" layoutY="45.0" pickOnBounds="true" preserveRatio="true">
                <image>
-                  <Image url="/Images/LogInImage.png" />
+                  <Image url="@/Images/LogInImage.png" />
                </image>
             </ImageView>
             <Button fx:id="btnAdd" layoutX="145.0" layoutY="310.0" mnemonicParsing="false" onAction="#addAirlineAdmin" prefWidth="60.0" style="-fx-background-color: #FFC300; -fx-background-radius: 5em;" text="Add" />

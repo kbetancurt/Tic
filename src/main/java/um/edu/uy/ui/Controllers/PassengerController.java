@@ -8,19 +8,16 @@ import javafx.scene.control.TableView;
 import javafx.stage.Stage;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
-import um.edu.uy.business.AirlaneMgr;
+import um.edu.uy.business.AirlineMgr;
 import um.edu.uy.business.PassengerFlightMgr;
 import um.edu.uy.business.PassengerMgr;
 import um.edu.uy.business.VueloMgr;
-import um.edu.uy.Session;
 import um.edu.uy.business.entities.Passenger;
 import um.edu.uy.business.entities.Vuelo;
 import um.edu.uy.persistence.AirlineRepository;
 import um.edu.uy.persistence.VueloRepository;
 import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.scene.control.TextField;
-
-import java.awt.*;
 
 @Component
 public class PassengerController {
@@ -29,7 +26,7 @@ public class PassengerController {
     @Autowired
     VueloMgr vueloMgr;
     @Autowired
-    AirlaneMgr airlaneMgr;
+    AirlineMgr airlineMgr;
     @Autowired
     AirlineRepository airlineRepository;
     @Autowired

@@ -10,7 +10,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 @Service
-public class AirlaneMgr {
+public class AirlineMgr {
     @Autowired
     private AirlineRepository airlineRepository;
     public void addAirlane(Airline airline) throws AirlineAlreadyExists, InvalidAirlineInformation {
@@ -32,4 +32,10 @@ public class AirlaneMgr {
     public Airline obtenerAerolinea(long Id){
         return airlineRepository.findOneById(Id);
     }
+
+    public Airline obtenerAerolineaPorNombre(String name){
+        return airlineRepository.findOneByName(name);
+    }
+
+
 }

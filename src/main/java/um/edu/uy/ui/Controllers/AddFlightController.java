@@ -99,7 +99,7 @@ public class AddFlightController {
 
         long numero= Long.parseLong(txtnumero.getText());
         if(airlineRepository ==null){
-            System.out.println("ERRROR");
+            System.out.println("ERROR");
         }
         String ICAO= airportRepository.findOneByICAO(Session.getInstance().getAirport()).getICAO();
         String IATAAerolinea= airlineRepository.findOneById(Session.getInstance().getAirline()).getIATA();
@@ -146,7 +146,7 @@ public class AddFlightController {
         }
 
         showAlert("Vuelo agregado","Se agrego con exito el vuelo");
-        close(new ActionEvent());
+        close(event);
 
 
     }
