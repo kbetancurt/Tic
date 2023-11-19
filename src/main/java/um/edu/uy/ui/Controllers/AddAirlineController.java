@@ -12,7 +12,7 @@ import javafx.stage.Stage;
 import org.springframework.beans.factory.annotation.Autowired;
 import um.edu.uy.Main;
 import um.edu.uy.Session;
-import um.edu.uy.business.AirlaneMgr;
+import um.edu.uy.business.AirlineMgr;
 import um.edu.uy.business.UserInfo;
 import um.edu.uy.business.entities.Airline;
 import org.springframework.stereotype.Component;
@@ -24,7 +24,7 @@ import java.io.IOException;
 @Component
 public class AddAirlineController {
     @Autowired
-    private AirlaneMgr airlaneMgr;
+    private AirlineMgr airlineMgr;
 
     @FXML
     private Button btnClose;
@@ -72,7 +72,7 @@ public class AddAirlineController {
                     Airline airline = new Airline(name,IATA,ICAO,pais);
 
                      try {
-                         airlaneMgr.addAirlane(airline);
+                         airlineMgr.addAirlane(airline);
                          showAlert("Aerolinea agregada", "Se agrego con exito a la aerolinea!");
                          UserInfo.airlineInfo=airline;
                          Session.getInstance().setAirline(airline.getId());

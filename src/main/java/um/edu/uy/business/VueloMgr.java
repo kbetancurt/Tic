@@ -58,9 +58,11 @@ public class VueloMgr {
     }
 
     public List<Vuelo> obtenerVuelos(){
-        return (List<Vuelo>) vueloRepository.findAll();
-
+        return (List<Vuelo>) vueloRepository.findAllByAeropuertoOrigenOrAeropuertoDestinoAndHorarioSalidaEstAfter(Session.getInstance().getAirport());
     }
+
+
+
     public List<Vuelo> obtenerVuelosAerolinea(){
         long id= (Session.getInstance().getAirline());
         return obtenerVuelosAerolinea(id);

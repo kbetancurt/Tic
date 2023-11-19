@@ -12,7 +12,7 @@
 <?import javafx.scene.layout.Pane?>
 <?import javafx.scene.text.Font?>
 
-<fx:root maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" type="BorderPane" xmlns="http://javafx.com/javafx/20.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="um.edu.uy.ui.Controllers.AddAirportUserController">
+<BorderPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/20.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="um.edu.uy.ui.Controllers.AddAirportUserController">
    <top>
       <Label prefHeight="58.0" prefWidth="600.0" style="-fx-background-color: #FFC300;" text="Add Airport Employee" BorderPane.alignment="CENTER">
          <font>
@@ -22,97 +22,102 @@
    </top>
    <left>
       <Pane prefHeight="342.0" prefWidth="325.0" style="-fx-background-color: #FFF2B3;" BorderPane.alignment="CENTER">
-         <children>
-            <Label layoutX="15.0" layoutY="15.0" prefHeight="29.0" prefWidth="61.0" text="Name">
-               <font>
-                  <Font name="Microsoft JhengHei Light" size="20.0" />
-               </font>
-            </Label>
-            <Label layoutX="15.0" layoutY="55.0" prefHeight="29.0" prefWidth="107.0" text="Last Name">
-               <font>
-                  <Font name="Microsoft JhengHei Light" size="20.0" />
-               </font>
-            </Label>
-            <Label layoutX="15.0" layoutY="95.0" prefHeight="29.0" prefWidth="107.0" text="Passport">
-               <font>
-                  <Font name="Microsoft JhengHei Light" size="20.0" />
-               </font>
-            </Label>
-            <Label layoutX="15.0" layoutY="135.0" prefHeight="29.0" prefWidth="107.0" text="Nationality">
-               <font>
-                  <Font name="Microsoft JhengHei Light" size="20.0" />
-               </font>
-            </Label>
-            <Label layoutX="15.0" layoutY="175.0" prefHeight="29.0" prefWidth="107.0" text="Address">
-               <font>
-                  <Font name="Microsoft JhengHei Light" size="20.0" />
-               </font>
-            </Label>
-            <Label layoutX="15.0" layoutY="215.0" prefHeight="29.0" prefWidth="107.0" text="Birth Date">
-               <font>
-                  <Font name="Microsoft JhengHei Light" size="20.0" />
-               </font>
-            </Label>
-            <Label layoutX="15.0" layoutY="255.0" prefHeight="29.0" prefWidth="107.0" text="Airport">
-               <font>
-                  <Font name="Microsoft JhengHei Light" size="20.0" />
-               </font>
-            </Label>
-            <Label layoutX="15.0" layoutY="295.0" prefHeight="29.0" prefWidth="107.0" text="Role">
-               <font>
-                  <Font name="Microsoft JhengHei Light" size="20.0" />
-               </font>
-            </Label>
-            <TextField fx:id="txtName" layoutX="131.0" layoutY="14.0" prefHeight="31.0" prefWidth="185.0" style="-fx-background-radius: 5em; -fx-border-radius: 5em;">
-               <cursor>
-                  <Cursor fx:constant="TEXT" />
-               </cursor>
-            </TextField>
-            <TextField fx:id="txtLastname" layoutX="131.0" layoutY="54.0" prefHeight="31.0" prefWidth="185.0" style="-fx-background-radius: 5em; -fx-border-radius: 5em;">
-               <cursor>
-                  <Cursor fx:constant="TEXT" />
-               </cursor>
-            </TextField>
-            <TextField fx:id="txtPassport" layoutX="131.0" layoutY="94.0" prefHeight="31.0" prefWidth="185.0" style="-fx-background-radius: 5em; -fx-border-radius: 5em;">
-               <cursor>
-                  <Cursor fx:constant="TEXT" />
-               </cursor>
-            </TextField>
-            <TextField fx:id="txtNationality" layoutX="131.0" layoutY="134.0" prefHeight="31.0" prefWidth="185.0" style="-fx-background-radius: 5em; -fx-border-radius: 5em;">
-               <cursor>
-                  <Cursor fx:constant="TEXT" />
-               </cursor>
-            </TextField>
-            <TextField fx:id="txtAddress" layoutX="131.0" layoutY="174.0" prefHeight="31.0" prefWidth="185.0" style="-fx-background-radius: 5em; -fx-border-radius: 5em;">
-               <cursor>
-                  <Cursor fx:constant="TEXT" />
-               </cursor>
-            </TextField>
-            <DatePicker fx:id="datePickerBirthDate" layoutX="131.0" layoutY="214.0" prefHeight="31.0" prefWidth="185.0" />
-            <ChoiceBox fx:id="airportChoiceBox" layoutX="131.0" layoutY="254.0" prefHeight="31.0" prefWidth="185.0" />
-            <ChoiceBox fx:id="roleChoiceBox" layoutX="131.0" layoutY="294.0" prefHeight="31.0" prefWidth="185.0" />
-         </children>
+         <Label layoutX="15.0" layoutY="15.0" prefHeight="29.0" prefWidth="61.0" text="Name">
+            <font>
+               <Font name="Microsoft JhengHei Light" size="20.0"/>
+            </font>
+         </Label>
+         <Label layoutX="15.0" layoutY="55.0" prefHeight="29.0" prefWidth="107.0" text="Last Name">
+            <font>
+               <Font name="Microsoft JhengHei Light" size="20.0"/>
+            </font>
+         </Label>
+         <Label layoutX="15.0" layoutY="95.0" prefHeight="29.0" prefWidth="107.0" text="Passport">
+            <font>
+               <Font name="Microsoft JhengHei Light" size="20.0"/>
+            </font>
+         </Label>
+         <Label layoutX="15.0" layoutY="135.0" prefHeight="29.0" prefWidth="107.0" text="Nationality">
+            <font>
+               <Font name="Microsoft JhengHei Light" size="20.0"/>
+            </font>
+         </Label>
+         <Label layoutX="15.0" layoutY="175.0" prefHeight="29.0" prefWidth="107.0" text="Address">
+            <font>
+               <Font name="Microsoft JhengHei Light" size="20.0"/>
+            </font>
+         </Label>
+         <Label layoutX="15.0" layoutY="215.0" prefHeight="29.0" prefWidth="107.0" text="Birth Date">
+            <font>
+               <Font name="Microsoft JhengHei Light" size="20.0"/>
+            </font>
+         </Label>
+         <Label layoutX="15.0" layoutY="255.0" prefHeight="29.0" prefWidth="107.0" text="Airport">
+            <font>
+               <Font name="Microsoft JhengHei Light" size="20.0"/>
+            </font>
+         </Label>
+         <Label layoutX="15.0" layoutY="295.0" prefHeight="29.0" prefWidth="107.0" text="Role">
+            <font>
+               <Font name="Microsoft JhengHei Light" size="20.0"/>
+            </font>
+         </Label>
+         <TextField fx:id="txtName" layoutX="131.0" layoutY="14.0" prefHeight="31.0" prefWidth="185.0"
+                    style="-fx-background-radius: 5em; -fx-border-radius: 5em;">
+            <cursor>
+               <Cursor fx:constant="TEXT"/>
+            </cursor>
+         </TextField>
+         <TextField fx:id="txtLastname" layoutX="131.0" layoutY="54.0" prefHeight="31.0" prefWidth="185.0"
+                    style="-fx-background-radius: 5em; -fx-border-radius: 5em;">
+            <cursor>
+               <Cursor fx:constant="TEXT"/>
+            </cursor>
+         </TextField>
+         <TextField fx:id="txtPassport" layoutX="131.0" layoutY="94.0" prefHeight="31.0" prefWidth="185.0"
+                    style="-fx-background-radius: 5em; -fx-border-radius: 5em;">
+            <cursor>
+               <Cursor fx:constant="TEXT"/>
+            </cursor>
+         </TextField>
+         <TextField fx:id="txtNationality" layoutX="131.0" layoutY="134.0" prefHeight="31.0" prefWidth="185.0"
+                    style="-fx-background-radius: 5em; -fx-border-radius: 5em;">
+            <cursor>
+               <Cursor fx:constant="TEXT"/>
+            </cursor>
+         </TextField>
+         <TextField fx:id="txtAddress" layoutX="131.0" layoutY="174.0" prefHeight="31.0" prefWidth="185.0"
+                    style="-fx-background-radius: 5em; -fx-border-radius: 5em;">
+            <cursor>
+               <Cursor fx:constant="TEXT"/>
+            </cursor>
+         </TextField>
+         <DatePicker fx:id="datePickerBirthDate" layoutX="131.0" layoutY="214.0" prefHeight="31.0" prefWidth="185.0"/>
+         <ChoiceBox fx:id="airportChoiceBox" layoutX="131.0" layoutY="254.0" prefHeight="31.0" prefWidth="185.0"/>
+         <ChoiceBox fx:id="roleChoiceBox" layoutX="131.0" layoutY="294.0" prefHeight="31.0" prefWidth="185.0"/>
       </Pane>
    </left>
    <right>
       <Pane prefHeight="342.0" prefWidth="275.0" BorderPane.alignment="CENTER">
-         <children>
-            <ImageView fitHeight="253.0" fitWidth="253.0" layoutX="11.0" layoutY="45.0" pickOnBounds="true" preserveRatio="true">
-               <image>
-                  <Image url="/Images/LogInImage.png" />
-               </image>
-            </ImageView>
-            <Button fx:id="btnAdd" layoutX="137.0" layoutY="296.0" mnemonicParsing="false" onAction="#addClient" prefWidth="60.0" style="-fx-background-color: #FFC300; -fx-background-radius: 5em; -fx-border-radius: 5em;" text="Add">
-               <font>
-                  <Font name="Microsoft JhengHei Light" size="12.0" />
-               </font>
-            </Button>
-            <Button fx:id="btnClose" layoutX="204.0" layoutY="296.0" mnemonicParsing="false" onAction="#close" prefWidth="60.0" style="-fx-background-color: #FFC300; -fx-background-radius: 5em; -fx-border-radius: 5em;" text="Cancel">
-               <font>
-                  <Font name="Microsoft JhengHei Light" size="12.0" />
-               </font>
-            </Button>
-         </children>
+         <ImageView fitHeight="253.0" fitWidth="253.0" layoutX="11.0" layoutY="45.0" pickOnBounds="true"
+                    preserveRatio="true">
+            <Image url="/Images/LogInImage.png"/>
+         </ImageView>
+         <Button fx:id="btnAdd" layoutX="137.0" layoutY="296.0" mnemonicParsing="false" onAction="#addClient"
+                 prefWidth="60.0"
+                 style="-fx-background-color: #FFC300; -fx-background-radius: 5em; -fx-border-radius: 5em;" text="Add">
+            <font>
+               <Font name="Microsoft JhengHei Light" size="12.0"/>
+            </font>
+         </Button>
+         <Button fx:id="btnClose" layoutX="204.0" layoutY="296.0" mnemonicParsing="false" onAction="#close"
+                 prefWidth="60.0"
+                 style="-fx-background-color: #FFC300; -fx-background-radius: 5em; -fx-border-radius: 5em;"
+                 text="Cancel">
+            <font>
+               <Font name="Microsoft JhengHei Light" size="12.0"/>
+            </font>
+         </Button>
       </Pane>
    </right>
-</fx:root>
+</BorderPane>
