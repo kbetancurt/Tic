@@ -73,7 +73,7 @@ public class LogInController implements Initializable {
                     getInstance().setRole("Pasajero");
                     FXMLLoader fxmlLoader = new FXMLLoader();
                     fxmlLoader.setControllerFactory(Main.getContext()::getBean);
-                    Parent root = fxmlLoader.load(PassengerMenuController.class.getResourceAsStream("PassengerMenu.fxml"));
+                    Parent root = fxmlLoader.load(PassengerAdmin.class.getResourceAsStream("PassengerAdmin.fxml"));
                     Stage stage = new Stage();
                     stage.setScene(new Scene(root));
                     stage.show();
