@@ -52,6 +52,10 @@ public class VueloMgr {
 
 
     }
+    public void updatePesoVuelo(Vuelo vuelo, int peso){
+        vuelo.setBultosAcumulados(vuelo.getBultosAcumulados()+peso);
+        vueloRepository.save(vuelo);
+    }
 
     public List<Vuelo> obtenerVuelos(){
         return (List<Vuelo>) vueloRepository.findAll();

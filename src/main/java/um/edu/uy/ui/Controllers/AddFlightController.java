@@ -101,7 +101,7 @@ public class AddFlightController {
         if(airlineRepository ==null){
             System.out.println("ERRROR");
         }
-        String ICAO= airportRepository.findOneByICAO(Session.getInstance().getAirport()).getICAO();
+        String ICAO= airlineRepository.findOneById(Session.getInstance().getAirline()).getICAO();
         String IATAAerolinea= airlineRepository.findOneById(Session.getInstance().getAirline()).getIATA();
         String aeropuertoOrigen=Session.getInstance().getAirport();
         String aeropuertoDestino=choiceBoxDAirport.getValue();

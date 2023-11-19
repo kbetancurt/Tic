@@ -5,10 +5,8 @@ import javafx.fxml.FXMLLoader;
 import javafx.scene.Node;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
-import javafx.scene.control.Alert;
-import javafx.scene.control.Button;
-import javafx.scene.control.ChoiceBox;
-import javafx.scene.control.TextField;
+import javafx.scene.control.*;
+import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.stage.Stage;
 import org.springframework.beans.factory.annotation.Autowired;
 import um.edu.uy.Main;
@@ -44,6 +42,8 @@ public class CheckInPassengersController {
 
     @FXML
     private Button bttnCancel;
+    @FXML
+    private Button bttnPesoDisponible;
 
     @FXML
     private TextField txtName;
@@ -53,9 +53,24 @@ public class CheckInPassengersController {
 
     @FXML
     private TextField txtPassport;
+    @FXML
+    private TextField txtBultos;
 
     @FXML
-    private ChoiceBox<String> choiceBoxFlight;
+    private ChoiceBox<String> choiceBoxPesoDisponible;
+    @FXML
+    private TableView<Vuelo> flights;
+    @FXML
+    private TableColumn<Vuelo, Integer> flightNumber;
+
+    @FXML
+    private TableColumn<Vuelo,String> destinationAirport;
+    @FXML
+    private TableColumn<Vuelo,String> originAirport;
+
+
+
+
 
     @FXML
     void close(ActionEvent actionEvent) {
@@ -66,6 +81,12 @@ public class CheckInPassengersController {
 
     @FXML
     void initialize(){
+        flightNumber.setCellValueFactory(new PropertyValueFactory<>("numero"));
+        destinationAirport.setCellValueFactory(new PropertyValueFactory<>("aeropuertoDestino"));
+        originAirport.setCellValueFactory(new PropertyValueFactory<>("aeropuertoOrigen"));
+        for (Vuelo vuelo : vueloMgr.obtenerVuelosAerolinea()) {
+            flights.getItems().add(vuelo);
+        }
         if (airlineRepository==null){
             System.out.println("error");
             return;
@@ -81,14 +102,21 @@ public class CheckInPassengersController {
             System.out.println("No hay vuelos disponibles");
             return;
         }
-        choiceBoxFlight.getItems().addAll(vueloMgr.numerosVuelos().toString());
     }
 
-    void checkPassenger(ActionEvent event) {
+    @FXML
+    void verPesoDisponible(ActionEvent event){
+        Vuelo flight = flights.getSelectionModel().getSelectedItem();
+        Integer peso_disponible= vueloMgr.peso_disponible(flight);
+        System.out.println(peso_disponible);
+        choiceBoxPesoDisponible.getItems().add(peso_disponible.toString());
+    }
+    @FXML
+    void checkInPassenger(ActionEvent event) {
         if (txtName.getText() == null || txtName.getText().isEmpty() ||
                 txtLastName.getText() == null || txtLastName.getText().isEmpty()
-                || txtPassport.getText() == null || txtPassport.getText().isEmpty() ||
-                choiceBoxFlight.getValue()==null || choiceBoxFlight.getValue().isEmpty()
+                || txtPassport.getText() == null || txtPassport.getText().isEmpty()
+
 
         ) {
 
@@ -97,27 +125,39 @@ public class CheckInPassengersController {
                     "No se ingresaron los datos necesarios para completar el ingreso.");
 
         } else {
-
+            Vuelo flight = flights.getSelectionModel().getSelectedItem();
             String name = txtName.getText();
             String lastName= txtLastName.getText();
             String passport = txtPassport.getText();
-            Long flightNumber = Long.valueOf(choiceBoxFlight.getValue());
-            Vuelo vuelo = vueloMgr.getVueloAerolinea(flightNumber);
-            Integer peso_disponible= vueloMgr.peso_disponible(vuelo);
+            String bultos= txtBultos.getText();
+            Integer peso_disponible= vueloMgr.peso_disponible(flight);
             Passenger passenger= passengerMgr.getPassenger(passport);
-            if (vuelo !=null && passenger !=null){
-                PassengerFlight passengerFlight= passengerFlightMgr.findPassengerFlight(passenger,vuelo);
+            if (flight !=null && passenger !=null){
+                PassengerFlight passengerFlight= passengerFlightMgr.findPassengerFlight(passenger,flight);
                 if (passengerFlight!=null){
+                    if (Integer.parseInt(bultos)<=peso_disponible){
+                        passengerFlight.setMaletas(Integer.parseInt(bultos));
+                        if (!passengerFlight.isCheckIn()){
+                        passengerFlight.setCheckIn(true);
+                        passengerFlightMgr.updatePassengerFlight(passengerFlight);
+                        vueloMgr.updatePesoVuelo(flight,Integer.parseInt(bultos));
+                        showAlert("Check-in","Se realizo el check-in con exito");}
+                        else {
+                            showAlert("Error","El pasajero ya realizo el check-in");
+                        }
+                    }
+                    else{
+                        showAlert("Error","El peso de las valijas supera el peso disponible");
+                    }
 
                 }
                 else{
                     showAlert("Error","El pasajero no esta registrado en el vuelo");
                 }
             }
-
-
-            //Falta chequar que este en la tabla pasajero-vuelo y se deberia agregar el id de la valija
-
+            else{
+                showAlert("Error","El pasajero no esta registrado en ningún vuelo");
+            }
         }
 
     }
