@@ -33,6 +33,10 @@ public class PassengerMgr {
     public Passenger getPassengerByMail(String mail) {
         return passengerRepository.findOneByMail(mail);
     }
-
+    public void updatePassword(String mail, String password) {
+        Passenger passenger=passengerRepository.findOneByMail(mail);
+        passenger.setPassword(password);
+        passengerRepository.save(passenger);
+    }
 
 }
