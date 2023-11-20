@@ -11,7 +11,7 @@
 
 <BorderPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/20.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="um.edu.uy.ui.Controllers.PassengerAdmin">
     <top>
-        <Label prefHeight="58.0" prefWidth="600.0" style="-fx-background-color: #FFC300;" text="Password Change" BorderPane.alignment="CENTER">
+        <Label prefHeight="58.0" prefWidth="600.0" style="-fx-background-color: #FFC300;" text="Passenger Menu" BorderPane.alignment="CENTER">
             <font>
                 <Font name="Microsoft JhengHei Light" size="34.0" />
             </font>
@@ -57,7 +57,7 @@
     </right>
 
    <bottom>
-          <Button fx:id="bttnClose" onAction="#close" prefHeight="29.0" prefWidth="100.0" style="-fx-background-color: #FFC300; -fx-background-radius: 5em; -fx-border-radius: 5em;" text="Cancel" BorderPane.alignment="BOTTOM_RIGHT">
+          <Button fx:id="bttnClose" onAction="#close" prefHeight="29.0" prefWidth="100.0" style="-fx-background-color: #FFC300; -fx-background-radius: 5em; -fx-border-radius: 5em;" text="Log Out" BorderPane.alignment="BOTTOM_RIGHT">
               <font>
                   <Font name="Microsoft JhengHei Light" size="14.0" />
               </font>

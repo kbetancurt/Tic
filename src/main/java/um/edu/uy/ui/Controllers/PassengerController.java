@@ -76,7 +76,7 @@ public class PassengerController {
     public String generateMail(String nombre, String apellido) {
         return passengerMgr.generateMail(nombre,apellido);
     }
-    public void addPassenger(){
+    public void addPassenger(ActionEvent event){
         String passport= txtPasaporte.getText();
         String apellido= txtApellido.getText();
         String nombre= txtNombre.getText();
@@ -87,13 +87,13 @@ public class PassengerController {
             Passenger passenger = new Passenger(passport,nacionalidad,nombre,apellido,mail);
             passengerMgr.addPassenger(passenger);
             passengerFlightMgr.addPassengerFlight(passenger,flight);
-            close(new ActionEvent());
+            close(event);
         }
         else
         {
             Passenger passenger = passengerMgr.getPassenger(passport);
             passengerFlightMgr.addPassengerFlight(passenger,flight);
-            close(new ActionEvent());
+            close(event);
 
         }
 

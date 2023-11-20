@@ -5,35 +5,36 @@
 <?import javafx.scene.layout.*?>
 <?import javafx.scene.text.*?>
 
-<BorderPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/11.0.14-internal" xmlns:fx="http://javafx.com/fxml/1" fx:controller="um.edu.uy.ui.Controllers.CheckInPassengersController">
+<BorderPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="730.0" xmlns="http://javafx.com/javafx/11.0.14-internal" xmlns:fx="http://javafx.com/fxml/1" fx:controller="um.edu.uy.ui.Controllers.CheckInPassengersController">
    <top>
-      <Label prefHeight="58.0" prefWidth="643.0" style="-fx-background-color: #FFC300;" text="Check In Passenger" BorderPane.alignment="CENTER">
+      <Label prefHeight="58.0" prefWidth="807.0" style="-fx-background-color: #FFC300;" text=" Check In Passenger" BorderPane.alignment="CENTER">
          <font>
             <Font name="Microsoft YaHei Light" size="34.0" />
          </font>
       </Label>
    </top>
    <right>
-      <Pane prefHeight="288.0" prefWidth="275.0" BorderPane.alignment="CENTER">
+      <Pane prefHeight="372.0" prefWidth="405.0" BorderPane.alignment="CENTER">
          <children>
-            <TableView fx:id="flights" layoutY="55.0" prefHeight="239.0" prefWidth="273.0">
+            <TableView fx:id="flights" layoutX="3.0" layoutY="41.0" prefHeight="239.0" prefWidth="402.0">
               <columns>
-                <TableColumn fx:id="flightNumber" prefWidth="86.66662347316742" text="Flight Number" />
-                  <TableColumn fx:id="originAirport" prefWidth="96.00004577636719" text="Origin" />
-                <TableColumn fx:id="destinationAirport" prefWidth="89.33338165283203" text="Destination" />
+                 <TableColumn fx:id="flightNumber" prefWidth="115.20001363754272" text="Flight Number" />
+                 <TableColumn fx:id="originAirport" prefWidth="93.80004119873047" text="Origin" />
+                 <TableColumn fx:id="destinationAirport" prefWidth="102.199951171875" text="Destination" />
+                 <TableColumn fx:id="AvailableCargo" prefWidth="83.79998779296875" text="Cargo" />
               </columns>
             </TableView>
-            <Label alignment="CENTER" layoutX="-107.0" prefHeight="35.0" prefWidth="461.0" style="-fx-background-color: #FFF2B3;" text="Flight">
+            <Label alignment="CENTER" prefHeight="41.0" prefWidth="408.0" style="-fx-background-color: #FFF2B3;" text="Flight">
                <font>
                   <Font name="Microsoft JhengHei Light" size="20.0" />
                </font>
             </Label>
-            <Button fx:id="bttnCheck" layoutX="32.0" layoutY="296.0" onAction="#checkInPassenger" prefHeight="32.0" prefWidth="75.0" style="-fx-background-color: #FFC300; -fx-background-radius: 5em; -fx-border-radius: 5em;" text="Add">
+            <Button fx:id="bttnCheck" layoutX="223.0" layoutY="296.0" onAction="#checkInPassenger" prefHeight="32.0" prefWidth="75.0" style="-fx-background-color: #FFC300; -fx-background-radius: 5em; -fx-border-radius: 5em;" text="Add">
                <font>
                   <Font name="Microsoft JhengHei" size="12.0" />
                </font>
             </Button>
-            <Button fx:id="btnClose" layoutX="178.0" layoutY="296.0" onAction="#close" prefHeight="32.0" prefWidth="75.0" style="-fx-background-color: #FFC300; -fx-background-radius: 5em; -fx-border-radius: 5em;" text="Cancel">
+            <Button fx:id="btnClose" layoutX="317.0" layoutY="296.0" onAction="#close" prefHeight="32.0" prefWidth="75.0" style="-fx-background-color: #FFC300; -fx-background-radius: 5em; -fx-border-radius: 5em;" text="Cancel">
                <font>
                   <Font name="Microsoft JhengHei" size="12.0" />
                </font>
@@ -41,10 +42,10 @@
          </children></Pane>
    </right>
    <center>
-      <Pane prefHeight="200.0" prefWidth="325.0" style="-fx-background-color: #FFF2B3;" BorderPane.alignment="CENTER">
+      <Pane prefHeight="372.0" prefWidth="364.0" style="-fx-background-color: #FFF2B3;" BorderPane.alignment="CENTER">
          <children>
             <Group layoutX="15.0" layoutY="81.0" />
-            <Label layoutX="18.0" layoutY="234.0" prefHeight="29.0" prefWidth="89.0" text="Bultos">
+            <Label layoutX="18.0" layoutY="234.0" prefHeight="29.0" prefWidth="89.0" text="Cargo">
                <font>
                   <Font name="Microsoft YaHei Light" size="20.0" />
                </font>
@@ -54,8 +55,8 @@
                   <Cursor fx:constant="TEXT" />
                </cursor>
             </TextField>
-            <ChoiceBox fx:id="choiceBoxPesoDisponible" layoutX="162.0" layoutY="285.0" prefHeight="31.0" prefWidth="98.0" />
-            <TextField fx:id="txtName" layoutX="120.0" layoutY="62.0" prefHeight="31.0" prefWidth="190.0" style="-fx-background-radius: 5em; -fx-border-radius: 5em;">
+
+            <TextField fx:id="txtName" layoutX="121.0" layoutY="60.0" prefHeight="31.0" prefWidth="190.0" style="-fx-background-radius: 5em; -fx-border-radius: 5em;">
                <cursor>
                   <Cursor fx:constant="TEXT" />
                </cursor>
@@ -75,7 +76,7 @@
                   <Cursor fx:constant="TEXT" />
                </cursor>
             </TextField>
-            <TextField fx:id="txtPassport" layoutX="121.0" layoutY="183.0" prefHeight="31.0" prefWidth="190.0" style="-fx-background-radius: 5em; -fx-border-radius: 5em;">
+            <TextField fx:id="txtPassport" layoutX="121.0" layoutY="175.0" prefHeight="31.0" prefWidth="190.0" style="-fx-background-radius: 5em; -fx-border-radius: 5em;">
                <cursor>
                   <Cursor fx:constant="TEXT" />
                </cursor>
@@ -85,12 +86,7 @@
                   <Font name="Microsoft YaHei Light" size="20.0" />
                </font>
             </Label>
-
-         <Button fx:id="bttnPesoDisponible" layoutX="14.0" layoutY="285.0" onAction="#verPesoDisponible" prefHeight="32.0" prefWidth="75.0" style="-fx-background-color: #FFC300; -fx-background-radius: 5em; -fx-border-radius: 5em;" text="Bultos Disponibles">
-            <font>
-               <Font name="Microsoft JhengHei" size="12.0" />
-            </font>
-         </Button>
+            
 
          </children>
       </Pane>

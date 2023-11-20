@@ -11,6 +11,8 @@ import javafx.scene.control.MenuItem;
 import javafx.stage.Stage;
 import org.springframework.stereotype.Component;
 import um.edu.uy.Main;
+import um.edu.uy.Session;
+
 @Component
 public class PassengerAdmin {
     @FXML
@@ -45,10 +47,22 @@ public class PassengerAdmin {
 
 
     @FXML
-    void close(ActionEvent actionEvent) {
+    void close(ActionEvent actionEvent) throws Exception {
+        logOut(actionEvent);
         Node source = (Node)  actionEvent.getSource();
         Stage stage  = (Stage) source.getScene().getWindow();
         stage.close();
+    }
+
+    @FXML
+    void logOut(ActionEvent actionEvent) throws Exception {
+        Session.getInstance().reset();
+        FXMLLoader fxmlLoader = new FXMLLoader();
+        fxmlLoader.setControllerFactory(Main.getContext()::getBean);
+        Parent root = fxmlLoader.load(LogInController.class.getResourceAsStream("LogInMenu.fxml"));
+        Stage stage = new Stage();
+        stage.setScene(new Scene(root));
+        stage.show();
     }
 }
 

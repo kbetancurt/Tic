@@ -1,4 +1,5 @@
 package um.edu.uy.ui.Controllers;
+import javafx.beans.property.SimpleIntegerProperty;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.scene.Node;
@@ -59,6 +60,9 @@ public class CheckInPassengersController {
     @FXML
     private TableColumn<Vuelo,String> originAirport;
 
+    @FXML
+    private TableColumn<Vuelo,Integer> AvailableCargo;
+
 
 
 
@@ -75,6 +79,13 @@ public class CheckInPassengersController {
         flightNumber.setCellValueFactory(new PropertyValueFactory<>("numero"));
         destinationAirport.setCellValueFactory(new PropertyValueFactory<>("aeropuertoDestino"));
         originAirport.setCellValueFactory(new PropertyValueFactory<>("aeropuertoOrigen"));
+
+        AvailableCargo.setCellValueFactory(cellData -> {
+            Vuelo vuelo = cellData.getValue();
+            Integer cargo = vueloMgr.peso_disponible(vuelo);
+            return new SimpleIntegerProperty(cargo).asObject();
+        });
+
         for (Vuelo vuelo : vueloMgr.obtenerVuelosAerolinea()) {
             flights.getItems().add(vuelo);
         }
@@ -95,13 +106,7 @@ public class CheckInPassengersController {
         }
     }
 
-    @FXML
-    void verPesoDisponible(ActionEvent event){
-        Vuelo flight = flights.getSelectionModel().getSelectedItem();
-        Integer peso_disponible= vueloMgr.peso_disponible(flight);
-        System.out.println(peso_disponible);
-        choiceBoxPesoDisponible.getItems().add(peso_disponible.toString());
-    }
+
     @FXML
     void checkInPassenger(ActionEvent event) {
         if (txtName.getText() == null || txtName.getText().isEmpty() ||

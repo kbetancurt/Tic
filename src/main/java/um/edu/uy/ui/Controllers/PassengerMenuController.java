@@ -1,13 +1,20 @@
 package um.edu.uy.ui.Controllers;
 
 import javafx.beans.property.SimpleIntegerProperty;
+import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
+import javafx.fxml.FXMLLoader;
+import javafx.scene.Node;
+import javafx.scene.Parent;
+import javafx.scene.Scene;
 import javafx.scene.control.Label;
 import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
 import javafx.scene.control.cell.PropertyValueFactory;
+import javafx.stage.Stage;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
+import um.edu.uy.Main;
 import um.edu.uy.Session;
 import um.edu.uy.business.PassengerFlightMgr;
 import um.edu.uy.business.PassengerMgr;
@@ -46,23 +53,18 @@ public class PassengerMenuController {
     private TableColumn<Vuelo, Time> departureCol;
     @FXML
     private TableColumn<Vuelo, Time> arrivalCol;
-    @FXML
-    private TableColumn<Vuelo, String> approvedOriginCol;
-    @FXML
-    private TableColumn<Vuelo, String> approvedDestinationCol;
+
     @FXML
     private TableColumn<Vuelo,String> flightIDColFlight;
 
 
     public void initialize() {
         flightTbl.getItems().clear();
-        airlineCol.setCellValueFactory(new PropertyValueFactory<>("IATAAerolinea"));
+        airlineCol.setCellValueFactory(new PropertyValueFactory<>("ICAOaerolinea"));
         originCol.setCellValueFactory(new PropertyValueFactory<>("aeropuertoOrigen"));
         destinationCol.setCellValueFactory(new PropertyValueFactory<>("aeropuertoDestino"));
         departureCol.setCellValueFactory(new PropertyValueFactory<>("horarioSalidaEst"));
         arrivalCol.setCellValueFactory(new PropertyValueFactory<>("horarioLLegadaEst"));
-        approvedOriginCol.setCellValueFactory(new PropertyValueFactory<>("aprobadoSalida"));
-        approvedDestinationCol.setCellValueFactory(new PropertyValueFactory<>("aprobadoLLegada"));
         flightIDColFlight.setCellValueFactory(new PropertyValueFactory<>("id"));
         flightTbl.setPlaceholder(new Label("No rows to display"));
         String mail= Session.getInstance().getUser();
@@ -86,6 +88,14 @@ public class PassengerMenuController {
         for (PassengerFlight passengerFlight:passengerFlights) {
             passengerFlightTbl.getItems().add(passengerFlight);
         }
-    }}
+    }
+    @FXML
+    void close(ActionEvent actionEvent) throws Exception {
+        Node source = (Node)  actionEvent.getSource();
+        Stage stage  = (Stage) source.getScene().getWindow();
+        stage.close();
+    }
+
+}
 
 

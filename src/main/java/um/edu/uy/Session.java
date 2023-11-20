@@ -49,6 +49,14 @@ public final class Session {
         this.vuelo = vuelo;
     }
 
+    public void reset() {
+        this.user = null;
+        this.role = null;
+        this.airport = null;
+        this.airline = -1;
+        this.vuelo = null;
+    }
+
 
 
 }

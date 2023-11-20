@@ -13,9 +13,7 @@
             <TableColumn fx:id="destinationCol" prefWidth="75.0" text="Destination" />
             <TableColumn fx:id="departureCol" prefWidth="75.0" text="Departure" />
             <TableColumn fx:id="arrivalCol" prefWidth="75.0" text="Arrival" />
-            <TableColumn fx:id="approvedOriginCol" prefWidth="75.0" text="aprobado origen" />
-            <TableColumn fx:id="approvedDestinationCol" prefWidth="75.0" text="aprobado destino" />
-            <TableColumn fx:id="airlineCol" prefWidth="75.0" text="Origin" />
+            <TableColumn fx:id="airlineCol" prefWidth="75.0" text="Airline" />
          </columns>
       </TableView>
       <Label layoutY="-1.0" prefHeight="62.0" prefWidth="602.0" style="-fx-background-color: #FFC300;" text="  Vuelos" textAlignment="CENTER">
