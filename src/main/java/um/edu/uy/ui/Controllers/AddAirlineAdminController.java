@@ -98,6 +98,7 @@ public class AddAirlineAdminController {
                     AeroportEmployee aeroportEmployee = new AeroportEmployee(passport,nationality,birthDate,name,lastname,address,role,airport,mail,airline);
 
                     aeroportEmployeeMgr.addClient(aeroportEmployee);
+                    Session.getInstance().setAirline(-1);
 
                     showAlert("Cliente agregado", "Se agrego con exito el cliente!");
 

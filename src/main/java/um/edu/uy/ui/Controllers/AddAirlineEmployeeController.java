@@ -87,7 +87,7 @@ public class AddAirlineEmployeeController {
                 txtLastname.getText() == null || txtLastname.getText().isEmpty() ||
                 txtNationality.getText() == null || txtNationality.getText().isEmpty()
                 || txtPassport.getText() == null || txtPassport.getText().isEmpty() || txtAddress.getText() == null || txtAddress.getText().isEmpty()
-                || choiceBoxRole.getValue()==null || choiceBoxRole.getValue().isEmpty()
+
         ) {
 
             showAlert(
